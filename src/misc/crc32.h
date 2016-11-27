@@ -19,8 +19,10 @@ $Id: crc32.h,v 1.2 2006/01/02 18:24:04 rasc Exp $
 #ifndef __CRC32_H
 #define __CRC32_H
 
+#include <stdint.h>
 
-u_long crc32 (char *data, int len);
+
+uint32_t crc32 (char *data, int len);
 
 
 #endif

@@ -269,7 +269,7 @@ void decodeSI_packet (u_char *buf, int len, u_int pid)
   softcrc_fail = 0;
 
   if (opt->soft_crc) {
-    u_long crc = crc32 ((char *)buf,len);
+    uint32_t crc = crc32 ((char *)buf,len);
     if (crc) {
 	softcrc_fail = 1;
     }
