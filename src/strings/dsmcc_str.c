@@ -272,6 +272,7 @@ char *dsmccStrMHP_AIT_DescriptorTAG (u_int i)
      {  0x0E, 0x0E,  "delegated application descriptor" },
      {  0x0F, 0x0F,  "Plug-in descriptor" },
      {  0x10, 0x10,  "Application storage descriptor" },
+     {  0x15, 0x15,  "Simple application location descriptor" },
      {  0x11, 0x5E,  "reserved to MHP" },
      {  0x5F, 0x5F,  "private data specifier descriptor" },
      {  0x60, 0x7F,  "reserved to MHP" },
@@ -307,7 +308,7 @@ char *dsmccStrMHPOrg (u_int id)
 	{ 0x0006, 0x0006,   "NOB" },
 	{ 0x0007, 0x0007,   "Sofia Digital Oy" },
 	{ 0x0008, 0x0008,   "YLE (Finnish Broadcasting Company)" },
-	{ 0x0009, 0x0009,   "IRT (Institut für Rundfunktechnik GmbH)" },
+	{ 0x0009, 0x0009,   "IRT (Institut f\FCr Rundfunktechnik GmbH)" },
 	{ 0x000A, 0x000A,   "Cardinal Information Systems Ltd" },
 	{ 0x000B, 0x000B,   "Mediaset s.p.a." },
 	{ 0x000C, 0x000C,   "Ortikon Interactive Oy" },
@@ -328,7 +329,7 @@ char *dsmccStrMHPOrg (u_int id)
 	{ 0x001B, 0x001B,   "Fraunhofer FOKUS" },
 	{ 0x001C, 0x001C,   "TwonkyVision GmbH" },
 	{ 0x001D, 0x001D,   "Gist Communications" },
-	{ 0x001E, 0x001E,   "Televisió de Catalunya SA" },
+	{ 0x001E, 0x001E,   "Televisi\F3 de Catalunya SA" },
      {  0,0, NULL }
   };
 
