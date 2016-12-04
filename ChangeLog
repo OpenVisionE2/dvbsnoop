@@ -1,3 +1,9 @@
+   release 1.4.51
+ - Patch: setvbuf / setlinebuf on Linux by https://sourceforge.net/u/userid-672436/profile/
+ - Patch: fix crc32 (-softcrc) under 64-bit linux by https://sourceforge.net/u/mkuutti/profile/
+ - Patch: HBBTV/MHP app. location descriptor in AIT implementation by https://sourceforge.net/u/stephanethomas/profile/
+ - Patch: Add missing capabilities checks by https://github.com/athoik
+
    release 1.4.50
  - Fix: PSM bugfix - (tnx to "jack" for reporting)
  - New: IP datagramm decoding (RFC791, RFC2460) (Stéphane Esté-Gracias)
