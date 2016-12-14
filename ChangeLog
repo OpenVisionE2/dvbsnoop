@@ -1,3 +1,6 @@
+   release 1.4.52
+ - Fix: Build issue with old DVB API, Thanks to Taapat and atvcaptain
+
    release 1.4.51
  - Patch: setvbuf / setlinebuf on Linux by https://sourceforge.net/u/userid-672436/profile/
  - Patch: fix crc32 (-softcrc) under 64-bit linux by https://sourceforge.net/u/mkuutti/profile/
