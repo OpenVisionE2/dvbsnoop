@@ -277,7 +277,7 @@ int  print_FE_BasicCapabilities (int v, int fd_fe)
       if (fi.caps &  FE_CAN_8VSB)		out_nl (v,"FE_CAN_8VSB");
       if (fi.caps &  FE_CAN_16VSB)		out_nl (v,"FE_CAN_16VSB");
       if (fi.caps &  FE_HAS_EXTENDED_CAPS)      out_nl (v,"FE_HAS_EXTENDED_CAPS");
-#ifdef FE_CAN_MULTISTREAM
+#if DVB_API_VERSION >= 5
       if (fi.caps &  FE_CAN_MULTISTREAM)        out_nl (v,"FE_CAN_MULTISTREAM");
 #endif
       if (fi.caps &  FE_CAN_TURBO_FEC)          out_nl (v,"FE_CAN_TURBO_FEC");
@@ -511,7 +511,7 @@ const char *festr_FE_code_rate (fe_code_rate_t fec)
 	  case FEC_AUTO: s = "FEC AUTO"; break;
           case FEC_3_5:  s = "FEC 3/5"; break;
           case FEC_9_10: s = "FEC 9/10"; break;
-#ifdef SYS_DTMB
+#if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
           case FEC_2_5:  s = "FEC 2/5"; break;
 #endif
   }
@@ -539,7 +539,7 @@ const char *festr_FE_modulation (fe_modulation_t modulation)
           case APSK_16:  s = "APSK 16"; break;
           case APSK_32:  s = "APSK 32"; break;
           case DQPSK:    s = "DQPSK"; break;
-#ifdef SYS_DTMB
+#if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
           case QAM_4_NR: s = "QAM 4 NR"; break;
 #endif
   }
@@ -579,7 +579,7 @@ const char *festr_FE_transmit_mode (fe_transmit_mode_t transmit_mode)
           case TRANSMISSION_MODE_1K:     s = "1k mode"; break;
           case TRANSMISSION_MODE_16K:    s = "16k mode"; break;
           case TRANSMISSION_MODE_32K:    s = "32k mode"; break;
-#ifdef SYS_DTMB
+#if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
           case TRANSMISSION_MODE_C1:     s = "c1 mode"; break;
           case TRANSMISSION_MODE_C3780:  s = "c3780 mode"; break;
 #endif
@@ -603,7 +603,7 @@ const char *festr_FE_guard_interval (fe_guard_interval_t guard_interval)
           case GUARD_INTERVAL_1_128:  s = "1/128"; break;
           case GUARD_INTERVAL_19_128: s = "19/128"; break;
           case GUARD_INTERVAL_19_256: s = "19/256"; break;
-#ifdef SYS_DTMB
+#if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
           case GUARD_INTERVAL_PN420:  s = "PN420"; break;
           case GUARD_INTERVAL_PN595:  s = "PN595"; break;
           case GUARD_INTERVAL_PN945:  s = "PN945"; break;
