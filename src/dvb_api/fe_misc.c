@@ -277,7 +277,7 @@ int  print_FE_BasicCapabilities (int v, int fd_fe)
       if (fi.caps &  FE_CAN_8VSB)		out_nl (v,"FE_CAN_8VSB");
       if (fi.caps &  FE_CAN_16VSB)		out_nl (v,"FE_CAN_16VSB");
       if (fi.caps &  FE_HAS_EXTENDED_CAPS)      out_nl (v,"FE_HAS_EXTENDED_CAPS");
-#if DVB_API_VERSION >= 5
+#if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 8
       if (fi.caps &  FE_CAN_MULTISTREAM)        out_nl (v,"FE_CAN_MULTISTREAM");
 #endif
       if (fi.caps &  FE_CAN_TURBO_FEC)          out_nl (v,"FE_CAN_TURBO_FEC");
