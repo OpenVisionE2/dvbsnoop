@@ -44,6 +44,7 @@ dvbsnoop_LDADD = \
 	$(top_builddir)/src/private/libprivate.a \
 	$(top_builddir)/src/private/default/libprivatedefault.a \
 	$(top_builddir)/src/private/premiere.de/libprivatePremiereDE.a \
+	$(top_builddir)/src/private/bskyb.uk/libprivateBskybUK.a \
 	$(top_builddir)/src/ebu/libebu.a \
 	$(top_builddir)/src/net_ip/libnetip.a \
 	$(top_builddir)/src/strings/libstrings.a \

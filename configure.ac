@@ -32,6 +32,7 @@ src/tvanytime/Makefile
 src/private/Makefile
 src/private/default/Makefile
 src/private/premiere.de/Makefile
+src/private/bskyb.uk/Makefile
 src/net_ip/Makefile
 ])
 
