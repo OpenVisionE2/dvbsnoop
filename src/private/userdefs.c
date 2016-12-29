@@ -81,9 +81,11 @@ typedef struct _PRIVATE_PROVIDER_FUNC {
 //
 
 #include "premiere.de/premiere_de.h"
+#include "bskyb.uk/bskyb_uk.h"
 
 static PRIV_PROVIDER_FUNC ppf[] = {
 	{ "premiere.de",	getPrivate_PremiereDE },
+	{ "bskyb.uk",		getPrivate_BskybUK },
 	{ NULL,			NULL }
 };
 
