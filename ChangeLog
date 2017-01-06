@@ -1,5 +1,8 @@
+   release 1.4.53
+ - New: Private provider bskyb.uk, Thanks to https://github.com/LraiZer and https://github.com/AbuBaniaz
+
    release 1.4.52
- - Fix: Build issue with old DVB API, Thanks to Taapat and atvcaptain
+ - Fix: Build issue with old DVB API, Thanks to https://github.com/Taapat and https://github.com/atvcaptain
 
    release 1.4.51
  - Patch: setvbuf / setlinebuf on Linux by https://sourceforge.net/u/userid-672436/profile/
