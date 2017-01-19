@@ -129,7 +129,7 @@ void descriptor_PRIVATE_BskybUK_LogicChannelDescriptor2 (u_char *b)
 
 	indent(+1);
 
-	if (len > 5)
+	if (len >= 4)
 	{
 		unsigned short category_id = (b[2] << 8) | b[3];
 		unsigned short c2 = b[2];
