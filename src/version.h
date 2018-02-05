@@ -5,7 +5,7 @@ $Id: version.h,v 1.20 2007/06/02 12:26:09 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- https://github.com/persianpros/dvbsnoop
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2007   Rainer.Scherg@gmx.de
 
@@ -23,7 +23,7 @@ $Id: version.h,v 1.20 2007/06/02 12:26:09 rasc Exp $
 #define DVBSNOOP_PROG_VERSION    "dvbsnoop V"PACKAGE_VERSION
 
 
-#define DVBSNOOP_URL         "https://github.com/persianpros/dvbsnoop"
+#define DVBSNOOP_URL         "https://github.com/PLi-metas/dvbsnoop"
 #define DVBSNOOP_COPYRIGHT   "(c) 2001-2007  Rainer Scherg  (rasc)"
 
 
