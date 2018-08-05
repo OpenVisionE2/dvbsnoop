@@ -25,7 +25,7 @@ $Id: cmdline.h,v 1.33 2006/03/06 00:04:54 rasc Exp $
  -- defs...
 */
 
-enum PACKET_MODE  {SECT, TS, PES, PS,
+enum PACKET_MODE  {SECT, TS, PES, PS, BB,
 			PIDSCAN, PIDBANDWIDTH,
 			SCAN_FE_SIGNAL, SCAN_FE_INFO};
 enum TIME_MODE    {NO_TIME, FULL_TIME, DELTA_TIME};

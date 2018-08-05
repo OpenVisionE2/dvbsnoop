@@ -351,6 +351,7 @@ int  cmdline_options (int argc, char **argv, OPTION *opt)
 	 if (!s ) s = ""; 
          if (!strcmp (s,"sec")) opt->packet_mode = SECT;
          else if (!strcmp (s,"ts")) opt->packet_mode = TS;
+         else if (!strcmp (s,"bb")) opt->packet_mode = BB;
          else if (!strcmp (s,"pes")) opt->packet_mode = PES;
          else if (!strcmp (s,"ps")) opt->packet_mode = PS;	// ProgramStream
          else if (!strcmp (s,"bandwidth")) opt->packet_mode = PIDBANDWIDTH;

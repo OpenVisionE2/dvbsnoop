@@ -10,6 +10,7 @@ noinst_HEADERS = \
 	dmx_pes.h \
 	dmx_sect.h \
 	dmx_ts.h \
+	dmx_bb.h \
 	dmx_tspidscan.h \
 	dmx_tspidbandwidth.h \
 	dmx_error.h \
@@ -22,6 +23,7 @@ libdvbapi_a_SOURCES = \
 	dmx_pes.c \
 	dmx_sect.c \
 	dmx_ts.c \
+	dmx_bb.c \
 	dmx_tspidscan.c \
 	dmx_tspidbandwidth.c \
 	dmx_error.c \
