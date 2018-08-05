@@ -136,7 +136,6 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "dvb_api/dmx_sect.h"
 #include "dvb_api/dmx_pes.h"
 #include "dvb_api/dmx_ts.h"
-#include "dvb_api/dmx_bb.h"
 #include "dvb_api/dmx_tspidscan.h"
 #include "dvb_api/dmx_tspidbandwidth.h"
 #include "dvb_api/fe_signal.h"
@@ -222,10 +221,6 @@ int main(int argc, char **argv)
 
 		case TS:
 			err = doReadTS (&opt);
-			break;
-			  
-		case BB:
-			err = doReadBB (&opt);
 			break;
 
 		case PIDSCAN:
