@@ -1,3 +1,8 @@
+   release 1.4.54
+ - New: dvb_api.h is compatible with old V4L DVB headers now.
+ - New: Experimental BBFrame filtering support.
+ - Fix: Add missing autogen.sh
+
    release 1.4.53
  - New: Private provider bskyb.uk, Thanks to https://github.com/LraiZer and https://github.com/AbuBaniaz
 
@@ -12,7 +17,7 @@
 
    release 1.4.50
  - Fix: PSM bugfix - (tnx to "jack" for reporting)
- - New: IP datagramm decoding (RFC791, RFC2460) (Stéphane Esté-Gracias)
+ - New: IP datagramm decoding (RFC791, RFC2460) (StÃ©phane EstÃ©-Gracias)
  - Fix: Special handling for TS null packets 
  - Fix: Premiere.de private descriptor name fix
  - Fix: DSM-CC Stuff, BIOP::Messages not yet decodeable
@@ -51,7 +56,7 @@
  - New: Soft CRC for sections (-softcrc / -nosoftcrc)
  - New: TV-Anytime (TS 102 323)  Content Section
  - Changed:  Multibyte section filtering redesign e.g. -f 0x4e.2f.1c.3f.50 -m
-   0xFF.FF.FF (basic code idea by Stéphane Esté-Gracias)
+   0xFF.FF.FF (basic code idea by StÃ©phane EstÃ©-Gracias)
  - New:  Man page (first version)
  - Changed: Minor changes...
  - New:    Multibyte section filtering e.g. -f 0x4e2f1c -m 0xFFFFFF (ghostrider, tuxbox-team)
@@ -95,7 +100,7 @@
  - Bugfixes
 
  - Bugfixes
- - Bugfix: AIT transport protocol label fix (tnx to Stéphane Esté-Gracias)
+ - Bugfix: AIT transport protocol label fix (tnx to StÃ©phane EstÃ©-Gracias)
  - New: TS filter single pids from multi-pid ts-input-file  (e.g.: -if file 0x10)
  - Changed: PMT: some brainded section check
  - NEW: TS subdecoding (ts2PES, ts2SEC)  [-tssubdecode]
