@@ -117,7 +117,17 @@ This is a shortcut for -demux -dvr and -frontend...
 
 #endif
 
+#ifndef DTV_STREAM_ID
+	#define DTV_STREAM_ID DTV_ISDBS_TS_ID
+#endif
 
+#ifndef NO_STREAM_ID_FILTER
+	#define NO_STREAM_ID_FILTER	(~0U)
+#endif
+
+#ifndef FE_CAN_MULTISTREAM
+	#define FE_CAN_MULTISTREAM 0x4000000	/* frontend supports DVB-S2 multistream filtering */
+#endif
 
 #endif
 
