@@ -5,7 +5,9 @@ AM_CPPFLAGS = -I$(top_srcdir)/src
 SUBDIRS = \
 	default \
 	premiere.de \
-	bskyb.uk
+	bskyb.uk \
+	eicta.org \
+	nordig.org
 
 noinst_LIBRARIES = libprivate.a
 
