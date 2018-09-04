@@ -4,6 +4,7 @@
    02_manpage-typo-fixes.dpatch
    03-crc-on-64bit.dpatch
    10_mip-bandwidth-decoding-fix.dpatch
+ - New: Add eicta.org and nordig.org providers
 
    release 1.4.54
  - New: dvb_api.h is compatible with old V4L DVB headers now.
