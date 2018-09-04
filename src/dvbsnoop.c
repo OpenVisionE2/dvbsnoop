@@ -4,7 +4,7 @@ $Id: dvbsnoop.c,v 1.32 2005/09/06 23:13:50 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2005   Rainer.Scherg@gmx.de
 
@@ -157,7 +157,7 @@ int main(int argc, char **argv)
   /*
     -- init options and cmdline parsing
   */
- 
+
   setvbuf(stdout, NULL, _IOLBF, 0);
   setlinebuf(stdout);
 

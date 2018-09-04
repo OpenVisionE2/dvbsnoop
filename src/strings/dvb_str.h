@@ -5,7 +5,7 @@ $Id: dvb_str.h,v 1.35 2006/02/12 23:17:12 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de
 
@@ -292,6 +292,7 @@ char *dvbstrMPEG_Original_Or_Copy (u_int i);
 char *dvbstrTS_MIP_Syncronization (u_int i);
 char *dvbstrTS_MIP_FunctionTag (u_int i);
 char *dvbstrTS_MIP_ChannelBandwidth (u_int i);
+char *dvbstrTS_MIP_Bandwidth_SCHEME (u_int i);
 
 
 

@@ -5,7 +5,7 @@ $Id: dvbsnoop.h,v 1.24 2005/09/09 14:20:29 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2005   Rainer.Scherg@gmx.de
 

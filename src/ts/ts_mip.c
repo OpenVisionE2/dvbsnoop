@@ -5,7 +5,7 @@ $Id: ts_mip.c,v 1.2 2006/02/13 00:31:01 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de
 
@@ -114,7 +114,7 @@ void decodeTS_MIP (u_char *b, int len)
 	    outBit_S2x_NL (3,"transmission_mode: ",		b, 96+10,  2,
 		 	  (char *(*)(u_long))dvbstrTerrTransmissionMode_FLAG); 
 	    outBit_S2x_NL (3,"bandwidth: ",			b, 96+12,  2,
-		 	  (char *(*)(u_long))dvbstrTerrBandwidth_SCHEME); 
+		 	  (char *(*)(u_long))dvbstrTS_MIP_Bandwidth_SCHEME); 
 	    outBit_S2x_NL (3,"priority: ",			b, 96+14,  1,
 		 	  (char *(*)(u_long))dvbstrTerrPriority); 
 	    outBit_S2x_NL (3,"DVB-H signalling: ",		b, 96+15,  2,

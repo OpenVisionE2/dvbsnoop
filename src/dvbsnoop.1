@@ -16,7 +16,7 @@ dvbsnoop \- DVB and MPEG stream analyzer
 .br
 DVBSNOOP is a text based DVB and MPEG stream analyzer for viewing/debugging stream information, e.g. send via digital TV. You may also use dvbsnoop to analyze mpeg compliant streams stored on DVD or other media.  Dvbsnoop analyzes and displays MPEG, DVB, DSM\-CC, MHP, etc. data and structures in human readable form. Possible stream types are TS (tranport streams), PS (program streams), PES (packetized elementary streams) or SECTIONS (service information streams).
 
-DVBSNOOP also has some additional functionallity to analyze receiver (set top box, dvb card) data, bandwidth of a transport stream, pid scan, etc.
+DVBSNOOP also has some additional functionality to analyze receiver (set top box, dvb card) data, bandwidth of a transport stream, pid scan, etc.
 
 Using special network programs like netcat (nc), dvbsnoop may also be used to do remote sniffing and decoding. For post-processing dvbsnoop output, you may use the full range of unix tools and scripting languages (grep, perl, python, mrtg, gnuplot, etc.).
 
@@ -49,7 +49,7 @@ A short FAQ for common questions and example decoding output can be found at
                e.g. teletext, audio, video, data
    pidscan  \= scan and display PIDs on tuned
                transponder/frequency.
-   bandwith \= bandwidth messurement mode
+   bandwidth \= bandwidth measurement mode
                for selected pid.
    signal   \= display tuner signal reception info.
    feinfo   \= display tuner data (frontend info).
@@ -89,7 +89,7 @@ Same as \-pd 0.
 .TP
 .B \-ph \<mode\>
 .br
-Specify print hex putput verbose mode:
+Specify print hex output verbose mode:
  0\=no hexdump output, 1\=hex output, 2\=hex line,
  3\=ascii line, 4\=alternate hex output. (default is 4) 
 .TP
@@ -157,7 +157,7 @@ Specify DVB device number <n> (0-9) on a DVB adapter/card using default path pat
 .TP
 .B \-buffersize \<kb\>
 .br
-Set demux read buffersize in KBytes.
+Set demux read buffer size in KBytes.
 Default is 0 (use internal default value).
 
 .TP
@@ -171,7 +171,7 @@ Default is 0 (no limit).
 .br
 Read binary stream data from file instead of the demux device.
   <file> \= '-' reads from standard input.
-Depending on the decoding mode this might be transport stream, packetized elemtary stream or sections.
+Depending on the decoding mode this might be transport stream, packetized elementary stream or sections.
 Please aware, that you cannot e.g. use \-s pes or \-s sec on a saved transport stream.
 The decoding/snooping mode has to match the saved stream format!
 
@@ -195,7 +195,7 @@ Value may be decimal (49), octal (037) or hexadecimal (0x4F).
 You may use multibyte filters like: 0x4E.01.20.FF
 The filter comprises e.g. 16 bytes covering byte 0 and byte 3..17 in a section,
 thus excluding bytes 1 and 2 (the length field of a section).
-To check the filtervalues use \-pd 9.
+To check the filter values use \-pd 9.
 .TP
 .B \-m \<mask\>
 .br
@@ -204,7 +204,7 @@ Value may be decimal (49), octal (037) or hexadecimal (0x4F).
 You may use multibyte filters like: 0xFF.F0.FE.FF
 The filter comprises e.g. 16 bytes covering byte 0 and byte 3..17 in a section,
 thus excluding bytes 1 and 2 (the length field of a section).
-To check the filtervalues use \-pd 9.
+To check the filter values use \-pd 9.
 
 .TP
 .B \-N \<value\>
@@ -241,7 +241,7 @@ Don't do soft CRC, when reading sections. (default)
 .B \-spiderpid
 .br
 Snoop referenced section PIDs.
-This option recursivly reads all PIDs referenced by a section. This option also sets number of packets to be read to 1 (sets \-n 1). To read more packets for a pid, use \-n \<count\> after specifying \-spiderpid.
+This option recursively reads all PIDs referenced by a section. This option also sets number of packets to be read to 1 (sets \-n 1). To read more packets for a pid, use \-n \<count\> after specifying \-spiderpid.
 .TP
 .B \-privateprovider \<id\>
 .br
@@ -427,14 +427,14 @@ Sending dvbsnoop data over network, using netcat:
 Do remote decoding of dvb data over network using dvbsnoop and netcat:
   streaming site:
       dvbsnoop \-s ts 0x0065 \-b  \|  nc \-q  ServerName 31000
-  reveiving site:
+  receiving site:
       nc \-l \-p 31000  \|  dvbsnoop \-nph \-s ts \-tssubdecode \-if \-
 
   You may also use e.g. dvbtools for sending dvb data over a network:
       dvbstream ....  \-\->  dumprtp \| dvbsnoop \-s ts \-if \-
 
 
-... for more examples and example output of dvbsnoop, please visit https://github.com/PLi-metas/dvbsnoop. 
+For more examples and example output of dvbsnoop, please visit https://github.com/PLi-metas/dvbsnoop.
 
 
 .SH NOTES 
@@ -467,7 +467,7 @@ dvbsnoop  catches signals to provide smooth program termination.
 .SH "BUGS"
 Please check https://github.com/PLi-metas/dvbsnoop for bug reports.
 .br
-Bug reports: https://github.com/PLi-metas/dvbsnoop/issues
+Bug reports: http://sourceforge.net/tracker/?group_id=85040
 .br
 
 .SH SEE ALSO

@@ -5,7 +5,7 @@ $Id: mhp_ait_descriptor.h,v 1.7 2006/03/06 00:04:52 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
@@ -73,7 +73,6 @@ void descriptorMHP_AIT_plug_in (u_char *b);
 void descriptorMHP_AIT_application_storage (u_char *b);
 void descriptorMHP_AIT_ip_signalling (u_char *b);
 void descriptorMHP_AIT_application_location (u_char *b);
-
 
 
 #endif

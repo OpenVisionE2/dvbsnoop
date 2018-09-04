@@ -5,7 +5,7 @@ $Id: dvb_descriptor_premiere.h,v 1.3 2006/04/04 17:16:54 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 

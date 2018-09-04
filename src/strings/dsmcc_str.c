@@ -5,7 +5,7 @@ $Id: dsmcc_str.c,v 1.38 2006/03/06 20:25:38 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de
 
@@ -308,7 +308,7 @@ char *dsmccStrMHPOrg (u_int id)
 	{ 0x0006, 0x0006,   "NOB" },
 	{ 0x0007, 0x0007,   "Sofia Digital Oy" },
 	{ 0x0008, 0x0008,   "YLE (Finnish Broadcasting Company)" },
-	{ 0x0009, 0x0009,   "IRT (Institut for Rundfunktechnik GmbH)" },
+	{ 0x0009, 0x0009,   "IRT (Institut fur Rundfunktechnik GmbH)" },
 	{ 0x000A, 0x000A,   "Cardinal Information Systems Ltd" },
 	{ 0x000B, 0x000B,   "Mediaset s.p.a." },
 	{ 0x000C, 0x000C,   "Ortikon Interactive Oy" },
@@ -329,7 +329,7 @@ char *dsmccStrMHPOrg (u_int id)
 	{ 0x001B, 0x001B,   "Fraunhofer FOKUS" },
 	{ 0x001C, 0x001C,   "TwonkyVision GmbH" },
 	{ 0x001D, 0x001D,   "Gist Communications" },
-	{ 0x001E, 0x001E,   "Television de Catalunya SA" },
+	{ 0x001E, 0x001E,   "Televisio de Catalunya SA" },
      {  0,0, NULL }
   };
 

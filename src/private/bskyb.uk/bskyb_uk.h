@@ -5,7 +5,7 @@ $Id: bskyb_uk.h,v 1.0 2016/12/24 22:56:38 LraiZer Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
 

@@ -5,7 +5,7 @@ $Id: pes_std.c,v 1.8 2006/01/15 17:50:31 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
 

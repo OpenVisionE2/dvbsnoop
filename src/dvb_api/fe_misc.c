@@ -5,7 +5,7 @@ $Id: fe_misc.c,v 1.10 2006/03/03 01:51:13 obi Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
 
@@ -509,10 +509,10 @@ const char *festr_FE_code_rate (fe_code_rate_t fec)
 	  case FEC_7_8:  s = "FEC 7/8"; break;
 	  case FEC_8_9:  s = "FEC 8/9"; break;
 	  case FEC_AUTO: s = "FEC AUTO"; break;
-          case FEC_3_5:  s = "FEC 3/5"; break;
-          case FEC_9_10: s = "FEC 9/10"; break;
+	  case FEC_3_5:  s = "FEC 3/5"; break;
+	  case FEC_9_10: s = "FEC 9/10"; break;
 #if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
-          case FEC_2_5:  s = "FEC 2/5"; break;
+	  case FEC_2_5:  s = "FEC 2/5"; break;
 #endif
   }
 
@@ -535,12 +535,12 @@ const char *festr_FE_modulation (fe_modulation_t modulation)
 	  case QAM_AUTO: s = "QAM AUTO"; break;
 	  case VSB_8:    s = "VSB 8"; break;
 	  case VSB_16:   s = "VSB 16"; break;
-          case PSK_8:    s = "PSK 8"; break;
-          case APSK_16:  s = "APSK 16"; break;
-          case APSK_32:  s = "APSK 32"; break;
-          case DQPSK:    s = "DQPSK"; break;
+	  case PSK_8:    s = "PSK 8"; break;
+	  case APSK_16:  s = "APSK 16"; break;
+	  case APSK_32:  s = "APSK 32"; break;
+	  case DQPSK:    s = "DQPSK"; break;
 #if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
-          case QAM_4_NR: s = "QAM 4 NR"; break;
+	  case QAM_4_NR: s = "QAM 4 NR"; break;
 #endif
   }
 
@@ -558,9 +558,9 @@ const char *festr_FE_bandwidth (fe_bandwidth_t bandwidth)
 	  case BANDWIDTH_7_MHZ:     s = "7 MHz"; break;
 	  case BANDWIDTH_6_MHZ:     s = "6 MHz"; break;
 	  case BANDWIDTH_AUTO:      s = "AUTO"; break;
-          case BANDWIDTH_5_MHZ:     s = "5 MHz"; break;
-          case BANDWIDTH_10_MHZ:    s = "10 MHz"; break;
-          case BANDWIDTH_1_712_MHZ: s = "1.712 MHz"; break;
+	  case BANDWIDTH_5_MHZ:     s = "5 MHz"; break;
+	  case BANDWIDTH_10_MHZ:    s = "10 MHz"; break;
+	  case BANDWIDTH_1_712_MHZ: s = "1.712 MHz"; break;
   }
 
   return s;
@@ -575,13 +575,13 @@ const char *festr_FE_transmit_mode (fe_transmit_mode_t transmit_mode)
 	  case TRANSMISSION_MODE_2K:     s = "2k mode"; break;
 	  case TRANSMISSION_MODE_8K:     s = "8k mode"; break;
 	  case TRANSMISSION_MODE_AUTO:   s = "auto"; break;
-          case TRANSMISSION_MODE_4K:     s = "4k mode"; break;
-          case TRANSMISSION_MODE_1K:     s = "1k mode"; break;
-          case TRANSMISSION_MODE_16K:    s = "16k mode"; break;
-          case TRANSMISSION_MODE_32K:    s = "32k mode"; break;
+	  case TRANSMISSION_MODE_4K:     s = "4k mode"; break;
+	  case TRANSMISSION_MODE_1K:     s = "1k mode"; break;
+	  case TRANSMISSION_MODE_16K:    s = "16k mode"; break;
+	  case TRANSMISSION_MODE_32K:    s = "32k mode"; break;
 #if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
-          case TRANSMISSION_MODE_C1:     s = "c1 mode"; break;
-          case TRANSMISSION_MODE_C3780:  s = "c3780 mode"; break;
+	  case TRANSMISSION_MODE_C1:     s = "c1 mode"; break;
+	  case TRANSMISSION_MODE_C3780:  s = "c3780 mode"; break;
 #endif
   }
 
@@ -600,13 +600,13 @@ const char *festr_FE_guard_interval (fe_guard_interval_t guard_interval)
 	  case GUARD_INTERVAL_1_8:   s = "1/8"; break;
 	  case GUARD_INTERVAL_1_4:   s = "1/4"; break;
 	  case GUARD_INTERVAL_AUTO:  s = "auto"; break;
-          case GUARD_INTERVAL_1_128:  s = "1/128"; break;
-          case GUARD_INTERVAL_19_128: s = "19/128"; break;
-          case GUARD_INTERVAL_19_256: s = "19/256"; break;
+	  case GUARD_INTERVAL_1_128:  s = "1/128"; break;
+	  case GUARD_INTERVAL_19_128: s = "19/128"; break;
+	  case GUARD_INTERVAL_19_256: s = "19/256"; break;
 #if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 7
-          case GUARD_INTERVAL_PN420:  s = "PN420"; break;
-          case GUARD_INTERVAL_PN595:  s = "PN595"; break;
-          case GUARD_INTERVAL_PN945:  s = "PN945"; break;
+	  case GUARD_INTERVAL_PN420:  s = "PN420"; break;
+	  case GUARD_INTERVAL_PN595:  s = "PN595"; break;
+	  case GUARD_INTERVAL_PN945:  s = "PN945"; break;
 #endif
   }
 

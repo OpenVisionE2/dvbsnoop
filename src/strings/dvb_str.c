@@ -5,7 +5,7 @@ $Id: dvb_str.c,v 1.76 2006/07/19 20:05:45 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/PLi-metas/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de
 
@@ -4056,6 +4056,23 @@ char *dvbstrTS_MIP_ChannelBandwidth (u_int i)
 }
 
 
+/*
+ -- MIP, TPS Bandwidth
+ -- TS 101 191
+*/
+char *dvbstrTS_MIP_Bandwidth_SCHEME (u_int i)
+
+{
+  STR_TABLE  Table[] = {
+     {  0x00, 0x00,  "7 MHz" },
+     {  0x01, 0x01,  "8 MHz" },
+     {  0x02, 0x02,  "6 MHz" },
+     {  0x03, 0x03,  "reserved" },
+     {  0,0, NULL }
+  };
+
+  return findTableID (Table, i);
+}
 
 
 

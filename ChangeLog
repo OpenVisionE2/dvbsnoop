@@ -1,3 +1,10 @@
+   release 1.4.55
+ - New: Import latest patches from ubuntu:
+   01_additional_documentations.dpatch
+   02_manpage-typo-fixes.dpatch
+   03-crc-on-64bit.dpatch
+   10_mip-bandwidth-decoding-fix.dpatch
+
    release 1.4.54
  - New: dvb_api.h is compatible with old V4L DVB headers now.
  - New: Experimental BBFrame filtering support.
