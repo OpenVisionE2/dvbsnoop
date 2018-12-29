@@ -5,7 +5,7 @@ $Id: pes_psm.c,v 1.5 2007/02/08 19:17:41 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- https://github.com/PLi-metas/dvbsnoop
+ https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 

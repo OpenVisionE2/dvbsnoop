@@ -5,7 +5,7 @@ $Id: ait.h,v 1.4 2006/01/02 18:23:47 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- https://github.com/PLi-metas/dvbsnoop
+ https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 

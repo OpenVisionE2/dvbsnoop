@@ -5,7 +5,7 @@ $Id: net_str.c,v 1.1 2006/09/07 13:39:12 rasc Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- https://github.com/PLi-metas/dvbsnoop
+ https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de
 
