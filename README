@@ -3,7 +3,7 @@ dvbsnoop   - an open source DVB/MPEG stream analyzer
 ====================================================
 
 
-https://github.com/PLi-metas/dvbsnoop
+https://github.com/OpenVisionE2/dvbsnoop
 https://github.com/OpenMipsel/tuxbox-cvs
 
 
@@ -22,7 +22,7 @@ set top boxes (digital satellite/cable receivers).
 
 Documentation and example outputs can be found at:
 
-	https://github.com/PLi-metas/dvbsnoop
+	https://github.com/OpenVisionE2/dvbsnoop
 
 
 
@@ -82,7 +82,7 @@ Installation:
      - gcc 2.95 or >= 3.0
 
 
-  - download the latest source from https://github.com/PLi-metas/dvbsnoop
+  - download the latest source from https://github.com/OpenVisionE2/dvbsnoop
     (download a tarball or checkout from cvs)
 
   - unzip and untar the archive (if needed)
@@ -129,7 +129,7 @@ Posting dvbsnoop output:
   If you are posting dvbsnoop output to mailing lists, newsgroups, public boards
   or whatever, please always include the dvbsnoop header:
 
-   e.g.: " dvbsnoop V1.2.49 -- https://github.com/PLi-metas/dvbsnoop" 
+   e.g.: " dvbsnoop V1.2.49 -- https://github.com/OpenVisionE2/dvbsnoop" 
 
    The version information is helpful if there are discussions about the
    decoding output.
@@ -178,7 +178,7 @@ Keywords:
 
 
 (c) 2001-2007   Rainer Scherg (Rainer.Scherg@gmx.de)
-https://github.com/PLi-metas/dvbsnoop
+https://github.com/OpenVisionE2/dvbsnoop
 
 
 
@@ -219,7 +219,7 @@ CYGWIN_NT-5.1 my-pc 1.5.18(0.132/4/2) 2005-07-02 20:30 i686 unknown unknown
 Cygwin
 
 I have the following installed in the cygwin environment
-1) Dvbsnoop https://github.com/PLi-metas/dvbsnoop under ~/dvbsnoop-1.4.00/ 
+1) Dvbsnoop https://github.com/OpenVisionE2/dvbsnoop under ~/dvbsnoop-1.4.00/ 
 2) Downloaded the linux kernel 2.6.12 sources from http://www.kernel.org/ ,
 extracted to /linux-2.6
 
