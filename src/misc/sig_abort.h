@@ -1,5 +1,5 @@
 /*
-$Id: sig_abort.h,v 1.2 2006/01/02 18:24:04 rasc Exp $
+$Id: sig_abort.h,v 1.3 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,18 +12,6 @@ $Id: sig_abort.h,v 1.2 2006/01/02 18:24:04 rasc Exp $
 
  -- Handle Kill/Interrupt Signals from User/OS
  -- (e.g. Kill -1)
-
-
-
-
-$Log: sig_abort.h,v $
-Revision 1.2  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2005/09/06 23:39:04  rasc
-catch OS signals (kill ...) for smooth program termination
-
-
 
 */
 

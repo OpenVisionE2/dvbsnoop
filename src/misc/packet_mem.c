@@ -1,5 +1,5 @@
 /*
-$Id: packet_mem.c,v 1.4 2006/01/02 18:24:04 rasc Exp $
+$Id: packet_mem.c,v 1.5 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,26 +12,6 @@ $Id: packet_mem.c,v 1.4 2006/01/02 18:24:04 rasc Exp $
 
 
  -- Collect packet data buffer/memory
-
-   
-
-
-$Log: packet_mem.c,v $
-Revision 1.4  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.3  2005/09/12 20:56:16  rasc
-Make dvbsnoop compile on Cygwin / Windows
-
-Revision 1.2  2005/09/06 23:13:51  rasc
-catch OS signals (kill ...) for smooth program termination
-
-Revision 1.1  2004/04/15 03:40:39  rasc
-new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
-checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
-
-
-
 
 */
 
@@ -51,18 +31,7 @@ typedef struct _PACKET_MEM_DATA {
 } PACKET_MD;
 
 
-static PACKET_MD  pmd[] = {
-	{ NULL,  0UL, 0UL },
-	{ NULL,  0UL, 0UL },
-	{ NULL,  0UL, 0UL },
-	{ NULL,  0UL, 0UL }
-};
-
-
-
-
-
-
+static PACKET_MD  pmd[MAX_PID+1] = {NULL,};
 
 //
 // -- acquire and initialize packet storage

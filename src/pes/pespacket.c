@@ -1,5 +1,5 @@
 /*
-$Id: pespacket.c,v 1.37 2006/01/02 18:24:12 rasc Exp $
+$Id: pespacket.c,v 1.38 2009/11/22 15:36:13 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,140 +12,6 @@ $Id: pespacket.c,v 1.37 2006/01/02 18:24:12 rasc Exp $
 
 
  -- PES Decoding
-
-
-
-$Log: pespacket.c,v $
-Revision 1.37  2006/01/02 18:24:12  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.36  2005/12/27 23:30:29  rasc
-PS MPEG-2 Extension data packets, MPEG-2 decoding
-
-Revision 1.35  2005/11/23 23:06:10  rasc
-ISO13818-2  MPEG2 sequence header
-
-Revision 1.34  2005/11/10 00:05:45  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-Revision 1.33  2005/11/08 23:15:25  rasc
- - New: DVB-S2 Descriptor and DVB-S2 changes (tnx to Axel Katzur)
- - Bugfix: PES packet stuffing
- - New:  PS/PES read redesign and some code changes
-
-Revision 1.32  2005/10/20 22:25:07  rasc
- - Bugfix: tssubdecode check for PUSI and SI pointer offset
-   still losing packets, when multiple sections in one TS packet.
- - Changed: some Code rewrite
- - Changed: obsolete option -nosync, do always packet sync
-
-Revision 1.31  2005/09/06 23:58:50  rasc
-typo fix
-
-Revision 1.30  2005/09/06 23:32:04  rasc
-no message
-
-Revision 1.29  2005/09/06 23:13:52  rasc
-catch OS signals (kill ...) for smooth program termination
-
-Revision 1.28  2005/09/02 14:11:35  rasc
-TS code redesign, xPCR and DTS timestamps decoding
-
-Revision 1.27  2005/08/10 21:28:18  rasc
-New: Program Stream handling  (-s ps)
-
-Revision 1.26  2005/01/17 19:41:23  rasc
-Bugfix: data broadcast descriptor (tnx to Sergio SAGLIOCCO, SecureLAB)
-
-Revision 1.25  2004/08/24 21:30:22  rasc
-more Metadata
-
-Revision 1.24  2004/04/15 03:38:51  rasc
-new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
-checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
-
-Revision 1.23  2004/02/09 22:57:00  rasc
-Bugfix VBI Data descriptor
-
-Revision 1.22  2004/02/02 23:34:08  rasc
-- output indent changed to avoid \r  (which sucks on logged output)
-- EBU PES data started (teletext, vps, wss, ...)
-- bugfix: PES synch. data stream
-- some other stuff
-
-Revision 1.21  2004/01/22 22:26:35  rasc
-pes_pack_header
-section read timeout
-
-Revision 1.20  2004/01/11 22:49:41  rasc
-PES restructured
-
-Revision 1.19  2004/01/11 21:01:32  rasc
-PES stream directory, PES restructured
-
-Revision 1.18  2004/01/02 16:40:38  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.17  2004/01/02 00:00:41  rasc
-error output for buffer overflow
-
-Revision 1.16  2004/01/01 20:09:29  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.15  2003/12/27 14:35:01  rasc
-dvb-t descriptors
-DSM-CC: SSU Linkage/DataBroadcast descriptors
-
-Revision 1.14  2003/12/17 23:15:04  rasc
-PES DSM-CC  ack and control commands  according ITU H.222.0 Annex B
-
-Revision 1.13  2003/11/26 19:55:33  rasc
-no message
-
-Revision 1.12  2003/11/26 16:27:47  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.11  2003/11/24 23:52:17  rasc
--sync option, some TS and PES stuff;
-dsm_addr inactive, may be wrong - due to missing ISO 13818-6
-
-Revision 1.10  2003/11/09 20:48:35  rasc
-pes data packet (DSM-CC)
-
-Revision 1.9  2003/11/01 17:05:47  rasc
-no message
-
-Revision 1.8  2003/10/29 22:39:18  rasc
-pes packet complete now...
-
-Revision 1.7  2003/10/29 20:54:56  rasc
-more PES stuff, DSM descriptors, testdata
-
-Revision 1.6  2003/10/24 22:17:20  rasc
-code reorg...
-
-Revision 1.5  2002/08/17 20:36:12  obi
-no more compiler warnings
-
-Revision 1.4  2001/12/06 15:33:18  rasc
-some small work on pespacket.c
-
-Revision 1.3  2001/12/01 12:46:48  rasc
-pespacket weitergestrickt, leider z.Zt. zuwenig Zeit um es richtig fertig zu machen.
-
-Revision 1.2  2001/10/02 21:52:44  rasc
-- init der time_delta
-- PES erweitert, PES arbeitet im read() noch nicht richtig!!
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
-
 
 */
 
@@ -161,12 +27,14 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "mpeg_packheader.h"
 #include "mpeg_sysheader.h"
 #include "mpeg2_video.h"
+#include "h264_video.h"
 
 #include "strings/dvb_str.h"
 #include "misc/hexprint.h"
 #include "misc/output.h"
 #include "misc/print_header.h"
 #include "misc/cmdline.h"
+#include "misc/program_mem.h"
 
 
 
@@ -215,7 +83,7 @@ void decodePS_PES_packet (u_char *b, u_int len, int pid)
   u_long    packet_start_code_prefix;		// 24 bit
   u_int     stream_id;
   u_int     PES_packet_length;
-
+  u_int     stream_type;
 
 
 
@@ -231,16 +99,87 @@ void decodePS_PES_packet (u_char *b, u_int len, int pid)
  }
  out_nl (3,"Packet_start_code_prefix: 0x%06lx",packet_start_code_prefix);
 
+ stream_id = b[3];
+
+ // -- decode PES packet header
+ if ((stream_id >= 0xC0 && stream_id <= 0xDF) // audio PES
+     || (stream_id >= 0xE0 && stream_id <= 0xEF)) { // video PES
+
+   PES_packet_length = outBit_Sx_NL (3, "PES_packet_length: ", b, 32, 16);
+
+   b   += 6;
+   len -= 6;
+
+   if ((PES_packet_length==0) && ((stream_id & 0xF0)==0xE0)) {
+       out_nl (3," ==> unbound video elementary stream... \n");
+   }
+   if (len > 0) {
+       indent (+1);
+       PES_decode_std (b, len, stream_id);
+       indent (-1);
+   }
+
+   return;
+ }
 
 
- // -- PS/PES stream ID
+   stream_type = get_StreamFromMem(pid)->stream_type;
 
- stream_id = outBit_S2x_NL(3,"Stream_id: ",	b, 24, 8,
-		 (char *(*)(u_long))dvbstrPESstream_ID );
+   //fprintf (stdout, "-># decodePS_PES_packet: len=%u; pid=%d stream_type=%u\n", len, pid, stream_type);
 
+   if (stream_type == 0) {
+      out_nl (3, "!!! Can not find stream type for PID = %d (0x%x) (PMT was not received yet)!!!\n", pid, pid);
+      return;
+   }
 
+   // -- H.264 NALU
+   if (stream_type == 0x1B) {
 
+     u_char nal_ref_idc = getBits(b, 0, 25, 2);
+     out_SB_NL(3, "nal_ref_idc: ", nal_ref_idc);
 
+     stream_id = outBit_S2x_NL(3,"H.264 NALU: ", b, 27, 5,
+         (char *(*)(u_long))dvbstrPESH264_NALU_ID );
+
+     //b += 4;
+     //len -= 4;
+
+     indent (+1);
+
+     switch(stream_id) {
+     case NAL_IDR:
+     case NAL_NONIDR:
+       H264_decodeSlice(4, b, len);
+       break;
+     
+     case NAL_AUD:
+       H264_decodeAUD(4, b, len);
+       break;
+
+     case NAL_SPS:
+       H264_decodeSPS(4, b, len);
+       break;
+
+     case NAL_PPS:
+       H264_decodePPS(4, b, len);
+       break;
+
+     case NAL_SEI:
+       H264_decodeSEI(4, b, len);
+       break;
+     }
+
+     print_databytes (5, "Bytes (incl. sync + id):", b, len);
+
+     indent (-1);
+
+     return; 
+   }
+
+   // -- PS/PES stream ID
+
+   stream_id = outBit_S2x_NL(3,"Stream_id: ", b, 24, 8,
+         (char *(*)(u_long))dvbstrPESstream_ID ); 
 
    //
    // -- PES Stream ID 0x00 - 0xB8
@@ -384,22 +323,22 @@ void decodePS_PES_packet (u_char *b, u_int len, int pid)
 	// case 0xFD		// extended_stream_id
 	// case 0xFE		// reserved data stream
 	
-	default:
-		{
-		   int xlen = PES_packet_length;
+	//default:
+	//	{
+	//	   int xlen = PES_packet_length;
 
- 		   if ((PES_packet_length==0) && ((stream_id & 0xF0)==0xE0)) {
-			 out_nl (3," ==> unbound video elementary stream... \n");
-			 xlen = len;	// PES len field == 0, use read packet len
- 		   }
-		   if (xlen > 0) {
-			indent (+1);
-			PES_decode_std (b, xlen, stream_id);
-			indent (-1);
-		   }
+ 	//	   if ((PES_packet_length==0) && ((stream_id & 0xF0)==0xE0)) {
+	//		 out_nl (3," ==> unbound video elementary stream... \n");
+	//		 xlen = len;	// PES len field == 0, use read packet len
+ 	//	   }
+	//	   if (xlen > 0) {
+	//		indent (+1);
+	//		PES_decode_std (b, xlen, stream_id);
+	//		indent (-1);
+	//	   }
 
-		}
-		break;
+	//	}
+	//	break;
 
    } // switch
 

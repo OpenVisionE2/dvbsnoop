@@ -1,5 +1,5 @@
 /*
-$Id: dvb_api.h,v 1.10 2006/01/02 18:23:59 rasc Exp $
+$Id: dvb_api.h,v 1.11 2009/11/22 15:36:07 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -8,27 +8,6 @@ $Id: dvb_api.h,v 1.10 2006/01/02 18:23:59 rasc Exp $
  https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
-
-
-
-
-$Log: dvb_api.h,v $
-Revision 1.10  2006/01/02 18:23:59  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.9  2005/10/23 20:58:14  rasc
-subdecode multiple SI packets with TS packet using -tssubdecode
-
-Revision 1.8  2005/09/13 18:41:15  rasc
-... revert cygwin stuff
-
-Revision 1.7  2005/09/12 20:56:16  rasc
-Make dvbsnoop compile on Cygwin / Windows
-
-Revision 1.6  2005/08/12 23:02:33  rasc
-New shortcut options: -adapter and -devnr to select dvb cards/adapters or device numbers on a card.
-This is a shortcut for -demux -dvr and -frontend...
-
 
 */
 
@@ -129,5 +108,5 @@ This is a shortcut for -demux -dvr and -frontend...
 	#define FE_CAN_MULTISTREAM 0x4000000	/* frontend supports DVB-S2 multistream filtering */
 #endif
 
-#endif
 
+#endif

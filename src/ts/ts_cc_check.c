@@ -1,5 +1,5 @@
 /*
-$Id: ts_cc_check.c,v 1.2 2006/01/02 18:24:34 rasc Exp $
+$Id: ts_cc_check.c,v 1.3 2009/11/22 15:36:34 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,18 +12,6 @@ $Id: ts_cc_check.c,v 1.2 2006/01/02 18:24:34 rasc Exp $
 
 
  -- Transport Stream  continuity counter check
-
-   
-
-
-$Log: ts_cc_check.c,v $
-Revision 1.2  2006/01/02 18:24:34  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2005/09/09 14:21:12  rasc
-TS continuity sequence check (cc verbose output)
-
-
 
 */
 

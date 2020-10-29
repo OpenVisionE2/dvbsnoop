@@ -1,5 +1,7 @@
 AM_CPPFLAGS = -I$(top_srcdir)/src
 
+SUBDIRS = identifiers
+
 noinst_LIBRARIES = libstrings.a
 
 noinst_HEADERS = \

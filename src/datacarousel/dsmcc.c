@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc.c,v 1.11 2006/01/02 18:23:47 rasc Exp $
+$Id: dsmcc.c,v 1.12 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,53 +14,6 @@ $Id: dsmcc.c,v 1.11 2006/01/02 18:23:47 rasc Exp $
  --  DSM-CC Data Carousel
  --   ETSI TR 101 202
  --   ISO/IEC 13818-6
-
-
-
-$Log: dsmcc.c,v $
-Revision 1.11  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.10  2004/10/17 22:20:35  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.9  2004/02/15 18:58:27  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.8  2004/02/15 01:01:00  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-Revision 1.7  2004/02/14 01:24:44  rasc
-DSM-CC started  (DSI/DII, DDB)
-
-Revision 1.6  2004/01/22 22:26:34  rasc
-pes_pack_header
-section read timeout
-
-Revision 1.5  2004/01/02 22:25:34  rasc
-DSM-CC  MODULEs descriptors complete
-
-Revision 1.4  2004/01/02 16:40:33  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.3  2004/01/01 20:09:16  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.2  2003/12/27 14:35:00  rasc
-dvb-t descriptors
-DSM-CC: SSU Linkage/DataBroadcast descriptors
-
-Revision 1.1  2003/12/27 00:21:16  rasc
-dsmcc section tables
-
-
-
 
 */
 

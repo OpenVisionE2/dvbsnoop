@@ -1,5 +1,5 @@
 /*
-$Id: ebu_misc.c,v 1.5 2006/01/02 18:24:03 rasc Exp $
+$Id: ebu_misc.c,v 1.6 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,31 +14,6 @@ $Id: ebu_misc.c,v 1.5 2006/01/02 18:24:03 rasc Exp $
  -- misc. routines for
  -- EBU data (see EN 300 472, EN 301 775, and some more)
  -- Teletext, VPS, WSS, closed caption, etc.
-
-
-
-
-$Log: ebu_misc.c,v $
-Revision 1.5  2006/01/02 18:24:03  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.4  2005/01/17 19:41:22  rasc
-Bugfix: data broadcast descriptor (tnx to Sergio SAGLIOCCO, SecureLAB)
-
-Revision 1.3  2004/11/04 19:21:11  rasc
-Fixes and changes on "premiere.de" private sections
-Cleaning up "premiere.de" private descriptors (should be final now)
-
-Revision 1.2  2004/02/05 10:30:56  rasc
-no message
-
-Revision 1.1  2004/02/04 22:36:27  rasc
-more EBU/teletext stuff
-
-
-
-
-
 
 */
 

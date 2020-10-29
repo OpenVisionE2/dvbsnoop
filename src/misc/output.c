@@ -1,5 +1,5 @@
 /*
-$Id: output.c,v 1.11 2006/01/02 18:24:04 rasc Exp $
+$Id: output.c,v 1.13 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -11,47 +11,6 @@ $Id: output.c,v 1.11 2006/01/02 18:24:04 rasc Exp $
 
 
  --  Output Module
-
-
-
-
-$Log: output.c,v $
-Revision 1.11  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.10  2005/09/12 20:56:16  rasc
-Make dvbsnoop compile on Cygwin / Windows
-
-Revision 1.9  2005/09/02 14:11:35  rasc
-TS code redesign, xPCR and DTS timestamps decoding
-
-Revision 1.8  2004/02/02 23:34:07  rasc
-- output indent changed to avoid \r  (which sucks on logged output)
-- EBU PES data started (teletext, vps, wss, ...)
-- bugfix: PES synch. data stream
-- some other stuff
-
-Revision 1.7  2004/01/02 16:40:37  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.6  2004/01/01 20:09:26  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.5  2003/11/26 23:54:48  rasc
--- bugfixes on Linkage descriptor
-
-Revision 1.4  2003/11/26 16:27:46  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.3  2003/07/08 19:59:50  rasc
-restructuring... some new, some fixes,
-trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18313-1 to spare?
-
 
 */
 
@@ -71,7 +30,7 @@ trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18
   -- Module Global Vars
 */
 
-static int  verbose_level = 0;
+static int  max_verbose_level = 0;
 static int  col0 = 0;		//2
 
 static int  indent_level = 0;
@@ -111,19 +70,19 @@ void indent (int v)
 
 
 /*
- -- set verbosity level
+ -- set max verbosity level
  -- 0 = highest, 9 = lowest level
  -- print message upto (including) this verbosity level
 */
 
-void setVerboseLevel (int v)
+void setMaxVerboseLevel (int v)
 {
-  verbose_level = v;
+  max_verbose_level = v;
 }
 
-int getVerboseLevel ()
+int getMaxVerboseLevel ()
 {
- return verbose_level;
+ return max_verbose_level;
 }
 
 
@@ -138,7 +97,7 @@ void out(int verbose, const char *msgfmt,...)
 {
   va_list args;
 
-  if (verbose <= verbose_level) {
+  if (verbose <= max_verbose_level) {
      print_indent(); //2
      va_start (args,msgfmt);
      vfprintf (stdout, msgfmt, args);
@@ -151,7 +110,7 @@ void out_nl(int verbose, const char *msgfmt,...)
 {
   va_list args;
 
-  if (verbose <= verbose_level) {
+  if (verbose <= max_verbose_level) {
      print_indent();  //2
      va_start (args,msgfmt);
      vfprintf (stdout, msgfmt, args);
@@ -168,7 +127,7 @@ void out_nl(int verbose, const char *msgfmt,...)
 
 void  out_nl2 (int verbose)
 {
-  if (verbose <= verbose_level) {
+  if (verbose <= max_verbose_level) {
      fputc ('\n',stdout);
      col0 = 1; //2
 //2     print_indent();

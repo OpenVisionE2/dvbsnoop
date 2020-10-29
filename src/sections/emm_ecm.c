@@ -1,5 +1,5 @@
 /*
-$Id: emm_ecm.c,v 1.11 2006/01/02 18:24:24 rasc Exp $
+$Id: emm_ecm.c,v 1.12 2009/11/22 15:36:27 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -21,52 +21,7 @@ $Id: emm_ecm.c,v 1.11 2006/01/02 18:24:24 rasc Exp $
 
    -- EMM / ECM Data packet
 
-
-
-$Log: emm_ecm.c,v $
-Revision 1.11  2006/01/02 18:24:24  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.10  2004/10/17 22:20:36  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.9  2004/01/02 16:40:39  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.8  2004/01/01 20:09:31  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.7  2003/10/24 22:17:21  rasc
-code reorg...
-
-Revision 1.6  2003/07/06 05:49:25  obi
-CAMT fix and indentation
-
-Revision 1.5  2003/07/05 21:22:45  rasc
-TypoFix - Tnx MWS
-
-Revision 1.4  2002/08/17 20:36:12  obi
-no more compiler warnings
-
-Revision 1.3  2001/10/16 18:05:43  rasc
-no message
-
-Revision 1.2  2001/10/06 18:19:18  Toerli
-Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "emm_ecm.h"
@@ -74,8 +29,6 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "strings/dvb_str.h"
 #include "misc/helper.h"
 #include "misc/output.h"
-
-
 
 void section_EMM_ECM (u_char *b, int len)
 {

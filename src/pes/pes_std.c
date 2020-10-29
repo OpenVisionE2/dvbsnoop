@@ -1,5 +1,5 @@
 /*
-$Id: pes_std.c,v 1.8 2006/01/15 17:50:31 rasc Exp $
+$Id: pes_std.c,v 1.9 2009/11/22 15:36:13 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,43 +12,6 @@ $Id: pes_std.c,v 1.8 2006/01/15 17:50:31 rasc Exp $
 
 
  -- PES Decode Standard(?)
-
-
-
-$Log: pes_std.c,v $
-Revision 1.8  2006/01/15 17:50:31  rasc
-no message
-
-Revision 1.7  2006/01/02 18:24:12  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.6  2005/11/10 00:05:45  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-Revision 1.5  2005/11/08 23:15:25  rasc
- - New: DVB-S2 Descriptor and DVB-S2 changes (tnx to Axel Katzur)
- - Bugfix: PES packet stuffing
- - New:  PS/PES read redesign and some code changes
-
-Revision 1.4  2004/08/12 22:57:18  rasc
- - New: MPEG Content Labeling descriptor  (H.222.0 AMD1)
- - New: PES update ITU-T H.222.0 AMD2
-H.222.0 AMD3 updates started
-
-Revision 1.3  2004/02/02 23:34:08  rasc
-- output indent changed to avoid \r  (which sucks on logged output)
-- EBU PES data started (teletext, vps, wss, ...)
-- bugfix: PES synch. data stream
-- some other stuff
-
-Revision 1.2  2004/01/22 22:26:35  rasc
-pes_pack_header
-section read timeout
-
-Revision 1.1  2004/01/11 21:01:32  rasc
-PES stream directory, PES restructured
-
-
 
 */
 

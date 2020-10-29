@@ -1,5 +1,5 @@
 /*
-$Id: mhp_ait_descriptor.h,v 1.7 2006/03/06 00:04:52 rasc Exp $ 
+$Id: mhp_ait_descriptor.h,v 1.8 2009/11/22 15:36:06 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -12,40 +12,6 @@ $Id: mhp_ait_descriptor.h,v 1.7 2006/03/06 00:04:52 rasc Exp $
 
  -- Private TAG Space  MHP AIT
  -- MHP AIT Descriptors 
-
-
-
-$Log: mhp_ait_descriptor.h,v $
-Revision 1.7  2006/03/06 00:04:52  rasc
-More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
-BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
-this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
-Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
-
-Revision 1.6  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.5  2004/02/12 21:21:20  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.4  2004/02/11 20:27:32  rasc
-MHP AIT descriptors...
-
-Revision 1.3  2004/02/10 22:57:54  rasc
-MHP descriptor, missing DVB descriptor done
-
-Revision 1.2  2004/02/09 21:24:58  rasc
-AIT descriptors
-minor redesign on output routines
-
-Revision 1.1  2004/02/07 01:28:01  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-
-
-
 
 */
 

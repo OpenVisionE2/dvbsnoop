@@ -1,113 +1,24 @@
 /*
-$Id: dmx_tspidscan.c,v 1.23 2006/01/02 18:23:59 rasc Exp $
+$Id: dmx_tspidscan.c,v 1.26 2009/11/22 15:36:07 rhabarber1848 Exp $
 
 
  DVBSNOOP
  a dvb sniffer  and mpeg2 stream analyzer tool
  https://github.com/OpenVisionE2/dvbsnoop
 
- (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2007   Rainer.Scherg@gmx.de (rasc)
 
 
  -- Brute force scan all pids on a transponder
  -- scanpids principle is based on the sourcefile getpids.c from 'obi'
 
-
-
-$Log: dmx_tspidscan.c,v $
-Revision 1.23  2006/01/02 18:23:59  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.22  2005/11/08 23:15:25  rasc
- - New: DVB-S2 Descriptor and DVB-S2 changes (tnx to Axel Katzur)
- - Bugfix: PES packet stuffing
- - New:  PS/PES read redesign and some code changes
-
-Revision 1.21  2005/09/06 23:13:51  rasc
-catch OS signals (kill ...) for smooth program termination
-
-Revision 1.20  2005/08/22 22:37:59  rasc
-ATSC frontend info
-
-Revision 1.19  2005/08/17 21:18:18  rasc
-improvements on pidscan
-
-Revision 1.18  2004/10/12 20:37:47  rasc
- - Changed: TS pid filtering from file, behavior changed
- - New: new cmdline option -maxdmx <n>  (replaces -f using pidscan)
- - misc. changes
-
-Revision 1.17  2004/09/01 20:20:34  rasc
-new cmdline option: -buffersize KB  (set demux buffersize in KBytes)
-
-Revision 1.16  2004/04/05 17:32:13  rasc
-mass typo fix adaption --> adaptation
-
-Revision 1.15  2004/01/31 01:24:26  rasc
-PIDSCAN  redesign,
-try to show pid content  (PES streamID, SECTION tableID)
-
-Revision 1.14  2004/01/13 21:04:20  rasc
-BUGFIX: getbits overflow fixed...
-
-Revision 1.13  2004/01/11 21:01:32  rasc
-PES stream directory, PES restructured
-
-Revision 1.12  2004/01/02 00:00:37  rasc
-error output for buffer overflow
-
-Revision 1.11  2004/01/01 20:09:23  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.10  2003/12/28 14:00:26  rasc
-bugfix: section read from input file
-some changes on packet header output
-
-Revision 1.9  2003/12/15 22:41:28  rasc
-pidscan improved, problems with max filters on demux
-
-Revision 1.8  2003/12/15 22:29:27  rasc
-pidscan improved, problems with max filters on demux
-
-Revision 1.7  2003/12/15 20:09:48  rasc
-no message
-
-Revision 1.6  2003/12/14 18:29:56  rasc
-no message
-
-Revision 1.5  2003/12/10 23:18:10  rasc
-improve pidscan
-
-Revision 1.4  2003/12/10 20:07:15  rasc
-minor stuff
-
-Revision 1.3  2003/12/09 20:34:23  rasc
-transponder pid-scan improved (should be sufficient now)
-
-Revision 1.2  2003/12/09 18:27:48  rasc
-pidscan on transponder
-
-Revision 1.1  2003/12/07 23:36:13  rasc
-pidscan on transponder
-- experimental(!)
-
-
 */
-
-
-
-
 
 
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <sys/poll.h>
 #include <unistd.h>
-
-
 
 #include "dvbsnoop.h"
 #include "strings/dvb_str.h"
@@ -119,8 +30,6 @@ pidscan on transponder
 #include "dvb_api.h"
 #include "dmx_error.h"
 #include "dmx_tspidscan.h"
-
-
 
 
 /*
@@ -185,6 +94,8 @@ int ts_pidscan (OPTION *opt)
   int		max_pid_filter;
   int		pid_found;
   int		rescan;
+  int		ts_raw_min_seconds = 10;
+  time_t	start;
 
 
 
@@ -197,10 +108,14 @@ int ts_pidscan (OPTION *opt)
    out_nl (2,"---------------------------------------------------------");
 
 
+   // $$$TODO   tsraw-scan
+
+
 
    //  -- max demux filters to use...
    max_pid_filter = MAX_PID_FILTER;
    if (opt->max_dmx_filter > 0) max_pid_filter = opt->max_dmx_filter;	// -maxdmx opt
+   if (opt->ts_raw_mode) max_pid_filter = 1;
 
 
    // alloc pids
@@ -268,6 +183,8 @@ int ts_pidscan (OPTION *opt)
 			// -- skip already scanned pids (rescan-mode)
 			while ( ((pidArray+pid)->type != TS_NOPID) && (pid < MAX_PID) ) pid++;
 	
+			if (opt->ts_raw_mode)
+				pid = PID_FULL_TS;
 			flt.pid = pid;
 			flt.input = DMX_IN_FRONTEND;
 			flt.output = DMX_OUT_TS_TAP;
@@ -310,15 +227,22 @@ int ts_pidscan (OPTION *opt)
 			// give read a chance to collect _some_ pids
 			usleep ((unsigned long) PID_TIME_WAIT * 1000);
 
-			pid_found = 0;
-			if (poll(&pfd, 1, timeout) > 0) {
-				if (pfd.revents & POLLIN) {
-					int len; 
-					len = read(pfd.fd, buf, sizeof(buf));
-					if (len >= TS_LEN) {
-						pid_found = analyze_ts_pid (buf, len);
+			start = time(NULL);
+			for (;;) {
+				pid_found = 0;
+				if (poll(&pfd, 1, timeout) > 0) {
+					if (pfd.revents & POLLIN) {
+						int len; 
+						len = read(pfd.fd, buf, sizeof(buf));
+						if (len >= TS_LEN) {
+							pid_found = analyze_ts_pid (buf, len);
+						}
 					}
 				}
+				if (!opt->ts_raw_mode)
+					break;
+				if (!pid_found && (time(NULL) >= start + ts_raw_min_seconds))
+					break;
 			}
 	
 

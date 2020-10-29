@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_unm_dsi.c,v 1.8 2006/03/06 00:04:50 rasc Exp $
+$Id: dsmcc_unm_dsi.c,v 1.9 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,46 +12,7 @@ $Id: dsmcc_unm_dsi.c,v 1.8 2006/03/06 00:04:50 rasc Exp $
  -- dsmcc download Server Initiate
  -- to be called from U-N-Message
 
-
-
-$Log: dsmcc_unm_dsi.c,v $
-Revision 1.8  2006/03/06 00:04:50  rasc
-More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
-BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
-this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
-Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
-
-Revision 1.7  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.6  2004/02/29 20:42:55  rasc
-no message
-
-Revision 1.5  2004/02/28 12:13:03  rasc
-minor stuff
-
-Revision 1.4  2004/02/24 23:03:04  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-Revision 1.3  2004/02/17 23:54:12  rasc
-Bug (not fixed yet): DSM-CC  DII Carousel Descriptor Loop is strange
-
-Revision 1.2  2004/02/15 20:46:09  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.1  2004/02/15 18:58:28  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "dsmcc_unm_dsi.h"
@@ -60,10 +21,6 @@ DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
 #include "biop_servgatinf.h"
 #include "misc/output.h"
 #include "misc/hexprint.h"
-
-
-
-
 
 /*
  * ISO/IEC 13818-6

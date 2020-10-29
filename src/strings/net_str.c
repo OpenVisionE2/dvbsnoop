@@ -1,5 +1,5 @@
 /*
-$Id: net_str.c,v 1.1 2006/09/07 13:39:12 rasc Exp $
+$Id: net_str.c,v 1.2 2009/11/22 15:36:31 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,29 +12,11 @@ $Id: net_str.c,v 1.1 2006/09/07 13:39:12 rasc Exp $
 
  -- Network strings  (IP, UDP, ICMP)
 
-
-
-
-
-$Log: net_str.c,v $
-Revision 1.1  2006/09/07 13:39:12  rasc
-net string module
-
-
-
-
 */
-
-
 
 #include "dvbsnoop.h"
 #include "net_str.h"
 #include "strtable_misc.h"
-
-
-
-
-
 
 /*
   -- Assigned Internet Protocol Numbers

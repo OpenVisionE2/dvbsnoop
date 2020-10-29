@@ -20,13 +20,13 @@ $Id: ts2secpes.h,v 1.8 2006/01/02 18:24:34 rasc Exp $
 
 int  ts2SecPesInit (void);
 void ts2SecPesFree (void);
-int  ts2SecPes_AddPacketStart (int pid, int cc, u_char *b, u_int len);
+int  ts2SecPes_AddPacketStart (long pkt_nr, int pid, int cc, u_char *b, u_int len);
 int  ts2SecPes_AddPacketContinue (int pid, int cc, u_char *b, u_int len);
 
-void ts2SecPes_subdecode (u_char *b, int len, u_int pid);
-int  ts2SecPes_checkAndDo_PacketSubdecode_Output (void);
+void ts2SecPes_subdecode (u_char *b, int len, long pkt_nr, u_int pid);
+int  ts2SecPes_checkAndDo_PacketSubdecode_Output (u_int pid);
 int  ts2SecPes_LastPacketReadSubdecode_Output (void);
-void ts2SecPes_Output_subdecode (u_int overleap_bytes);
+void ts2SecPes_Output_subdecode (u_int overleap_bytes, u_int pid);
 
 void  ts2sec_multipacket (u_char *b, int len, u_int pid);
 void  ts2ps_pes_multipacket (u_char *b, int len, u_int pid);

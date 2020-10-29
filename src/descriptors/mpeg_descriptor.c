@@ -1,5 +1,5 @@
 /*
-$Id: mpeg_descriptor.c,v 1.29 2006/02/12 23:17:11 rasc Exp $
+$Id: mpeg_descriptor.c,v 1.31 2009/11/22 15:36:06 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,124 +14,6 @@ $Id: mpeg_descriptor.c,v 1.29 2006/02/12 23:17:11 rasc Exp $
  -- MPEG Descriptors  ISO/IEC 13818-1/6
  -- all descriptors are returning their length used in buffer
 
-
-
-
-$Log: mpeg_descriptor.c,v $
-Revision 1.29  2006/02/12 23:17:11  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-Revision 1.28  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.27  2005/11/10 23:34:37  rasc
-Some H.222.1 AMD 4+5 update
-
-Revision 1.26  2004/11/03 21:00:52  rasc
- - New: "premiere.de" private tables and descriptors (tnx to Peter.Pavlov, Premiere)
- - New: cmd option "-privateprovider <provider name>"
- - New: Private provider sections and descriptors decoding
- - Changed: complete restructuring of private descriptors and sections
-
-Revision 1.25  2004/08/13 11:05:29  rasc
-Metadata_STD_descriptor
-
-Revision 1.24  2004/08/12 22:57:18  rasc
- - New: MPEG Content Labeling descriptor  (H.222.0 AMD1)
- - New: PES update ITU-T H.222.0 AMD2
-H.222.0 AMD3 updates started
-
-Revision 1.23  2004/08/01 21:33:08  rasc
-minor TVA stuff (TS 102 323)
-
-Revision 1.22  2004/07/26 20:58:03  rasc
-RNT completed..  (TS 102 323)
-
-Revision 1.21  2004/07/25 20:12:58  rasc
- - New: content_identifier_descriptor (TS 102 323)
- - New: TVA_id_descriptor (TS 102 323)
- - New: related_content_descriptor (TS 102 323)
- - New: default_authority_descriptor (TS 102 323)
-
-Revision 1.20  2004/07/24 11:44:44  rasc
-EN 301 192 update
- - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
- - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
- - New: Section MPE_FEC  EN 301 192 v1.4
- - Bugfixes
-
-Revision 1.19  2004/03/31 21:14:23  rasc
-New: Spider section pids  (snoop referenced section pids),
-some minor changes
-
-Revision 1.18  2004/02/24 23:03:05  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-Revision 1.17  2004/02/20 22:18:39  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.16  2004/01/17 23:06:08  rasc
-minor stuff, some restructs in output
-
-Revision 1.15  2004/01/15 21:27:22  rasc
-DSM-CC stream descriptors
-
-Revision 1.14  2004/01/12 23:05:25  rasc
-no message
-
-Revision 1.13  2004/01/02 16:40:34  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.12  2004/01/01 20:35:26  rasc
-PES program stream map, minor descriptor cleanup
-
-Revision 1.11  2004/01/01 20:31:22  rasc
-PES program stream map, minor descriptor cleanup
-
-Revision 1.10  2004/01/01 20:09:20  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.9  2003/11/26 16:27:45  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.8  2003/10/27 22:43:49  rasc
-carousel info descriptor and more
-
-Revision 1.7  2003/10/26 19:06:27  rasc
-no message
-
-Revision 1.6  2003/10/25 19:11:49  rasc
-no message
-
-Revision 1.5  2003/10/24 22:45:04  rasc
-code reorg...
-
-Revision 1.4  2003/10/24 22:17:17  rasc
-code reorg...
-
-Revision 1.3  2003/10/17 18:16:54  rasc
-- started more work on newer ISO 13818  descriptors
-- some reorg work started
-
-Revision 1.2  2003/09/09 05:12:45  obi
-print format identifier of registration descriptor in ascii.
-looks quite strange but is nice to see :)
-
-Revision 1.1  2003/07/08 19:59:50  rasc
-restructuring... some new, some fixes,
-trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18313-1 to spare?
-
-
 */
 
 
@@ -145,12 +27,6 @@ trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18
 #include "misc/hexprint.h"
 #include "misc/output.h"
 #include "misc/pid_mem.h"
-
-
-
-
-
-
 
 /*
   determine MPEG descriptor type and print it...
@@ -1327,9 +1203,9 @@ void descriptorMPEG_NPT_reference (u_char *b)
    	out_nl  (4,"  [= ref/300 * 90 kHz]");
  
    outBit_Sx_NL (6,"reserved: ",		  	b,64,31);
-   outBit64_Sx_NL (4,"NPT_Reference: ",		  	b,75,33);
-   outBit_Sx_NL (4,"scaleNumerator: ",		  	b,108,16);
-   outBit_Sx_NL (4,"scaleDenominator: ",	  	b,124,16);
+   outBit64_Sx_NL (4,"NPT_Reference: ",		  	b,95,33);
+   outBit_Sx_NL (4,"scaleNumerator: ",		  	b,128,16);
+   outBit_Sx_NL (4,"scaleDenominator: ",	  	b,144,16);
 
 }
 

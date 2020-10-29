@@ -5,7 +5,7 @@ $Id: dvb_descriptor_nordig.c,v 1.3 2008/09/01 08:06:07 mws Exp $
  DVBSNOOP
 
  a dvb sniffer  and mpeg2 stream analyzer tool
- http://dvbsnoop.sourceforge.net/
+ https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 

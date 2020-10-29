@@ -1,5 +1,5 @@
 /*
-$Id: sectables.c,v 1.35 2005/12/29 02:43:39 rasc Exp $
+$Id: sectables.c,v 1.37 2009/11/22 15:36:27 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -11,142 +11,6 @@ $Id: sectables.c,v 1.35 2005/12/29 02:43:39 rasc Exp $
 
 
  -- For more information please see: ISO 13818 (-1) and ETSI 300 468
-
-
-
-$Log: sectables.c,v $
-Revision 1.35  2005/12/29 02:43:39  rasc
-gcc fixes, man page update
-
-Revision 1.34  2005/11/08 23:15:26  rasc
- - New: DVB-S2 Descriptor and DVB-S2 changes (tnx to Axel Katzur)
- - Bugfix: PES packet stuffing
- - New:  PS/PES read redesign and some code changes
-
-Revision 1.33  2005/10/20 22:25:08  rasc
- - Bugfix: tssubdecode check for PUSI and SI pointer offset
-   still losing packets, when multiple sections in one TS packet.
- - Changed: some Code rewrite
- - Changed: obsolete option -nosync, do always packet sync
-
-Revision 1.32  2005/07/31 21:48:03  rasc
-soft CRC for sections...
-
-Revision 1.31  2005/07/18 21:11:40  rasc
-TVA Content Section
-
-Revision 1.30  2004/11/03 21:01:03  rasc
- - New: "premiere.de" private tables and descriptors (tnx to Peter.Pavlov, Premiere)
- - New: cmd option "-privateprovider <provider name>"
- - New: Private provider sections and descriptors decoding
- - Changed: complete restructuring of private descriptors and sections
-
-Revision 1.29  2004/10/17 22:20:36  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.28  2004/08/22 18:36:45  rasc
- - Bugfix: multilang service descriptor fix  (tnx to Karsten Siebert)
- - New: MetaData Section  (Basic) (H.222.0 AMD1)
-
-Revision 1.27  2004/08/13 01:15:54  rasc
-small change in PID assignment display
-
-Revision 1.26  2004/08/12 22:57:18  rasc
- - New: MPEG Content Labeling descriptor  (H.222.0 AMD1)
- - New: PES update ITU-T H.222.0 AMD2
-H.222.0 AMD3 updates started
-
-Revision 1.25  2004/08/04 19:54:39  rasc
-Bugfix: UNT/INT table mixup  (reported by  Karsten Siebert)
-
-Revision 1.24  2004/08/01 21:33:09  rasc
-minor TVA stuff (TS 102 323)
-
-Revision 1.23  2004/07/25 20:12:59  rasc
- - New: content_identifier_descriptor (TS 102 323)
- - New: TVA_id_descriptor (TS 102 323)
- - New: related_content_descriptor (TS 102 323)
- - New: default_authority_descriptor (TS 102 323)
-
-Revision 1.22  2004/07/24 11:44:45  rasc
-EN 301 192 update
- - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
- - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
- - New: Section MPE_FEC  EN 301 192 v1.4
- - Bugfixes
-
-Revision 1.21  2004/02/20 22:18:42  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.20  2004/02/07 01:28:04  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-Revision 1.19  2004/01/04 22:03:22  rasc
-time for a version leap
-
-Revision 1.18  2004/01/01 20:09:31  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.17  2003/12/27 00:21:16  rasc
-dsmcc section tables
-
-Revision 1.16  2003/12/26 23:27:40  rasc
-DSM-CC  UNT section
-
-Revision 1.15  2003/11/26 23:54:48  rasc
--- bugfixes on Linkage descriptor
-
-Revision 1.14  2003/11/26 19:55:34  rasc
-no message
-
-Revision 1.13  2003/11/24 23:52:17  rasc
--sync option, some TS and PES stuff;
-dsm_addr inactive, may be wrong - due to missing ISO 13818-6
-
-Revision 1.12  2003/11/09 22:54:16  rasc
-no message
-
-Revision 1.11  2003/10/29 20:54:57  rasc
-more PES stuff, DSM descriptors, testdata
-
-Revision 1.10  2003/10/26 23:00:43  rasc
-fix
-
-Revision 1.9  2003/10/24 22:17:21  rasc
-code reorg...
-
-Revision 1.8  2003/10/21 20:12:51  rasc
-no message
-
-Revision 1.7  2003/10/21 19:54:43  rasc
-no message
-
-Revision 1.6  2003/10/19 22:22:57  rasc
-- some datacarousell stuff started
-
-Revision 1.5  2003/10/19 13:54:25  rasc
--more table decoding
-
-Revision 1.4  2003/10/17 18:16:54  rasc
-- started more work on newer ISO 13818  descriptors
-- some reorg work started
-
-Revision 1.3  2003/07/06 05:49:25  obi
-CAMT fix and indentation
-
-Revision 1.2  2001/10/06 18:19:18  Toerli
-Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
 
 */
 
@@ -246,7 +110,7 @@ void decodeSI_packet (u_char *buf, int len, u_int pid)
 
 
   // nothing to output ?  
-  if (getVerboseLevel() < 2) return;
+  if (getMaxVerboseLevel() < 2) return;
 
 
   if (pid != DUMMY_PID) {

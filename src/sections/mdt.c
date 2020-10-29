@@ -1,5 +1,5 @@
 /*
-$Id: mdt.c,v 1.6 2006/01/02 18:24:24 rasc Exp $
+$Id: mdt.c,v 1.7 2009/11/22 15:36:27 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,43 +12,13 @@ $Id: mdt.c,v 1.6 2006/01/02 18:24:24 rasc Exp $
 
  -- MDT section  (MetaData Section)
 
-
-
-$Log: mdt.c,v $
-Revision 1.6  2006/01/02 18:24:24  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.5  2005/11/10 23:34:38  rasc
-Some H.222.1 AMD 4+5 update
-
-Revision 1.4  2004/10/17 22:20:36  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.3  2004/09/01 20:20:34  rasc
-new cmdline option: -buffersize KB  (set demux buffersize in KBytes)
-
-Revision 1.2  2004/08/24 21:30:23  rasc
-more Metadata
-
-Revision 1.1  2004/08/22 18:36:45  rasc
- - Bugfix: multilang service descriptor fix  (tnx to Karsten Siebert)
- - New: MetaData Section  (Basic) (H.222.0 AMD1)
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "mdt.h"
 #include "descriptors/descriptor.h"
 #include "strings/dvb_str.h"
 #include "misc/output.h"
-
-
-
 
 void section_MDT (u_char *b, int len)
 {

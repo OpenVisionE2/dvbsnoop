@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_grpinfind.c,v 1.3 2006/01/02 18:23:47 rasc Exp $
+$Id: dsmcc_grpinfind.c,v 1.5 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,37 +12,13 @@ $Id: dsmcc_grpinfind.c,v 1.3 2006/01/02 18:23:47 rasc Exp $
  -- dsmcc GroupInfoIndication()
  -- (e.g. part of DSI private data)
 
-
-
-$Log: dsmcc_grpinfind.c,v $
-Revision 1.3  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2004/03/06 22:33:11  rasc
-no message
-
-Revision 1.1  2004/02/24 23:14:35  rasc
-DSI:: DSMCC::GroupInfoIndication
-
-
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "dsmcc_grpinfind.h"
 #include "dsmcc_misc.h"
 #include "misc/output.h"
 #include "misc/hexprint.h"
-
-
-
-
 
 /*
  * ISO/IEC 13818-6
@@ -104,15 +80,13 @@ int dsmcc_GroupInfoIndication (int v, u_char *b, u_int len_org)
 			b += 2+len2;
 			len -= 2+len2;
 
+			len2 = outBit_Sx_NL (v,"PrivateDataLength: ",	b,  0, 16);
+			print_private_data (v, b+2, len2);   // $$$ What to do here?
+			b += 2+len2;
+			len -= 2+len2;
 
 			indent (-1);
 		}
-
-		// $$$ passt das hier?
-		len2 = outBit_Sx_NL (v,"PrivateDataLength: ",	b,  0, 16);
-		print_private_data (v, b+2, len2);   // $$$ What to do here?
-		// b += 2+len2;
-		// len -= 2+len2;
 
 	indent (-1);
 	out_NL (v);

@@ -1,5 +1,5 @@
 /*
-$Id: mpeg_descriptor.h,v 1.13 2006/01/02 18:23:58 rasc Exp $ 
+$Id: mpeg_descriptor.h,v 1.14 2009/11/22 15:36:06 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -10,61 +10,6 @@ $Id: mpeg_descriptor.h,v 1.13 2006/01/02 18:23:58 rasc Exp $
  (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
 
  -- MPEG Descriptors  ISO/IEC 13818-2
-
-
-
-
-$Log: mpeg_descriptor.h,v $
-Revision 1.13  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.12  2005/11/10 23:34:37  rasc
-Some H.222.1 AMD 4+5 update
-
-Revision 1.11  2004/08/12 22:57:18  rasc
- - New: MPEG Content Labeling descriptor  (H.222.0 AMD1)
- - New: PES update ITU-T H.222.0 AMD2
-H.222.0 AMD3 updates started
-
-Revision 1.10  2004/08/01 21:33:08  rasc
-minor TVA stuff (TS 102 323)
-
-Revision 1.9  2004/07/25 20:12:58  rasc
- - New: content_identifier_descriptor (TS 102 323)
- - New: TVA_id_descriptor (TS 102 323)
- - New: related_content_descriptor (TS 102 323)
- - New: default_authority_descriptor (TS 102 323)
-
-Revision 1.8  2004/01/15 21:27:22  rasc
-DSM-CC stream descriptors
-
-Revision 1.7  2004/01/01 20:31:22  rasc
-PES program stream map, minor descriptor cleanup
-
-Revision 1.6  2004/01/01 20:09:20  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.5  2003/11/26 19:55:32  rasc
-no message
-
-Revision 1.4  2003/11/26 16:27:45  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.3  2003/10/27 22:43:49  rasc
-carousel info descriptor and more
-
-Revision 1.2  2003/10/17 18:16:54  rasc
-- started more work on newer ISO 13818  descriptors
-- some reorg work started
-
-Revision 1.1  2003/07/08 19:59:50  rasc
-restructuring... some new, some fixes,
-trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18313-1 to spare?
-
 
 */
 

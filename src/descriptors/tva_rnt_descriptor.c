@@ -1,5 +1,5 @@
 /*
-$Id: tva_rnt_descriptor.c,v 1.6 2006/02/12 23:17:11 rasc Exp $ 
+$Id: tva_rnt_descriptor.c,v 1.7 2009/11/22 15:36:06 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -12,35 +12,6 @@ $Id: tva_rnt_descriptor.c,v 1.6 2006/02/12 23:17:11 rasc Exp $
 
  -- Private TAG Space  TS 102 323  TV-Anytime 
  -- RNT Descriptors
-
-
-
-
-$Log: tva_rnt_descriptor.c,v $
-Revision 1.6  2006/02/12 23:17:11  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-Revision 1.5  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.4  2004/11/03 21:00:58  rasc
- - New: "premiere.de" private tables and descriptors (tnx to Peter.Pavlov, Premiere)
- - New: cmd option "-privateprovider <provider name>"
- - New: Private provider sections and descriptors decoding
- - Changed: complete restructuring of private descriptors and sections
-
-Revision 1.3  2004/09/01 20:20:34  rasc
-new cmdline option: -buffersize KB  (set demux buffersize in KBytes)
-
-Revision 1.2  2004/08/27 23:25:52  rasc
- - Update: changes due to  EN 300 468 v1.6.1
- - Bugfix: Multilingual component descriptor  (tnx to Karsten Siebert)
-
-Revision 1.1  2004/08/06 22:21:38  rasc
-New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
-
-
-
 
 */
 
@@ -56,10 +27,6 @@ New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
 #include "misc/output.h"
 #include "misc/helper.h"
 #include "misc/pkt_time.h"
-
-
-
-
 
 
 /*

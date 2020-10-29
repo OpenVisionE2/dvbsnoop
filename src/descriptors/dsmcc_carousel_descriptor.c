@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_carousel_descriptor.c,v 1.25 2006/02/12 23:17:11 rasc Exp $ 
+$Id: dsmcc_carousel_descriptor.c,v 1.26 2009/11/22 15:36:06 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -13,81 +13,6 @@ $Id: dsmcc_carousel_descriptor.c,v 1.25 2006/02/12 23:17:11 rasc Exp $
  -- Private TAG Space  DSM-CC
  -- DSM-CC Descriptors
  -- ISO 13818-6  // TR 102 006  //  TS 102 812
-
-
-
-
-$Log: dsmcc_carousel_descriptor.c,v $
-Revision 1.25  2006/02/12 23:17:11  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-Revision 1.24  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.23  2004/11/03 21:00:50  rasc
- - New: "premiere.de" private tables and descriptors (tnx to Peter.Pavlov, Premiere)
- - New: cmd option "-privateprovider <provider name>"
- - New: Private provider sections and descriptors decoding
- - Changed: complete restructuring of private descriptors and sections
-
-Revision 1.22  2004/02/24 23:03:05  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-Revision 1.21  2004/02/20 22:18:38  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.20  2004/02/17 23:54:13  rasc
-Bug (not fixed yet): DSM-CC  DII Carousel Descriptor Loop is strange
-
-Revision 1.19  2004/02/15 20:46:10  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.18  2004/02/15 01:01:02  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-Revision 1.17  2004/02/09 21:24:57  rasc
-AIT descriptors
-minor redesign on output routines
-
-Revision 1.16  2004/01/22 22:58:29  rasc
-deleting modul  (again?)
-somehow  obsolete module re-appeared??? (or I forgot something)
-
-Revision 1.15  2004/01/11 21:01:31  rasc
-PES stream directory, PES restructured
-
-Revision 1.14  2004/01/02 22:59:59  rasc
-DSM-CC  modules renaming...
-
-Revision 1.13  2004/01/02 22:25:35  rasc
-DSM-CC  MODULEs descriptors complete
-
-Revision 1.12  2004/01/01 20:31:22  rasc
-PES program stream map, minor descriptor cleanup
-
-Revision 1.11  2004/01/01 20:09:19  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.10  2003/12/27 18:17:17  rasc
-dsmcc PES dsmcc_program_stream_descriptorlist
-
-Revision 1.9  2003/11/01 21:40:27  rasc
-some broadcast/linkage descriptor stuff
-
-Revision 1.8  2003/10/29 20:54:56  rasc
-more PES stuff, DSM descriptors, testdata
-
-
 
 */
 

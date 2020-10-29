@@ -1,5 +1,5 @@
 /*
-$Id: pes_data_sync.c,v 1.3 2006/01/02 18:24:12 rasc Exp $
+$Id: pes_data_sync.c,v 1.5 2009/11/22 15:36:13 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -7,32 +7,11 @@ $Id: pes_data_sync.c,v 1.3 2006/01/02 18:24:12 rasc Exp $
  a dvb sniffer  and mpeg2 stream analyzer tool
  https://github.com/OpenVisionE2/dvbsnoop
 
- (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
+ (c) 2001-2007   Rainer.Scherg@gmx.de  (rasc)
 
 
 
  -- PES Data: Synchronous and synchronized data streaming
-
-
-
-$Log: pes_data_sync.c,v $
-Revision 1.3  2006/01/02 18:24:12  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2005/11/10 00:05:45  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-Revision 1.1  2004/02/02 23:41:23  rasc
-- output indent changed to avoid \r  (which sucks on logged output)
-- EBU PES data started (teletext, vps, wss, ...)
-- bugfix: PES synch. data stream, restructuring
-- some other stuff
-
-Revision 1.1  2004/01/11 21:01:32  rasc
-PES stream directory, PES restructured
-
-
-
 
 */
 

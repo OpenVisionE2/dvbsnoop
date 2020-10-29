@@ -1,5 +1,5 @@
 /*
-$Id: dit.c,v 1.7 2006/01/02 18:24:24 rasc Exp $
+$Id: dit.c,v 1.8 2009/11/22 15:36:27 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,47 +14,12 @@ $Id: dit.c,v 1.7 2006/01/02 18:24:24 rasc Exp $
    -- Discontinuity Information Table
    -- ETSI EN 300 468     5.2.9
 
-
-
-
-$Log: dit.c,v $
-Revision 1.7  2006/01/02 18:24:24  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.6  2004/10/17 22:20:36  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.5  2004/01/01 20:09:31  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.4  2003/10/24 22:45:06  rasc
-code reorg...
-
-Revision 1.3  2003/10/24 22:17:20  rasc
-code reorg...
-
-Revision 1.2  2001/10/06 18:19:18  Toerli
-Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "dit.h"
 #include "strings/dvb_str.h"
 #include "misc/output.h"
-
-
 
 void section_DIT (u_char *b, int len)
 {

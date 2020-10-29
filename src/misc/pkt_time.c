@@ -1,5 +1,5 @@
 /*
-$Id: pkt_time.c,v 1.12 2006/01/02 18:24:04 rasc Exp $
+$Id: pkt_time.c,v 1.13 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
 
@@ -9,54 +9,6 @@ $Id: pkt_time.c,v 1.12 2006/01/02 18:24:04 rasc Exp $
  https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
-
-
-
-
-
-$Log: pkt_time.c,v $
-Revision 1.12  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.11  2005/09/12 20:56:16  rasc
-Make dvbsnoop compile on Cygwin / Windows
-
-Revision 1.10  2005/09/02 14:11:35  rasc
-TS code redesign, xPCR and DTS timestamps decoding
-
-Revision 1.9  2004/01/11 21:01:32  rasc
-PES stream directory, PES restructured
-
-Revision 1.8  2004/01/01 20:09:26  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.7  2003/12/20 08:43:07  obi
-fixed last commit
-
-Revision 1.6  2003/12/20 05:11:42  obi
-simplified timeval to ms conversion
-
-Revision 1.5  2003/12/14 23:38:46  rasc
-- bandwidth reporting for a PID
-
-Revision 1.4  2003/11/26 16:27:46  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.3  2003/10/26 19:06:27  rasc
-no message
-
-Revision 1.2  2001/10/02 21:52:44  rasc
-- init der time_delta
-- PES erweitert, PES arbeitet im read() noch nicht richtig!!
-- muss tmbinc fragem, ob ich Mist baue, oder der Treiber (??)
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
 
 */
 

@@ -1,5 +1,5 @@
 /*
-$Id: biop_modinfo.c,v 1.7 2006/03/06 00:04:49 rasc Exp $
+$Id: biop_modinfo.c,v 1.8 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,47 +12,7 @@ $Id: biop_modinfo.c,v 1.7 2006/03/06 00:04:49 rasc Exp $
  -- dsmcc  BIOP::ModuleInfo
  -- ISO/IEC 13818-6, ATSC a_47b
 
-
-
-
-$Log: biop_modinfo.c,v $
-Revision 1.7  2006/03/06 00:04:49  rasc
-More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
-BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
-this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
-Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
-
-Revision 1.6  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.5  2004/03/06 22:33:10  rasc
-no message
-
-Revision 1.4  2004/02/29 23:49:28  rasc
-no message
-
-Revision 1.3  2004/02/24 23:03:04  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-Revision 1.2  2004/02/20 23:13:17  rasc
-BIOP:  TapUse
-
-Revision 1.1  2004/02/20 22:21:57  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-
-
-
-
-
 */
-
-
 
 
 #include "dvbsnoop.h"

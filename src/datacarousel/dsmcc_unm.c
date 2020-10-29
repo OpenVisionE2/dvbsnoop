@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_unm.c,v 1.3 2006/01/02 18:23:47 rasc Exp $
+$Id: dsmcc_unm.c,v 1.4 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -11,24 +11,6 @@ $Id: dsmcc_unm.c,v 1.3 2006/01/02 18:23:47 rasc Exp $
 
  -- dsmcc User Network  Message
  -- ISO/IEC 13818-6:2000   7. User-Network Download
-
-
-
-$Log: dsmcc_unm.c,v $
-Revision 1.3  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2004/02/15 18:58:27  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.1  2004/02/15 01:02:10  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-
-
-
 
 */
 

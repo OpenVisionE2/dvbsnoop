@@ -1,5 +1,5 @@
 /*
-$Id: output.h,v 1.13 2006/01/02 18:24:04 rasc Exp $
+$Id: output.h,v 1.15 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -9,48 +9,6 @@ $Id: output.h,v 1.13 2006/01/02 18:24:04 rasc Exp $
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
-
-
-
-
-$Log: output.h,v $
-Revision 1.13  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.12  2005/09/02 14:11:35  rasc
-TS code redesign, xPCR and DTS timestamps decoding
-
-Revision 1.11  2004/12/07 21:01:42  rasc
-Large file support (> 2 GB) for -if cmd option. (tnx to K.Zheng,  Philips.com for reporting)
-
-Revision 1.10  2004/01/13 21:04:21  rasc
-BUGFIX: getbits overflow fixed...
-
-Revision 1.9  2004/01/02 16:40:37  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.8  2004/01/01 20:09:26  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.7  2003/11/26 23:54:48  rasc
--- bugfixes on Linkage descriptor
-
-Revision 1.6  2003/11/26 19:55:33  rasc
-no message
-
-Revision 1.5  2003/11/26 16:27:46  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.4  2003/07/08 19:59:50  rasc
-restructuring... some new, some fixes,
-trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18313-1 to spare?
-
-
 */
 
 
@@ -59,8 +17,8 @@ trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18
 
 
 void indent (int v);
-void setVerboseLevel (int v);
-int  getVerboseLevel ();
+void setMaxVerboseLevel (int v);
+int  getMaxVerboseLevel ();
 void out(int verbose, const char *msgfmt,...);
 void out_nl(int verbose, const char *msgfmt,...);
 void out_nl2(int verbose);

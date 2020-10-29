@@ -1,5 +1,5 @@
 /*
-$Id: ts_mip.c,v 1.2 2006/02/13 00:31:01 rasc Exp $
+$Id: ts_mip.c,v 1.3 2009/11/22 15:36:34 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,14 +14,6 @@ $Id: ts_mip.c,v 1.2 2006/02/13 00:31:01 rasc Exp $
  -- Transport Stream
  -- Mega-Frame Initialization Packet (MIP)
  -- ETSI TS 101 191   
-
-
-$Log: ts_mip.c,v $
-Revision 1.2  2006/02/13 00:31:01  rasc
-no message
-
-Revision 1.1  2006/02/12 23:17:13  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
 
 Complete implementation  (rasc)
 

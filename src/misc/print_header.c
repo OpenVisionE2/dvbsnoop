@@ -1,5 +1,5 @@
 /*
-$Id: print_header.c,v 1.7 2006/01/02 18:24:04 rasc Exp $
+$Id: print_header.c,v 1.8 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -8,42 +8,6 @@ $Id: print_header.c,v 1.7 2006/01/02 18:24:04 rasc Exp $
  https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
-
-
-
-
-$Log: print_header.c,v $
-Revision 1.7  2006/01/02 18:24:04  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.6  2005/10/20 22:25:07  rasc
- - Bugfix: tssubdecode check for PUSI and SI pointer offset
-   still losing packets, when multiple sections in one TS packet.
- - Changed: some Code rewrite
- - Changed: obsolete option -nosync, do always packet sync
-
-Revision 1.5  2005/09/12 20:56:16  rasc
-Make dvbsnoop compile on Cygwin / Windows
-
-Revision 1.4  2004/11/16 23:02:50  rasc
-cmd option "-tsraw" for full/raw TS read (if supported by hard-/firmware)
-
-Revision 1.3  2004/10/12 20:37:48  rasc
- - Changed: TS pid filtering from file, behavior changed
- - New: new cmdline option -maxdmx <n>  (replaces -f using pidscan)
- - misc. changes
-
-Revision 1.2  2004/01/01 20:09:26  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.1  2003/12/28 14:00:27  rasc
-bugfix: section read from input file
-some changes on packet header output
-
-
 
 */
 

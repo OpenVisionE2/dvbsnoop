@@ -1,5 +1,5 @@
 /*
-$Id: mpeg_sysheader.c,v 1.2 2006/01/02 18:24:12 rasc Exp $
+$Id: mpeg_sysheader.c,v 1.3 2009/11/22 15:36:13 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -8,23 +8,6 @@ $Id: mpeg_sysheader.c,v 1.2 2006/01/02 18:24:12 rasc Exp $
  https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
-
-
-
-
-
-
-
-$Log: mpeg_sysheader.c,v $
-Revision 1.2  2006/01/02 18:24:12  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2005/11/10 00:07:18  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-
-
-
 
 */
 

@@ -1,5 +1,5 @@
 /*
-$Id: strtable_misc.c,v 1.3 2006/01/15 17:50:31 rasc Exp $
+$Id: strtable_misc.c,v 1.4 2009/11/22 15:36:31 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,30 +12,9 @@ $Id: strtable_misc.c,v 1.3 2006/01/15 17:50:31 rasc Exp $
 
  -- String table misc.
 
-
-
-$Log: strtable_misc.c,v $
-Revision 1.3  2006/01/15 17:50:31  rasc
-no message
-
-Revision 1.2  2006/01/02 18:24:32  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/07/24 11:47:08  rasc
-EN 301 192 update
- - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
- - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
- - New: Section MPE_FEC  EN 301 192 v1.4
- - Bugfixes
-
-
 */
 
-
 #include "strtable_misc.h"
-
-
-
 
 /*
   -- match id in range from STR_TABLE
