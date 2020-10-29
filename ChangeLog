@@ -1,5 +1,7 @@
    release 1.4.56
  - Sync with https://github.com/Duckbox-Developers/dvbsnoop and https://github.com/a4tunado/dvbsnoop
+ - New: Support cmake building
+ - New: Support h264, thanks to https://github.com/a4tunado
 
    release 1.4.55
  - New: Import latest patches from ubuntu:
@@ -11,7 +13,7 @@
 
    release 1.4.54
  - New: dvb_api.h is compatible with old V4L DVB headers now.
- - New: Experimental BBFrame filtering support.
+ - New: Experimental BBFrame filtering support. (reverted)
  - Fix: Add missing autogen.sh
 
    release 1.4.53
@@ -21,11 +23,11 @@
  - Fix: Build issue with old DVB API, Thanks to https://github.com/Taapat and https://github.com/atvcaptain
 
    release 1.4.51
- - Patch: setvbuf / setlinebuf on Linux by https://sourceforge.net/u/userid-672436/profile/
- - Patch: fix crc32 (-softcrc) under 64-bit linux by https://sourceforge.net/u/mkuutti/profile/
- - Patch: HBBTV/MHP app. location descriptor in AIT implementation by https://sourceforge.net/u/stephanethomas/profile/
- - Patch: Add missing capabilities checks by https://github.com/athoik
- - Fix: NPT descriptor bugfix - (tnx to "Dong Liu")
+ - Patch: setvbuf / setlinebuf on Linux, Thanks to https://sourceforge.net/u/userid-672436/profile/
+ - Patch: fix crc32 (-softcrc) under 64-bit linux, Thanks to https://sourceforge.net/u/mkuutti/profile/
+ - Patch: HBBTV/MHP app. location descriptor in AIT implementation, Thanks to https://sourceforge.net/u/stephanethomas/profile/
+ - Patch: Add missing capabilities, Thanks to https://github.com/athoik
+ - Fix: NPT descriptor bugfix, Thanks to "Dong Liu"
 
    release 1.4.50
  - Fix: PSM bugfix - (tnx to "jack" for reporting)
