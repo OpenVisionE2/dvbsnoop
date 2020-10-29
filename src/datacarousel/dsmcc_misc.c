@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_misc.c,v 1.23 2006/03/06 20:25:37 rasc Exp $
+$Id: dsmcc_misc.c,v 1.24 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -9,104 +9,7 @@ $Id: dsmcc_misc.c,v 1.23 2006/03/06 20:25:37 rasc Exp $
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
-
-
-
-$Log: dsmcc_misc.c,v $
-Revision 1.23  2006/03/06 20:25:37  rasc
-DSM-CC Carousell, lots of Bugfixes, BIOP::Message not yet decodable (ddb has to collect Modules)
-
-Revision 1.22  2006/03/06 00:04:49  rasc
-More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
-BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
-this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
-Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
-
-Revision 1.21  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.20  2005/12/29 02:43:37  rasc
-gcc fixes, man page update
-
-Revision 1.19  2004/08/07 22:10:00  rasc
-Bugfix: NIT cable frequency display (reported by Karsten Siebert )
-
-Revision 1.18  2004/08/06 22:21:38  rasc
-New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
-
-Revision 1.17  2004/07/25 20:12:58  rasc
- - New: content_identifier_descriptor (TS 102 323)
- - New: TVA_id_descriptor (TS 102 323)
- - New: related_content_descriptor (TS 102 323)
- - New: default_authority_descriptor (TS 102 323)
-
-Revision 1.16  2004/04/15 03:38:50  rasc
-new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
-checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
-
-Revision 1.15  2004/04/05 17:32:12  rasc
-mass typo fix adaption --> adaptation
-
-Revision 1.14  2004/02/29 20:42:55  rasc
-no message
-
-Revision 1.13  2004/02/24 23:03:04  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-Revision 1.12  2004/02/20 23:13:17  rasc
-BIOP:  TapUse
-
-Revision 1.11  2004/02/20 22:18:38  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.10  2004/02/17 23:54:12  rasc
-Bug (not fixed yet): DSM-CC  DII Carousel Descriptor Loop is strange
-
-Revision 1.9  2004/02/15 20:46:09  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.8  2004/02/15 18:58:27  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.7  2004/02/15 01:01:00  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-Revision 1.6  2004/02/14 01:24:44  rasc
-DSM-CC started  (DSI/DII, DDB)
-
-Revision 1.5  2004/01/02 22:25:34  rasc
-DSM-CC  MODULEs descriptors complete
-
-Revision 1.4  2004/01/02 16:40:33  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.3  2004/01/01 20:09:16  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.2  2003/12/27 14:35:00  rasc
-dvb-t descriptors
-DSM-CC: SSU Linkage/DataBroadcast descriptors
-
-Revision 1.1  2003/12/26 23:27:39  rasc
-DSM-CC  UNT section
-
-
-
-
 */
-
-
 
 
 #include "dvbsnoop.h"
@@ -118,12 +21,7 @@ DSM-CC  UNT section
 #include "misc/hexprint.h"
 #include "pes/pes_misc.h"
 
-
-
 static int subDescriptor (u_char *b);
-
-
-
 
 
 /*

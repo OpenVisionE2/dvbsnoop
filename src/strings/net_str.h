@@ -1,5 +1,5 @@
 /*
-$Id: net_str.h,v 1.1 2006/09/07 13:39:12 rasc Exp $ 
+$Id: net_str.h,v 1.2 2009/11/22 15:36:31 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -12,15 +12,6 @@ $Id: net_str.h,v 1.1 2006/09/07 13:39:12 rasc Exp $
 
  -- Network strings  (IP, UDP, ICMP)
 
-
-
-
-$Log: net_str.h,v $
-Revision 1.1  2006/09/07 13:39:12  rasc
-net string module
-
-
-
 */
 
 
@@ -29,9 +20,6 @@ net string module
 
 
 char *netStr_RFC790_protocol_nr (u_int i);
-
-
-
 
 
 #endif

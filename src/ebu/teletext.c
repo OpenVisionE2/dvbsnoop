@@ -1,5 +1,5 @@
 /*
-$Id: teletext.c,v 1.8 2006/01/02 18:24:03 rasc Exp $
+$Id: teletext.c,v 1.9 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
 
@@ -12,38 +12,6 @@ $Id: teletext.c,v 1.8 2006/01/02 18:24:03 rasc Exp $
 
 
  -- misc routines for EBU teletext
-
-
-
-
-$Log: teletext.c,v $
-Revision 1.8  2006/01/02 18:24:03  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.7  2005/01/17 19:41:22  rasc
-Bugfix: data broadcast descriptor (tnx to Sergio SAGLIOCCO, SecureLAB)
-
-Revision 1.6  2004/02/09 21:24:59  rasc
-AIT descriptors
-minor redesign on output routines
-
-Revision 1.5  2004/02/07 01:28:03  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-Revision 1.4  2004/02/05 10:30:56  rasc
-no message
-
-Revision 1.3  2004/02/04 22:36:27  rasc
-more EBU/teletext stuff
-
-Revision 1.2  2004/02/03 00:11:49  rasc
-no message
-
-Revision 1.1  2004/02/02 23:37:54  rasc
-added EBU module (teletext), providing basic teletext decoding
-
-
 
 */
 

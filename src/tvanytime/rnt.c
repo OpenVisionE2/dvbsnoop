@@ -1,5 +1,5 @@
 /*
-$Id: rnt.c,v 1.6 2006/04/04 17:27:56 rasc Exp $
+$Id: rnt.c,v 1.7 2009/11/22 15:36:34 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,34 +14,7 @@ $Id: rnt.c,v 1.6 2006/04/04 17:27:56 rasc Exp $
  --  Resolution provider Notification Section
  --  TS 102 323
 
-
-
-$Log: rnt.c,v $
-Revision 1.6  2006/04/04 17:27:56  rasc
-no message
-
-Revision 1.5  2006/01/02 18:24:46  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.4  2005/07/18 21:11:41  rasc
-TVA Content Section
-
-Revision 1.3  2004/10/17 22:20:39  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.2  2004/07/26 20:58:03  rasc
-RNT completed..  (TS 102 323)
-
-Revision 1.1  2004/07/25 21:13:37  rasc
-do not forget to commit new files
-- RNT resolution_authority/provider_notification_section (TS 102 323)
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "rnt.h"
@@ -49,10 +22,6 @@ do not forget to commit new files
 #include "descriptors/descriptor.h"
 #include "strings/dvb_str.h"
 #include "misc/output.h"
-
-
-
-
 
 void section_TVA_RNT (u_char *b, int len)
 {

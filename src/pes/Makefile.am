@@ -14,7 +14,8 @@ noinst_HEADERS = \
 	pes_misc.h \
 	mpeg_packheader.h \
 	mpeg_sysheader.h \
-	mpeg2_video.h 
+	mpeg2_video.h \
+	h264_video.h 
 
 
 libpes_a_SOURCES = \
@@ -29,6 +30,7 @@ libpes_a_SOURCES = \
 	pes_misc.c \
 	mpeg_packheader.c \
 	mpeg_sysheader.c \
-	mpeg2_video.c 
+	mpeg2_video.c \
+	h264_video.c 
 
 

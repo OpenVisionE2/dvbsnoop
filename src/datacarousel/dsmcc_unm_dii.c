@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_unm_dii.c,v 1.6 2006/01/02 18:23:47 rasc Exp $
+$Id: dsmcc_unm_dii.c,v 1.7 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,40 +12,7 @@ $Id: dsmcc_unm_dii.c,v 1.6 2006/01/02 18:23:47 rasc Exp $
  -- dsmcc Download Info Indication
  -- to be called from U-N-Message
 
-
-
-$Log: dsmcc_unm_dii.c,v $
-Revision 1.6  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.5  2004/02/24 23:03:04  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-Revision 1.4  2004/02/20 22:18:38  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.3  2004/02/17 23:54:12  rasc
-Bug (not fixed yet): DSM-CC  DII Carousel Descriptor Loop is strange
-
-Revision 1.2  2004/02/15 20:46:09  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.1  2004/02/15 18:58:27  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "dsmcc_unm_dii.h"
@@ -53,10 +20,6 @@ DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
 #include "biop_modinfo.h"
 #include "misc/output.h"
 #include "misc/hexprint.h"
-
-
-
-
 
 /*
  * ISO/IEC 13818-6

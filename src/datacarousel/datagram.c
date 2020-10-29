@@ -1,5 +1,5 @@
 /*
-$Id: datagram.c,v 1.20 2006/09/04 15:26:47 rasc Exp $
+$Id: datagram.c,v 1.21 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -13,71 +13,7 @@ $Id: datagram.c,v 1.20 2006/09/04 15:26:47 rasc Exp $
  --  DATAGRAM section
  --  DSM-CC Data Carousel  EN 301 192 
 
-
-
-$Log: datagram.c,v $
-Revision 1.20  2006/09/04 15:26:47  rasc
-New: DVB-Net  IP, UDP decoding (RFC791, RFC2460)  (Stéphane Esté-Gracias)
-
-Revision 1.19  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.18  2004/10/17 22:20:35  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.17  2004/09/01 20:20:34  rasc
-new cmdline option: -buffersize KB  (set demux buffersize in KBytes)
-
-Revision 1.16  2004/02/12 23:00:22  rasc
-no message
-
-Revision 1.15  2004/01/04 22:03:21  rasc
-time for a version leap
-
-Revision 1.14  2004/01/01 20:09:16  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.13  2003/12/26 23:27:38  rasc
-DSM-CC  UNT section
-
-Revision 1.12  2003/11/26 23:54:46  rasc
--- bugfixes on Linkage descriptor
-
-Revision 1.11  2003/11/26 20:31:50  rasc
-no message
-
-Revision 1.10  2003/11/26 19:55:31  rasc
-no message
-
-Revision 1.9  2003/11/24 23:52:15  rasc
--sync option, some TS and PES stuff;
-dsm_addr inactive, may be wrong - due to missing ISO 13818-6
-
-Revision 1.8  2003/11/09 22:54:16  rasc
-no message
-
-Revision 1.7  2003/11/09 22:50:32  rasc
-no message
-
-Revision 1.6  2003/11/09 22:26:11  rasc
-filename change
-
-Revision 1.5  2003/10/25 19:11:49  rasc
-no message
-
-Revision 1.4  2003/10/24 22:17:14  rasc
-code reorg...
-
-Revision 1.1  2003/10/19 22:22:58  rasc
-- some datacarousell stuff started
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "datagram.h"
@@ -87,8 +23,6 @@ Revision 1.1  2003/10/19 22:22:58  rasc
 #include "strings/dsmcc_str.h"
 #include "misc/hexprint.h"
 #include "misc/output.h"
-
-
 
 
 void section_DSMCC_DATAGRAM (u_char *b, int len)

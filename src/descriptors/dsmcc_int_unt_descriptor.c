@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_int_unt_descriptor.c,v 1.22 2006/02/12 23:17:11 rasc Exp $ 
+$Id: dsmcc_int_unt_descriptor.c,v 1.23 2009/11/22 15:36:06 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -12,92 +12,6 @@ $Id: dsmcc_int_unt_descriptor.c,v 1.22 2006/02/12 23:17:11 rasc Exp $
 
  -- Private TAG Space  DSM-CC INT UNT
  -- DSM-CC Descriptors  ISO 13818-6  // EN 301 192 // TS 102 006
-
-
-
-
-$Log: dsmcc_int_unt_descriptor.c,v $
-Revision 1.22  2006/02/12 23:17:11  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-Revision 1.21  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.20  2004/11/03 21:00:50  rasc
- - New: "premiere.de" private tables and descriptors (tnx to Peter.Pavlov, Premiere)
- - New: cmd option "-privateprovider <provider name>"
- - New: Private provider sections and descriptors decoding
- - Changed: complete restructuring of private descriptors and sections
-
-Revision 1.19  2004/08/06 22:21:38  rasc
-New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
-
-Revision 1.18  2004/08/04 21:58:41  rasc
-BugFix: IPv6 (INT) descriptor display, got wrong values
-
-Revision 1.17  2004/04/15 03:38:50  rasc
-new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
-checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
-
-Revision 1.16  2004/02/20 22:18:39  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.15  2004/02/09 21:24:57  rasc
-AIT descriptors
-minor redesign on output routines
-
-Revision 1.14  2004/01/03 00:30:06  rasc
-DSM-CC  STREAM descriptors module (started)
-
-Revision 1.13  2004/01/02 22:59:59  rasc
-DSM-CC  modules renaming...
-
-Revision 1.12  2004/01/02 22:25:35  rasc
-DSM-CC  MODULEs descriptors complete
-
-Revision 1.11  2004/01/02 16:40:34  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.10  2004/01/02 02:18:34  rasc
-more DSM-CC  INT/UNT descriptors
-
-Revision 1.9  2004/01/01 20:31:22  rasc
-PES program stream map, minor descriptor cleanup
-
-Revision 1.8  2004/01/01 20:09:19  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.7  2003/12/29 22:14:53  rasc
-more dsm-cc INT UNT descriptors
-
-Revision 1.6  2003/12/28 00:01:14  rasc
-some minor changes/adds...
-
-Revision 1.5  2003/12/27 22:02:43  rasc
-dsmcc INT UNT descriptors started
-
-Revision 1.4  2003/12/27 18:17:17  rasc
-dsmcc PES dsmcc_program_stream_descriptorlist
-
-Revision 1.3  2003/12/27 14:35:00  rasc
-dvb-t descriptors
-DSM-CC: SSU Linkage/DataBroadcast descriptors
-
-Revision 1.2  2003/11/01 21:40:27  rasc
-some broadcast/linkage descriptor stuff
-
-Revision 1.1  2003/10/29 20:56:18  rasc
-more PES stuff, DSM descriptors, testdata
-
-
-
 
 */
 
@@ -113,10 +27,6 @@ more PES stuff, DSM descriptors, testdata
 #include "misc/output.h"
 #include "misc/helper.h"
 #include "misc/pkt_time.h"
-
-
-
-
 
 
 /*

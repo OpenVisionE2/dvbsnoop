@@ -1,5 +1,5 @@
 /*
-$Id: fe_misc.c,v 1.10 2006/03/03 01:51:13 obi Exp $
+$Id: fe_misc.c,v 1.11 2009/11/22 15:36:07 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,43 +12,6 @@ $Id: fe_misc.c,v 1.10 2006/03/03 01:51:13 obi Exp $
 
  -- FrontEnd routines...
  --  DVB-API 3 (3.1)
-
-
-
-
-$Log: fe_misc.c,v $
-Revision 1.10  2006/03/03 01:51:13  obi
-use same unit for frequency tolerance as for min, max and stepsize
-
-Revision 1.9  2006/01/02 18:23:59  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.8  2005/08/22 22:37:59  rasc
-ATSC frontend info
-
-Revision 1.7  2005/08/13 00:06:56  rasc
-no message
-
-Revision 1.6  2004/08/22 22:11:57  rasc
-no message
-
-Revision 1.5  2004/08/22 22:07:48  rasc
-- Fix: nit.h got lost in Makefile
-  ifdefs for special DVB-API parameters 
-
-Revision 1.4  2004/04/01 23:02:10  rasc
-clear structures in cases these are not completly filled...
-
-Revision 1.3  2004/03/27 22:34:03  rasc
-- frontend info  current parameters
-
-Revision 1.2  2004/03/21 18:02:45  rasc
-corrections
-
-Revision 1.1  2004/03/21 13:20:07  rasc
-more -feinfo, some restructs on FE code
-
-
 
 */
 
@@ -64,10 +27,6 @@ more -feinfo, some restructs on FE code
 
 #include "dmx_error.h"
 #include "dvb_api.h"
-
-
-
-
 
 
 /*

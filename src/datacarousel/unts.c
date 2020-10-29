@@ -1,5 +1,5 @@
 /*
-$Id: unts.c,v 1.7 2006/01/02 18:23:47 rasc Exp $
+$Id: unts.c,v 1.8 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -13,42 +13,7 @@ $Id: unts.c,v 1.7 2006/01/02 18:23:47 rasc Exp $
  -- UNT Section  (Update Notification Table)
  -- DSM-CC Data Carousel  ETSI TS 102 006
 
-
-
-$Log: unts.c,v $
-Revision 1.7  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.6  2004/10/17 22:20:35  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.5  2004/02/12 21:21:19  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.4  2004/01/01 20:09:16  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.3  2003/12/27 14:35:00  rasc
-dvb-t descriptors
-DSM-CC: SSU Linkage/DataBroadcast descriptors
-
-Revision 1.2  2003/12/27 00:21:16  rasc
-dsmcc section tables
-
-Revision 1.1  2003/12/26 23:27:39  rasc
-DSM-CC  UNT section
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "unts.h"
@@ -56,11 +21,6 @@ DSM-CC  UNT section
 #include "strings/dvb_str.h"
 #include "strings/dsmcc_str.h"
 #include "misc/output.h"
-
-
-
-
-
 
 void section_DSMCC_UNT (u_char *b, int len)
 {

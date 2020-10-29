@@ -1,5 +1,5 @@
 /*
-$Id: pmt.c,v 1.13 2006/01/02 18:24:24 rasc Exp $
+$Id: pmt.c,v 1.14 2009/11/22 15:36:27 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,63 +12,7 @@ $Id: pmt.c,v 1.13 2006/01/02 18:24:24 rasc Exp $
 
  -- PMT section  (Transport Stream Program Map Section)
 
-
-
-$Log: pmt.c,v $
-Revision 1.13  2006/01/02 18:24:24  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.12  2004/10/17 22:20:36  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.11  2004/04/19 22:09:33  rasc
-minor change
-
-Revision 1.10  2004/04/15 22:29:22  rasc
-PMT: some brainded section check
-TS: filter single pids from multi-pid ts-input-file
-minor enhancements
-
-Revision 1.9  2004/03/31 21:14:23  rasc
-New: Spider section pids  (snoop referenced section pids),
-some minor changes
-
-Revision 1.8  2004/02/12 21:21:21  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.7  2004/02/07 01:28:04  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-Revision 1.6  2004/01/02 16:40:39  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.5  2004/01/01 20:09:31  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.4  2003/10/24 22:17:21  rasc
-code reorg...
-
-Revision 1.3  2002/08/17 20:36:12  obi
-no more compiler warnings
-
-Revision 1.2  2001/10/06 18:19:18  Toerli
-Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "pmt.h"
@@ -76,9 +20,7 @@ dvbsnoop v0.7  -- Commit to CVS
 #include "strings/dvb_str.h"
 #include "misc/output.h"
 #include "misc/pid_mem.h"
-
-
-
+#include "misc/program_mem.h"
 
 void section_PMT (u_char *b, int len)
 {
@@ -124,6 +66,7 @@ void section_PMT (u_char *b, int len)
  PMT        p;
  PMT_LIST2  p2;
  int        len1,len2;
+ TS_PROGRAM* program;
 
 
  
@@ -191,6 +134,8 @@ void section_PMT (u_char *b, int len)
  indent (-1);
  out_NL (3);
 
+ // $$$ TODO reset program with real PID instead of 0
+ program = reset_ProgramMem(0, p.program_number);
 
  out_nl (3,"Stream_type loop: ");
  indent (+1);
@@ -201,6 +146,9 @@ void section_PMT (u_char *b, int len)
    p2.elementary_PID		 = getBits (b, 0, 11, 13);
    p2.reserved_2		 = getBits (b, 0, 24,  4);
    p2.ES_info_length		 = getBits (b, 0, 28, 12);
+
+   // store stream type here for proper PES analyzer
+   store_StreamToMem(program, p2.elementary_PID, p2.stream_type);
 
    if (*dvbstrStream_TYPE_SHORT (p2.stream_type) == 'S') {	// SECTION?
    	store_PidToMem (p2.elementary_PID);			// $$$ TODO maybe PES-Spider too?

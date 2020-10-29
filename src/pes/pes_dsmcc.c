@@ -1,5 +1,5 @@
 /*
-$Id: pes_dsmcc.c,v 1.13 2007/02/08 19:17:41 rasc Exp $
+$Id: pes_dsmcc.c,v 1.14 2009/11/22 15:36:13 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,58 +12,6 @@ $Id: pes_dsmcc.c,v 1.13 2007/02/08 19:17:41 rasc Exp $
 
 
  -- PES  DSM-CC   ITU H.222.0  Annex B
-
-
-
-$Log: pes_dsmcc.c,v $
-Revision 1.13  2007/02/08 19:17:41  rasc
-Bugfix on PS Program Stream Map  - tnx to "jack" for reporting
-
-Revision 1.12  2006/01/02 18:24:12  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.11  2005/11/10 00:05:45  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-Revision 1.10  2004/02/20 22:18:41  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.9  2004/01/17 23:06:10  rasc
-minor stuff, some restructs in output
-
-Revision 1.8  2004/01/11 21:01:32  rasc
-PES stream directory, PES restructured
-
-Revision 1.7  2004/01/02 22:25:39  rasc
-DSM-CC  MODULEs descriptors complete
-
-Revision 1.6  2004/01/02 16:40:38  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.5  2004/01/01 20:09:29  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.4  2003/12/27 22:02:44  rasc
-dsmcc INT UNT descriptors started
-
-Revision 1.3  2003/12/27 18:17:18  rasc
-dsmcc PES dsmcc_program_stream_descriptorlist
-
-Revision 1.2  2003/12/27 14:35:01  rasc
-dvb-t descriptors
-DSM-CC: SSU Linkage/DataBroadcast descriptors
-
-Revision 1.1  2003/12/17 23:15:04  rasc
-PES DSM-CC  ack and control commands  according ITU H.222.0 Annex B
-
-
 
 */
 

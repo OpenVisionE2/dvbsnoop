@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_ddb.c,v 1.4 2006/03/06 20:32:35 rasc Exp $
+$Id: dsmcc_ddb.c,v 1.5 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -10,27 +10,6 @@ $Id: dsmcc_ddb.c,v 1.4 2006/03/06 20:32:35 rasc Exp $
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
  -- dsmcc download Data Block Message
-
-
-
-$Log: dsmcc_ddb.c,v $
-Revision 1.4  2006/03/06 20:32:35  rasc
-DSM-CC Carousel, lots of Bugfixes, BIOP::Message not yet decodable (ddb has to collect Modules)
-
-Revision 1.3  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.2  2004/02/15 18:58:27  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.1  2004/02/15 01:02:10  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-
-
-
 
 */
 

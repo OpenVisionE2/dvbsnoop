@@ -1,5 +1,5 @@
 /*
-$Id: tslayer.c,v 1.28 2006/07/19 22:49:24 rasc Exp $
+$Id: tslayer.c,v 1.29 2009/11/22 15:36:34 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,111 +12,6 @@ $Id: tslayer.c,v 1.28 2006/07/19 22:49:24 rasc Exp $
 
 
  -- Transport Stream Decode/Table section
-
-   
-
-
-$Log: tslayer.c,v $
-Revision 1.28  2006/07/19 22:49:24  rasc
-no message
-
-Revision 1.27  2006/07/19 20:05:46  rasc
-Special handling for null packets
-
-Revision 1.26  2006/02/12 23:17:13  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-Revision 1.25  2006/01/02 18:24:34  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.24  2005/10/20 22:25:31  rasc
- - Bugfix: tssubdecode check for PUSI and SI pointer offset
-   still losing packets, when multiple sections in one TS packet.
- - Changed: some Code rewrite
- - Changed: obsolete option -nosync, do always packet sync
-
-Revision 1.23  2005/09/09 14:20:31  rasc
-TS continuity sequence check (cc verbose output)
-
-Revision 1.22  2005/09/02 14:11:36  rasc
-TS code redesign, xPCR and DTS timestamps decoding
-
-Revision 1.21  2005/08/02 22:57:47  rasc
-Option -N, rewrite offline filters (TS & Section)
-
-Revision 1.20  2004/10/12 20:37:48  rasc
- - Changed: TS pid filtering from file, behavior changed
- - New: new cmdline option -maxdmx <n>  (replaces -f using pidscan)
- - misc. changes
-
-Revision 1.19  2004/04/15 22:29:23  rasc
-PMT: some brainded section check
-TS: filter single pids from multi-pid ts-input-file
-minor enhancements
-
-Revision 1.18  2004/04/15 03:38:51  rasc
-new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
-checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
-
-Revision 1.17  2004/04/05 17:32:14  rasc
-mass typo fix adaption --> adaptation
-
-Revision 1.16  2004/01/06 20:06:36  rasc
-revert a change for -s signal + small adaptions
-(frontend.h uses enums instead of #defines, so committ didn't work...)
-
-Revision 1.15  2004/01/06 14:06:11  rasc
-no message
-
-Revision 1.14  2004/01/06 03:13:26  rasc
-TS prints PES/Section ID on payload_start
-
-Revision 1.13  2004/01/02 16:40:44  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.12  2004/01/02 02:45:33  rasc
-no message
-
-Revision 1.11  2004/01/02 00:00:42  rasc
-error output for buffer overflow
-
-Revision 1.10  2004/01/01 20:09:43  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.9  2003/12/17 23:21:35  rasc
-PES DSM-CC  ack and control commands  according ITU H.222.0 Annex B
-
-Revision 1.8  2003/12/17 23:15:06  rasc
-PES DSM-CC  ack and control commands  according ITU H.222.0 Annex B
-
-Revision 1.7  2003/12/07 23:36:13  rasc
-pidscan on transponder
-- experimental(!)
-
-Revision 1.6  2003/11/26 16:27:48  rasc
-- mpeg4 descriptors
-- simplified bit decoding and output function
-
-Revision 1.5  2003/11/24 23:52:18  rasc
--sync option, some TS and PES stuff;
-dsm_addr inactive, may be wrong - due to missing ISO 13818-6
-
-Revision 1.4  2003/10/24 22:17:24  rasc
-code reorg...
-
-Revision 1.3  2002/08/17 20:36:12  obi
-no more compiler warnings
-
-Revision 1.2  2001/10/06 18:19:18  Toerli
-Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
 
 */
 
@@ -153,13 +48,13 @@ void processTS_packet (u_int pid, long pkt_nr, u_char *b, int len)
        // -- subdecode prev. collected TS data
        // -- push new data
        if (opt->printdecode && opt->ts_subdecode) {
-	       ts2SecPes_subdecode (b, len, pid);
+	       ts2SecPes_subdecode (b, len, pkt_nr, pid);
        }
 
 
        // -- new packet, output header
        indent (0);
-       print_packet_header (opt, "TS", opt->pid, pkt_nr, len);
+       print_packet_header (opt, "TS", pid, pkt_nr, len);
 
 
        // hex output (also on wrong packets)
@@ -176,7 +71,7 @@ void processTS_packet (u_int pid, long pkt_nr, u_char *b, int len)
           out_NL (3);
           if (opt->ts_subdecode) {
              // -- check if stored packet(s) length is sufficient for output
-	     ts2SecPes_checkAndDo_PacketSubdecode_Output();
+	     ts2SecPes_checkAndDo_PacketSubdecode_Output(pid);
           }
 
        }

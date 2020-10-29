@@ -1,5 +1,5 @@
 /*
-$Id: tva_rnt_descriptor.h,v 1.2 2006/01/02 18:23:58 rasc Exp $ 
+$Id: tva_rnt_descriptor.h,v 1.3 2009/11/22 15:36:06 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -12,18 +12,6 @@ $Id: tva_rnt_descriptor.h,v 1.2 2006/01/02 18:23:58 rasc Exp $
 
  -- Private TAG Space  TS 102 323  TV-Anytime 
  -- RNT Descriptors
-
-
-
-$Log: tva_rnt_descriptor.h,v $
-Revision 1.2  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/08/06 22:21:38  rasc
-New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
-
-
-
 
 */
 

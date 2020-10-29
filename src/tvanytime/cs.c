@@ -1,5 +1,5 @@
 /*
-$Id: cs.c,v 1.2 2006/01/02 18:24:46 rasc Exp $
+$Id: cs.c,v 1.3 2009/11/22 15:36:34 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -13,22 +13,7 @@ $Id: cs.c,v 1.2 2006/01/02 18:24:46 rasc Exp $
  --  Container section (CS)
  --  TS 102 323
 
-
-
-$Log: cs.c,v $
-Revision 1.2  2006/01/02 18:24:46  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2005/07/18 21:13:05  rasc
-TVA Content Section
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "cs.h"
@@ -36,10 +21,6 @@ TVA Content Section
 #include "descriptors/descriptor.h"
 #include "strings/dvb_str.h"
 #include "misc/output.h"
-
-
-
-
 
 void section_TVA_CS (u_char *b, int len)
 {

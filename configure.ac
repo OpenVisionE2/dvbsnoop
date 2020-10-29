@@ -1,8 +1,17 @@
-AC_INIT([dvbsnoop],[1.4.55],[persianpros@yahoo.com])
+AC_INIT([dvbsnoop],[1.4.56],[info@openvision.tech])
 AM_INIT_AUTOMAKE([dist-bzip2 no-define])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 
 AC_PROG_CC
 AC_PROG_RANLIB
+
+AC_ARG_WITH(dvbincludes,
+	[  --with-dvbincludes=PATH  path for dvb includes [[NONE]]],
+	[DVBINCLUDES="$withval"],[DVBINCLUDES=""])
+
+if test "$DVBINCLUDES"; then
+	CPPFLAGS="$CPPFLAGS -I$DVBINCLUDES"
+fi
 
 AC_CHECK_HEADER([linux/dvb/dmx.h])
 AC_CHECK_HEADER([ost/dmx.h])
@@ -18,6 +27,7 @@ fi
 AC_OUTPUT([
 Makefile
 src/Makefile
+src/bitdata/Makefile
 src/datacarousel/Makefile
 src/descriptors/Makefile
 src/dvb_api/Makefile
@@ -26,15 +36,16 @@ src/misc/Makefile
 src/pes/Makefile
 src/sections/Makefile
 src/strings/Makefile
+src/strings/identifiers/Makefile
 src/testdata/Makefile
 src/ts/Makefile
 src/tvanytime/Makefile
 src/private/Makefile
 src/private/default/Makefile
-src/private/premiere.de/Makefile
 src/private/bskyb.uk/Makefile
 src/private/eicta.org/Makefile
 src/private/nordig.org/Makefile
+src/private/premiere.de/Makefile
 src/net_ip/Makefile
 ])
 

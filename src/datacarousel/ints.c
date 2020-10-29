@@ -1,5 +1,5 @@
 /*
-$Id: ints.c,v 1.15 2006/01/02 18:23:47 rasc Exp $
+$Id: ints.c,v 1.16 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,44 +14,7 @@ $Id: ints.c,v 1.15 2006/01/02 18:23:47 rasc Exp $
  --  IP/MAC Notification Section
  --  DSM-CC Data Carousel  EN 301 192 
 
-
-
-$Log: ints.c,v $
-Revision 1.15  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.14  2004/10/17 22:20:35  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.13  2004/02/12 21:21:19  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.12  2004/01/01 20:09:16  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.11  2003/12/27 14:35:00  rasc
-dvb-t descriptors
-DSM-CC: SSU Linkage/DataBroadcast descriptors
-
-Revision 1.10  2003/12/26 23:27:39  rasc
-DSM-CC  UNT section
-
-Revision 1.9  2003/11/26 23:54:46  rasc
--- bugfixes on Linkage descriptor
-
-Revision 1.8  2003/10/29 20:54:56  rasc
-more PES stuff, DSM descriptors, testdata
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "ints.h"
@@ -60,10 +23,6 @@ more PES stuff, DSM descriptors, testdata
 #include "strings/dvb_str.h"
 #include "strings/dsmcc_str.h"
 #include "misc/output.h"
-
-
-
-
 
 void section_DSMCC_INT (u_char *b, int len)
 {

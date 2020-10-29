@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_str.c,v 1.38 2006/03/06 20:25:38 rasc Exp $
+$Id: dsmcc_str.c,v 1.40 2009/11/22 15:36:31 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,161 +12,11 @@ $Id: dsmcc_str.c,v 1.38 2006/03/06 20:25:38 rasc Exp $
 
  -- DSM-CC -Strings
 
-
-
-$Log: dsmcc_str.c,v $
-Revision 1.38  2006/03/06 20:25:38  rasc
-DSM-CC Carousell, lots of Bugfixes, BIOP::Message not yet decodable (ddb has to collect Modules)
-
-Revision 1.37  2006/03/06 01:14:50  rasc
-Bugfixes... DSMCC BIOPs...
-
-Revision 1.36  2006/03/06 00:05:03  rasc
-More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
-BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
-this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
-Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
-
-Revision 1.35  2006/01/02 18:24:32  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.34  2004/07/25 20:12:59  rasc
- - New: content_identifier_descriptor (TS 102 323)
- - New: TVA_id_descriptor (TS 102 323)
- - New: related_content_descriptor (TS 102 323)
- - New: default_authority_descriptor (TS 102 323)
-
-Revision 1.33  2004/07/24 11:44:45  rasc
-EN 301 192 update
- - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
- - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
- - New: Section MPE_FEC  EN 301 192 v1.4
- - Bugfixes
-
-Revision 1.32  2004/02/24 23:03:07  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-Revision 1.31  2004/02/20 23:13:17  rasc
-BIOP:  TapUse
-
-Revision 1.30  2004/02/20 22:18:42  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.29  2004/02/15 20:46:10  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.28  2004/02/15 18:58:30  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.27  2004/02/15 01:01:04  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-Revision 1.26  2004/02/14 01:24:45  rasc
-DSM-CC started  (DSI/DII, DDB)
-
-Revision 1.25  2004/02/12 21:21:22  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.24  2004/02/07 01:28:07  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-Revision 1.23  2004/01/25 21:37:28  rasc
-bugfixes, minor changes & enhancments
-
-Revision 1.22  2004/01/17 23:06:10  rasc
-minor stuff, some restructs in output
-
-Revision 1.21  2004/01/15 21:27:22  rasc
-DSM-CC stream descriptors
-
-Revision 1.20  2004/01/12 22:49:53  rasc
-get rid of stream descriptor module
-
-Revision 1.19  2004/01/11 21:01:33  rasc
-PES stream directory, PES restructured
-
-Revision 1.18  2004/01/05 02:12:20  rasc
-no message
-
-Revision 1.17  2004/01/02 22:25:39  rasc
-DSM-CC  MODULEs descriptors complete
-
-Revision 1.16  2004/01/02 16:40:43  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.15  2004/01/02 02:18:34  rasc
-more DSM-CC  INT/UNT descriptors
-
-Revision 1.14  2004/01/01 20:09:40  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.13  2003/12/29 22:14:54  rasc
-more dsm-cc INT UNT descriptors
-
-Revision 1.12  2003/12/28 22:53:41  rasc
-some minor changes/cleanup
-
-Revision 1.11  2003/12/27 22:02:44  rasc
-dsmcc INT UNT descriptors started
-
-Revision 1.10  2003/12/27 18:17:18  rasc
-dsmcc PES dsmcc_program_stream_descriptorlist
-
-Revision 1.9  2003/12/26 23:27:40  rasc
-DSM-CC  UNT section
-
-Revision 1.8  2003/12/17 23:15:05  rasc
-PES DSM-CC  ack and control commands  according ITU H.222.0 Annex B
-
-Revision 1.7  2003/11/29 23:11:43  rasc
-no message
-
-Revision 1.6  2003/11/26 23:54:49  rasc
--- bugfixes on Linkage descriptor
-
-Revision 1.5  2003/11/01 21:40:27  rasc
-some broadcast/linkage descriptor stuff
-
-Revision 1.4  2003/10/29 20:54:57  rasc
-more PES stuff, DSM descriptors, testdata
-
-Revision 1.3  2003/10/26 21:36:20  rasc
-private DSM-CC descriptor Tags started,
-INT-Section completed..
-
-Revision 1.2  2003/10/25 19:11:50  rasc
-no message
-
-Revision 1.1  2003/10/16 19:02:28  rasc
-some updates to dvbsnoop...
-- small bugfixes
-- tables updates from ETR 162
-
-
 */
-
-
 
 #include "dvbsnoop.h"
 #include "dsmcc_str.h"
 #include "strtable_misc.h"
-
-
-
-
 
 /*
   -- DSM-CC CAROUSEL Descriptors
@@ -275,9 +125,7 @@ char *dsmccStrMHP_AIT_DescriptorTAG (u_int i)
      {  0x15, 0x15,  "Simple application location descriptor" },
      {  0x11, 0x5E,  "reserved to MHP" },
      {  0x5F, 0x5F,  "private data specifier descriptor" },
-     {  0x60, 0x7F,  "reserved to MHP" },
-     {  0x80, 0xFF,  "user defined" },
-     {  0,0, NULL }
+#include "identifiers/mhpAITDescriptors.h"
   };
 
   return findTableID (Table, i);
@@ -299,38 +147,7 @@ char *dsmccStrMHPOrg (u_int id)
 {
   STR_TABLE  TableIDs[] = {
 	// --{ MHP Organisation ID, MHP Organisation ID,   "Organisation Supplying MHP Applications" },
-	{ 0x0000, 0x0000,   "Reserved" },
-	{ 0x0001, 0x0001,   "MTV Oy" },
-	{ 0x0002, 0x0002,   "Digita Oy" },
-	{ 0x0003, 0x0003,   "NRK" },
-	{ 0x0004, 0x0004,   "Premiere Medien GmbH & Co KG" },
-	{ 0x0005, 0x0005,   "Platco Oy" },
-	{ 0x0006, 0x0006,   "NOB" },
-	{ 0x0007, 0x0007,   "Sofia Digital Oy" },
-	{ 0x0008, 0x0008,   "YLE (Finnish Broadcasting Company)" },
-	{ 0x0009, 0x0009,   "IRT (Institut fur Rundfunktechnik GmbH)" },
-	{ 0x000A, 0x000A,   "Cardinal Information Systems Ltd" },
-	{ 0x000B, 0x000B,   "Mediaset s.p.a." },
-	{ 0x000C, 0x000C,   "Ortikon Interactive Oy" },
-	{ 0x000D, 0x000D,   "Austrian Broadcastion Corporation (ORF)" },
-	{ 0x000E, 0x000E,   "Strategy & Technology Ltd" },
-	{ 0x000F, 0x000F,   "Canal+ Technologies" },
-	{ 0x0010, 0x0010,   "TV2Nord Digital" },
-	{ 0x0011, 0x0011,   "Zweites Deutsches Fernsehen - ZDF" },
-	{ 0x0012, 0x0012,   "SCIP AG" },
-	{ 0x0013, 0x0013,   "ARD" },
-	{ 0x0014, 0x0014,   "Sveng.com" },
-	{ 0x0015, 0x0015,   "UniSoft Corporation" },
-	{ 0x0016, 0x0016,   "Microsoft Corp" },
-	{ 0x0017, 0x0017,   "Nokia" },
-	{ 0x0018, 0x0018,   "SWelcom Oy" },
-	{ 0x0019, 0x0019,   "Fraunhofer Institut Medienkommunikation - IMK" },
-	{ 0x001A, 0x001A,   "RTL NewMedia GmbH" },
-	{ 0x001B, 0x001B,   "Fraunhofer FOKUS" },
-	{ 0x001C, 0x001C,   "TwonkyVision GmbH" },
-	{ 0x001D, 0x001D,   "Gist Communications" },
-	{ 0x001E, 0x001E,   "Televisio de Catalunya SA" },
-     {  0,0, NULL }
+	#include "identifiers/mhpOrganisationID.h"
   };
 
 
@@ -898,11 +715,7 @@ char *dsmccStr_LLC_SNAP_prot (u_int id)
 char *dsmccStrMHP_application_type (u_int id)
 {
   STR_TABLE  TableIDs[] = {
-	{ 0x0000, 0x0000,   "reserved" },
-	{ 0x0001, 0x0001,   "DVB-J application" },
-	{ 0x0002, 0x0002,   "DVB-HTML application" },
-	{ 0x0003, 0x7FFF,   "subject to registration with DVB" },  // $$$ TODO ??
-      	{  0,0, NULL }
+	#include "identifiers/mhpApplicationTypeID.h"
   };
 
   return findTableID (TableIDs, id);
@@ -912,7 +725,7 @@ char *dsmccStrMHP_application_type (u_int id)
 
 
 /*
-  -- MHP application type
+  -- MHP application id
 */
 
 char *dsmccStrMHP_application_id (u_int id)
@@ -984,13 +797,7 @@ char *dsmccStrMHP_visibility_state (u_int id)
 char *dsmccStrMHP_protocol_id (u_int id)
 {
   STR_TABLE  TableIDs[] = {
-	{ 0x0000, 0x0000,   "reserved" },
-	{ 0x0001, 0x0001,   "MHP Object Carousel" },
-	{ 0x0002, 0x0002,   "IP via DVB multiprotocol encapsulation" },
-	{ 0x0003, 0x0003,   "Transport via HTTP over the interaction channel" },
-	{ 0x0004, 0x00FF,   "Reserved for use by DVB" },
-	{ 0x0100, 0xFFFF,   "Subject to registration in ETSI TR 101 162" },
-      	{  0,0, NULL }
+	#include "identifiers/mhpProtocolID.h"
   };
 
   return findTableID (TableIDs, id);

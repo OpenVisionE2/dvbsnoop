@@ -1,5 +1,5 @@
 /*
-$Id: wss.c,v 1.2 2006/01/02 18:24:03 rasc Exp $
+$Id: wss.c,v 1.3 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
 
@@ -14,19 +14,6 @@ $Id: wss.c,v 1.2 2006/01/02 18:24:03 rasc Exp $
 
  -- misc routines for EBU WSS (Wide Screen Signalling)
  -- ETSI EN 300 294  
-
-
-
-
-$Log: wss.c,v $
-Revision 1.2  2006/01/02 18:24:03  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/03/10 21:05:53  rasc
-WSS (Wide Screen Signalling)  data decoding
-
-
-
 
 */
 

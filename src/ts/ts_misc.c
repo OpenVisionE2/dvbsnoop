@@ -1,5 +1,5 @@
 /*
-$Id: ts_misc.c,v 1.2 2006/07/19 20:05:46 rasc Exp $
+$Id: ts_misc.c,v 1.3 2009/11/22 15:36:34 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,18 +12,6 @@ $Id: ts_misc.c,v 1.2 2006/07/19 20:05:46 rasc Exp $
 
 
  -- Transport Stream misc routines
-
-   
-
-
-$Log: ts_misc.c,v $
-Revision 1.2  2006/07/19 20:05:46  rasc
-Special handling for null packets
-
-Revision 1.1  2006/02/12 23:17:13  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-
 
 */
 

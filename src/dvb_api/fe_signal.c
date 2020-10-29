@@ -1,5 +1,5 @@
 /*
-$Id: fe_signal.c,v 1.17 2006/01/02 18:23:59 rasc Exp $
+$Id: fe_signal.c,v 1.18 2009/11/22 15:36:07 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,66 +12,6 @@ $Id: fe_signal.c,v 1.17 2006/01/02 18:23:59 rasc Exp $
 
  -- Signal Statistics  Current Frequency/Transponder
  --  DVB-API 
-
-
-
-
-$Log: fe_signal.c,v $
-Revision 1.17  2006/01/02 18:23:59  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.16  2005/09/18 12:23:23  rasc
-no message
-
-Revision 1.15  2005/09/13 18:41:15  rasc
-... revert cygwin stuff
-
-Revision 1.14  2005/09/06 23:13:51  rasc
-catch OS signals (kill ...) for smooth program termination
-
-Revision 1.13  2005/08/13 00:06:56  rasc
-no message
-
-Revision 1.12  2004/10/12 20:37:47  rasc
- - Changed: TS pid filtering from file, behavior changed
- - New: new cmdline option -maxdmx <n>  (replaces -f using pidscan)
- - misc. changes
-
-Revision 1.11  2004/04/05 17:32:13  rasc
-mass typo fix adaption --> adaptation
-
-Revision 1.10  2004/03/21 13:20:07  rasc
-more -feinfo, some restructs on FE code
-
-Revision 1.9  2004/03/21 00:37:47  rasc
-Query FrontEnd Info  (option: -s feinfo)
-
-Revision 1.8  2004/03/06 22:33:11  rasc
-no message
-
-Revision 1.7  2004/02/28 12:13:03  rasc
-minor stuff
-
-Revision 1.6  2004/01/06 20:35:14  rasc
-no message
-
-Revision 1.5  2004/01/06 20:06:36  rasc
-revert a change for -s signal + small adaptations
-(frontend.h uses enums instead of #defines, so commit didn't work...)
-
-Revision 1.4  2004/01/05 02:03:42  rasc
-no message
-
-Revision 1.3  2004/01/04 22:03:21  rasc
-time for a version leap
-
-Revision 1.2  2004/01/03 16:40:12  rasc
-no message
-
-Revision 1.1  2004/01/03 15:40:45  rasc
-simple frontend signal status query added "-s signal"
-
-
 
 */
 
@@ -93,13 +33,6 @@ simple frontend signal status query added "-s signal"
 
 #include "dmx_error.h"
 #include "dvb_api.h"
-
-
-
-
-
-
-
 
 
 int  do_SignalStrength (OPTION *opt)

@@ -2,11 +2,25 @@
 dvbsnoop   - an open source DVB/MPEG stream analyzer [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 ====================================================
 
+This is a branch of dvbsnoop with H.264 support
+
+Installation:
+=============
+
+  You can compile this branch with CMAKE http://www.cmake.org
+
+  From the source root path execute the following commands:
+
+* mkdir build
+* cd build
+* cmake ..
+* make
+
+Please find original README below.
 
 https://github.com/OpenVisionE2/dvbsnoop
+
 https://github.com/OpenMipsel/tuxbox-cvs
-
-
 
 dvbsnoop is a DVB/MPEG stream analyzer program.
 The program can be used to sniff, monitor, debug, dump
@@ -149,7 +163,7 @@ Bugs, requests:
   Well, if you find some bugs, please let me know.
   (check first, if the data stream is not broken).
 
-  Reoport bugs to: http://sourceforge.net/tracker/?group_id=85040
+  Reoport bugs to: https://github.com/OpenVisionE2/openvision-development-platform/issues
 
   Please do not send binary data stream files or large 
   decoding output via email! (If needed, I will ask for it!)
@@ -320,3 +334,5 @@ A: "automake" creates "Makefile.in" from "Makefile.am". You can call
    "./autogen.sh", which will call "automake" for you. If you call
    "automake" manually, then make sure your working directory contains
    "configure.ac".
+
+

@@ -1,5 +1,5 @@
 /*
-$Id: mpeg_packheader.c,v 1.2 2005/12/27 23:30:29 rasc Exp $
+$Id: mpeg_packheader.c,v 1.3 2009/11/22 15:36:13 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -8,21 +8,6 @@ $Id: mpeg_packheader.c,v 1.2 2005/12/27 23:30:29 rasc Exp $
  https://github.com/OpenVisionE2/dvbsnoop
 
  (c) 2001-2006   Rainer.Scherg@gmx.de  (rasc)
-
-
-
-
-
-$Log: mpeg_packheader.c,v $
-Revision 1.2  2005/12/27 23:30:29  rasc
-PS MPEG-2 Extension data packets, MPEG-2 decoding
-
-Revision 1.1  2005/11/10 00:07:18  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-
-
-
 
 */
 

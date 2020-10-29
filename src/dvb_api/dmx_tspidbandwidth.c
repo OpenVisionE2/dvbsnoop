@@ -1,5 +1,5 @@
 /*
-$Id: dmx_tspidbandwidth.c,v 1.13 2006/01/02 18:23:59 rasc Exp $
+$Id: dmx_tspidbandwidth.c,v 1.14 2009/11/22 15:36:07 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -8,64 +8,7 @@ $Id: dmx_tspidbandwidth.c,v 1.13 2006/01/02 18:23:59 rasc Exp $
 
  (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
 
-
-
-
-$Log: dmx_tspidbandwidth.c,v $
-Revision 1.13  2006/01/02 18:23:59  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.12  2005/09/06 23:13:51  rasc
-catch OS signals (kill ...) for smooth program termination
-
-Revision 1.11  2005/05/08 23:23:06  rasc
-display bandwidth average at end of poll
-
-Revision 1.10  2005/04/09 10:59:00  rasc
-bandwidth for transponder pid 0x2000  (untested)
-(-s bandwidth  -tsraw)
-
-Revision 1.9  2004/12/07 22:25:10  rasc
- - New: bad ts packet counter  on -s bandwidth (tnx to W.J. Beksi, setabox for basic patch)
-
-Revision 1.8  2004/10/12 20:37:47  rasc
- - Changed: TS pid filtering from file, behavior changed
- - New: new cmdline option -maxdmx <n>  (replaces -f using pidscan)
- - misc. changes
-
-Revision 1.7  2004/09/01 20:20:34  rasc
-new cmdline option: -buffersize KB  (set demux buffersize in KBytes)
-
-Revision 1.6  2004/01/11 21:01:31  rasc
-PES stream directory, PES restructured
-
-Revision 1.5  2004/01/02 00:00:37  rasc
-error output for buffer overflow
-
-Revision 1.4  2004/01/01 20:09:23  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.3  2003/12/20 05:44:20  obi
-- use more exact division,
-- use unsigned long long for calculations because of overflows on high bandwidth pids,
-- display kbit/s instead of kb/s to avoid confusion
-
-Revision 1.2  2003/12/15 20:09:48  rasc
-no message
-
-Revision 1.1  2003/12/14 23:42:00  rasc
-new: bandwidth usage reporting for a PID
-
-
-
 */
-
-
-
-
 
 
 #include <fcntl.h>
@@ -73,8 +16,6 @@ new: bandwidth usage reporting for a PID
 #include <sys/poll.h>
 #include <sys/time.h>
 #include <unistd.h>
-
-
 
 #include "dvbsnoop.h"
 #include "misc/cmdline.h"

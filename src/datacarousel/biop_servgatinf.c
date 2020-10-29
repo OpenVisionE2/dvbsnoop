@@ -1,5 +1,5 @@
 /*
-$Id: biop_servgatinf.c,v 1.3 2006/03/06 00:04:49 rasc Exp $
+$Id: biop_servgatinf.c,v 1.4 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,32 +12,7 @@ $Id: biop_servgatinf.c,v 1.3 2006/03/06 00:04:49 rasc Exp $
  -- dsmcc  BIOP::ServiceGatewayInfo()
  -- TR 101 202 v1.2.1  4.7.5.2
 
-
-
-
-$Log: biop_servgatinf.c,v $
-Revision 1.3  2006/03/06 00:04:49  rasc
-More DSM-CC stuff: BIOP::FileMessage, BIOP::DirectoryMessage,
-BIOP::Stream::BIOP::StreamEvent, BIOP::ServiceGateway, DSM-TAPs, etc.
-this is a preparation for a patch sent in by Richard Case (DSMCC-Save).
-Attention: Code is still untested and may considered to be buggy (some teststreams are needed)...
-
-Revision 1.2  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/02/24 23:03:04  rasc
-private data of DSMCC::DSI
-BIOP::ServiceGatewayInformation()
-IOP::IOR()
-
-
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "biop_servgatinf.h"
@@ -51,9 +26,6 @@ IOP::IOR()
 
 #include "strings/dsmcc_str.h"
 #include "strings/dvb_str.h"
-
-
-
 
 /*
  * dsmcc BIOP::ServiceGatewayInfo()

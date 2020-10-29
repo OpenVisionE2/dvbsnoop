@@ -1,5 +1,5 @@
 /*
-$Id: dmx_error.c,v 1.3 2005/12/27 23:30:27 rasc Exp $
+$Id: dmx_error.c,v 1.4 2009/11/22 15:36:07 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -11,21 +11,6 @@ $Id: dmx_error.c,v 1.3 2005/12/27 23:30:27 rasc Exp $
 
 
  -- simple error output for DMX & file I/O
-
-
-
-
-$Log: dmx_error.c,v $
-Revision 1.3  2005/12/27 23:30:27  rasc
-PS MPEG-2 Extension data packets, MPEG-2 decoding
-
-Revision 1.2  2004/01/25 22:36:52  rasc
-minor changes & enhancments
-
-Revision 1.1  2004/01/02 00:00:37  rasc
-error output for buffer overflow
-
-
 
 */
 

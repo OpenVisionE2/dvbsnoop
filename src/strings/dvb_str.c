@@ -1,5 +1,5 @@
 /*
-$Id: dvb_str.c,v 1.76 2006/07/19 20:05:45 rasc Exp $
+$Id: dvb_str.c,v 1.80 2009/11/22 15:36:31 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,284 +14,12 @@ $Id: dvb_str.c,v 1.76 2006/07/19 20:05:45 rasc Exp $
   -- MPEG-Strings
   -- dvb decoder helper functions
 
-
-
-
-
-
-$Log: dvb_str.c,v $
-Revision 1.76  2006/07/19 20:05:45  rasc
-Special handling for null packets
-
-Revision 1.75  2006/02/12 23:17:12  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-Revision 1.74  2005/12/27 23:30:30  rasc
-PS MPEG-2 Extension data packets, MPEG-2 decoding
-
-Revision 1.73  2005/12/22 16:21:51  rasc
-Update and new descriptors EN 300 468 v1.7.1
-
-Revision 1.72  2005/11/23 23:06:10  rasc
-ISO13818-2  MPEG2 sequence header
-
-Revision 1.71  2005/11/10 23:34:38  rasc
-Some H.222.1 AMD 4+5 update
-
-Revision 1.70  2005/11/10 00:05:45  rasc
- - New: PS MPEG2 UserData + GOP, DVB-S2 fix
-
-Revision 1.69  2005/11/08 23:15:26  rasc
- - New: DVB-S2 Descriptor and DVB-S2 changes (tnx to Axel Katzur)
- - Bugfix: PES packet stuffing
- - New:  PS/PES read redesign and some code changes
-
-Revision 1.68  2005/10/23 22:50:27  rasc
- - New:  started ISO 13818-2 StreamIDs
- - New:  decode multiple PS/PES packets within TS packets (-tssubdecode)
-
-Revision 1.67  2005/09/09 14:20:30  rasc
-TS continuity sequence check (cc verbose output)
-
-Revision 1.66  2005/09/02 14:11:36  rasc
-TS code redesign, xPCR and DTS timestamps decoding
-
-Revision 1.65  2005/08/10 21:28:19  rasc
-New: Program Stream handling  (-s ps)
-
-Revision 1.64  2005/07/18 21:11:40  rasc
-TVA Content Section
-
-Revision 1.63  2005/01/17 19:41:24  rasc
-Bugfix: data broadcast descriptor (tnx to Sergio SAGLIOCCO, SecureLAB)
-
-Revision 1.62  2004/09/01 20:20:34  rasc
-new cmdline option: -buffersize KB  (set demux buffersize in KBytes)
-
-Revision 1.61  2004/08/25 21:33:41  rasc
-small fix: Priority wrong in Terr. Sys Delivery descriptor
-
-Revision 1.60  2004/08/25 19:51:09  rasc
- - Update: EN 300 468 v1.6.1 Terrestrial delivery system descriptor
-
-Revision 1.59  2004/08/24 21:30:24  rasc
-more Metadata
-
-Revision 1.58  2004/08/13 11:05:29  rasc
-Metadata_STD_descriptor
-
-Revision 1.57  2004/08/13 01:15:54  rasc
-small change in PID assignment display
-
-Revision 1.56  2004/08/12 22:57:19  rasc
- - New: MPEG Content Labeling descriptor  (H.222.0 AMD1)
- - New: PES update ITU-T H.222.0 AMD2
-H.222.0 AMD3 updates started
-
-Revision 1.55  2004/08/01 21:33:09  rasc
-minor TVA stuff (TS 102 323)
-
-Revision 1.54  2004/07/26 20:58:03  rasc
-RNT completed..  (TS 102 323)
-
-Revision 1.53  2004/07/25 20:12:59  rasc
- - New: content_identifier_descriptor (TS 102 323)
- - New: TVA_id_descriptor (TS 102 323)
- - New: related_content_descriptor (TS 102 323)
- - New: default_authority_descriptor (TS 102 323)
-
-Revision 1.52  2004/07/24 11:44:45  rasc
-EN 301 192 update
- - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
- - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
- - New: Section MPE_FEC  EN 301 192 v1.4
- - Bugfixes
-
-Revision 1.51  2004/04/15 10:53:22  rasc
-minor changes
-
-Revision 1.50  2004/04/05 17:32:13  rasc
-mass typo fix adaption --> adaptation
-
-Revision 1.49  2004/03/31 21:14:23  rasc
-New: Spider section pids  (snoop referenced section pids),
-some minor changes
-
-Revision 1.48  2004/03/21 00:37:47  rasc
-Query FrontEnd Info  (option: -s feinfo)
-
-Revision 1.47  2004/03/10 21:05:53  rasc
-WSS (Wide Screen Signalling)  data decoding
-
-Revision 1.46  2004/03/09 20:59:23  rasc
-VPS decoding (someone check the NPP & PTY code output please...)
-
-Revision 1.45  2004/02/15 18:58:31  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-Revision 1.44  2004/02/12 21:21:22  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.43  2004/02/09 22:57:01  rasc
-Bugfix VBI Data descriptor
-
-Revision 1.42  2004/02/09 21:25:01  rasc
-AIT descriptors
-minor redesign on output routines
-
-Revision 1.41  2004/02/04 22:36:29  rasc
-more EBU/teletext stuff
-
-Revision 1.40  2004/02/02 23:34:11  rasc
-- output indent changed to avoid \r  (which sucks on logged output)
-- EBU PES data started (teletext, vps, wss, ...)
-- bugfix: PES synch. data stream
-- some other stuff
-
-Revision 1.39  2004/01/25 21:37:28  rasc
-bugfixes, minor changes & enhancments
-
-Revision 1.38  2004/01/12 22:49:53  rasc
-get rid of stream descriptor module
-
-Revision 1.37  2004/01/11 22:49:41  rasc
-PES restructured
-
-Revision 1.36  2004/01/06 14:06:10  rasc
-no message
-
-Revision 1.35  2004/01/06 03:13:25  rasc
-TS prints PES/Section ID on payload_start
-
-Revision 1.34  2004/01/05 02:03:42  rasc
-no message
-
-Revision 1.33  2004/01/01 20:09:40  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.32  2003/12/30 14:05:38  rasc
-just some annotations, so I do not forget these over Sylvester party...
-(some alkohol may reformat parts of /devbrain/0 ... )
-cheers!
-
-Revision 1.31  2003/12/28 00:01:15  rasc
-some minor changes/adds...
-
-Revision 1.30  2003/12/27 18:17:18  rasc
-dsmcc PES dsmcc_program_stream_descriptorlist
-
-Revision 1.29  2003/12/27 00:21:17  rasc
-dsmcc section tables
-
-Revision 1.28  2003/11/26 19:55:34  rasc
-no message
-
-Revision 1.27  2003/11/25 00:17:11  rasc
--sync option, some TS and PES stuff;
-dsm_addr inactive, may be wrong - due to missing ISO 13818-6
-
-Revision 1.26  2003/11/24 23:52:18  rasc
--sync option, some TS and PES stuff;
-dsm_addr inactive, may be wrong - due to missing ISO 13818-6
-
-Revision 1.25  2003/11/24 14:16:07  obi
-- corrected transport scrambling control bits according to ETSI ETR 289
-- fixed lots of broken strings
-
-Revision 1.24  2003/11/09 20:48:35  rasc
-pes data packet (DSM-CC)
-
-Revision 1.23  2003/11/07 16:33:32  rasc
-no message
-
-Revision 1.22  2003/11/01 21:40:28  rasc
-some broadcast/linkage descriptor stuff
-
-Revision 1.21  2003/10/29 20:54:57  rasc
-more PES stuff, DSM descriptors, testdata
-
-Revision 1.20  2003/10/27 22:43:50  rasc
-carousel info descriptor and more
-
-Revision 1.19  2003/10/26 23:00:43  rasc
-fix
-
-Revision 1.18  2003/10/25 19:11:50  rasc
-no message
-
-Revision 1.17  2003/10/21 19:54:43  rasc
-no message
-
-Revision 1.16  2003/10/19 22:22:57  rasc
-- some datacarousell stuff started
-
-Revision 1.15  2003/10/19 21:05:53  rasc
-- some datacarousell stuff started
-
-Revision 1.14  2003/10/19 13:54:25  rasc
--more table decoding
-
-Revision 1.13  2003/10/17 19:04:11  rasc
-- started more work on newer ISO 13818  descriptors
-- some reorg/update work started
-
-Revision 1.12  2003/10/17 18:16:54  rasc
-- started more work on newer ISO 13818  descriptors
-- some reorg work started
-
-Revision 1.11  2003/10/16 19:02:28  rasc
-some updates to dvbsnoop...
-- small bugfixes
-- tables updates from ETR 162
-
-Revision 1.10  2003/07/08 19:59:50  rasc
-restructuring... some new, some fixes,
-trying to include DSM-CC, Well someone a ISO13818-6 and latest version of ISO 18313-1 to spare?
-
-Revision 1.9  2003/06/24 23:51:03  rasc
-bugfixes and enhancements
-
-Revision 1.8  2002/08/17 20:36:12  obi
-no more compiler warnings
-
-Revision 1.7  2001/12/07 22:17:20  rasc
-no message
-
-Revision 1.6  2001/12/06 15:33:18  rasc
-some small work on pespacket.c
-
-Revision 1.5  2001/12/01 12:34:17  rasc
-pespacket weitergestrickt, leider z.Zt. zuwenig Zeit um es richtig fertig zu machen.
-
-Revision 1.4  2001/10/06 18:19:18  Toerli
-Steuerzeichen entfernt. rasc wuerdest du mal bitte nen gescheiten unix-konformen Editor verwenden... windows editoren sind ungeeignet
-
-Revision 1.3  2001/10/05 17:43:37  rasc
-typo...
-
-Revision 1.2  2001/10/02 21:52:44  rasc
-- init der time_delta
-- PES erweitert, PES arbeitet im read() noch nicht richtig!!
-- muss tmbinc fragem, ob ich Mist baue, oder der Treiber (??)
-
-Revision 1.1  2001/09/30 13:05:20  rasc
-dvbsnoop v0.7  -- Commit to CVS
-
-
 */
-
 
 
 #include "dvbsnoop.h"
 #include "dvb_str.h"
 #include "strtable_misc.h"
-
-
-
 
 
 /*
@@ -949,58 +677,7 @@ char *dvbstrCASystem_ID (u_int id)
 
 {
   STR_TABLE  Table[] = {
-     // -- updated from dvb.org 2003-10-16
-     {  0x0000, 0x0000,  "Reserved" },
-     {  0x0001, 0x00FF,  "Standardized Systems" },
-     {  0x0100, 0x01FF,  "Canal Plus (Seca/MediaGuard)" },
-     {  0x0200, 0x02FF,  "CCETT" },
-     {  0x0300, 0x03FF,  "MSG MediaServices GmbH" },
-     {  0x0400, 0x04FF,  "Eurodec" },
-     {  0x0500, 0x05FF,  "France Telecom (Viaccess)" },
-     {  0x0600, 0x06FF,  "Irdeto" },
-     {  0x0700, 0x07FF,  "Jerrold/GI/Motorola" },
-     {  0x0800, 0x08FF,  "Matra Communication" },
-     {  0x0900, 0x09FF,  "News Datacom (Videoguard)" },
-     {  0x0A00, 0x0AFF,  "Nokia" },
-     {  0x0B00, 0x0BFF,  "Norwegian Telekom (Conax)" },
-     {  0x0C00, 0x0CFF,  "NTL" },
-     {  0x0D00, 0x0DFF,  "Philips (Cryptoworks)" },
-     {  0x0E00, 0x0EFF,  "Scientific Atlanta (Power VU)" },
-     {  0x0F00, 0x0FFF,  "Sony" },
-     {  0x1000, 0x10FF,  "Tandberg Television" },
-     {  0x1100, 0x11FF,  "Thompson" },
-     {  0x1200, 0x12FF,  "TV/COM" },
-     {  0x1300, 0x13FF,  "HPT - Croatian Post and Telecommunications" },
-     {  0x1400, 0x14FF,  "HRT - Croatian Radio and Television" },
-     {  0x1500, 0x15FF,  "IBM" },
-     {  0x1600, 0x16FF,  "Nera" },
-     {  0x1700, 0x17FF,  "Beta Technik (Betacrypt)" },
-     {  0x1800, 0x18FF,  "Kudelski SA"},
-     {  0x1900, 0x19FF,  "Titan Information Systems"},
-     {  0x2000, 0x20FF,  "Telefónica Servicios Audiovisuales"},
-     {  0x2100, 0x21FF,  "STENTOR (France Telecom, CNES and DGA)"},
-     {  0x2200, 0x22FF,  "Scopus Network Technologies"},
-     {  0x2300, 0x23FF,  "BARCO AS"},
-     {  0x2400, 0x24FF,  "StarGuide Digital Networks  "},
-     {  0x2500, 0x25FF,  "Mentor Data System, Inc."},
-     {  0x2600, 0x26FF,  "European Broadcasting Union"},
-     {  0x4700, 0x47FF,  "General Instrument"},
-     {  0x4800, 0x48FF,  "Telemann"},
-     {  0x4900, 0x49FF,  "Digital TV Industry Alliance of China"},
-     {  0x4A00, 0x4A0F,  "Tsinghua TongFang"},
-     {  0x4A10, 0x4A1F,  "Easycas"},
-     {  0x4A20, 0x4A2F,  "AlphaCrypt"},
-     {  0x4A30, 0x4A3F,  "DVN Holdings"},
-     {  0x4A40, 0x4A4F,  "Shanghai Advanced Digital Technology Co. Ltd. (ADT)"},
-     {  0x4A50, 0x4A5F,  "Shenzhen Kingsky Company (China) Ltd"},
-     {  0x4A60, 0x4A6F,  "@SKY"},
-     {  0x4A70, 0x4A7F,  "DreamCrypt"},
-     {  0x4A80, 0x4A8F,  "THALESCrypt"},
-     {  0x4A90, 0x4A9F,  "Runcom Technologies"},
-     {  0x4AA0, 0x4AAF,  "SIDSA"},
-     {  0x4AB0, 0x4ABF,  "Beijing Compunicate Technology Inc."},
-     {  0x4AC0, 0x4ACF,  "Latens Systems Ltd"},
-     {  0,0, NULL }
+	#include "identifiers/caSystemID.h"
   };
 
   return findTableID (Table, id);
@@ -1016,52 +693,8 @@ char *dvbstrDataBroadcast_ID (u_int flag)
 
 {
   STR_TABLE  Table[] = {
-	  // -- upodated 2003-10-16
 	  // { Data Broadcast ID, Data Broadcast ID,   "Data Broadcast Specification Name" },
-	{ 0x0000, 0x0000,   "Reserved for future use" },
-	{ 0x0001, 0x0001,   "Data pipe" },
-	{ 0x0002, 0x0002,   "Asynchronous data stream" },
-	{ 0x0003, 0x0003,   "Synchronous data stream" },
-	{ 0x0004, 0x0004,   "Synchronised data stream" },
-	{ 0x0005, 0x0005,   "Multi protocol encapsulation" },
-	{ 0x0006, 0x0006,   "Data Carousel" },
-	{ 0x0007, 0x0007,   "Object Carousel" },
-	{ 0x0008, 0x0008,   "DVB ATM streams" },
-	{ 0x0009, 0x0009,   "Higher Protocols based on asynchronous data streams" },
-	{ 0x000A, 0x000A,   "System Software Update" }, // TR 102 006
-
-	{ 0x000B, 0x00ef,   "Reserved for future use by DVB" },
-	{ 0x00F0, 0x00F0,   "MHP Object Carousel" },	//  from registration at www.dvb.org
-	{ 0x00F1, 0x00F1,   "reserved for MHP Multi Protocol Encapsulation" },
-	{ 0x00F2, 0x00Fe,   "Reserved for MHP use" },
-	{ 0x00FF, 0x00FF,   "Reserved for future use by DVB" },
-
-	{ 0x0100, 0x0100,   "Eutelsat Data Piping" },
-	{ 0x0101, 0x0101,   "Eutelsat Data Streaming" },
-	{ 0x0102, 0x0102,   "SAGEM IP encapsulation in MPEG-2 PES packets" },
-	{ 0x0103, 0x0103,   "BARCO Data Broadcasting" },
-	{ 0x0104, 0x0104,   "CyberCity Multiprotocol Encapsulation (New Media Communications Ltd.)" },
-	{ 0x0105, 0x0105,   "CyberSat Multiprotocol Encapsulation (New Media Communications Ltd.)" },
-	{ 0x0106, 0x0106,   "The Digital Network" },
-	{ 0x0107, 0x0107,   "OpenTV Data Carousel" },
-	{ 0x0108, 0x0108,   "Panasonic" },
-	{ 0x0109, 0x0109,   "MSG MediaServices GmbH" },
-	{ 0x010A, 0x010A,   "TechnoTrend" },
-	{ 0x010B, 0x010B,   "Canal + Technologies system software download" },
-	{ 0x0110, 0x0110,   "Televizja Polsat" },
-	{ 0x0111, 0x0111,   "UK DTG" },
-	{ 0x0112, 0x0112,   "SkyMedia" },
-	{ 0x0113, 0x0113,   "Intellibyte DataBroadcasting" },
-	{ 0x0114, 0x0114,   "TeleWeb Data Carousel" },
-	{ 0x0115, 0x0115,   "TeleWeb Object Carousel" },
-	{ 0x0116, 0x0116,   "TeleWeb" },
-	{ 0x4444, 0x4444,   "4TV Data Broadcast" },
-	{ 0x4E4F, 0x4E4F,   "Nokia IP based software delivery" },
-	{ 0xBBB1, 0xBBB1,   "BBG Data Caroussel" },
-	{ 0xBBB2, 0xBBB2,   "BBG Object Caroussel" },
-	{ 0xBBBB, 0xBBBB,   "Bertelsmann Broadband Group" },
-	{ 0xFFFF, 0xFFFF,   "Reserved for future use" },
-     {  0,0, NULL }
+	#include "identifiers/dataBroadcastID.h"
   };
 
   return findTableID (Table, flag);
@@ -1078,174 +711,8 @@ char *dvbstrDataBroadcast_ID (u_int flag)
 char *dvbstrOriginalNetwork_ID (u_int i)
 {
   STR_TABLE  Table[] = {
-	// -- updated 2003-10-16
 	// -- { Original Network ID, Original Network ID,   "Description | Operator" },
-	{ 0x0000, 0x0000,   "Reserved | Reserved" },
-	{ 0x0001, 0x0001,   "Astra Satellite Network 19,2°E | Société Européenne des Satellites" },
-	{ 0x0002, 0x0002,   "Astra Satellite Network 28,2°E | Société Européenne des Satellites" },
-	{ 0x0003, 0x0019,   "Astra | Société Européenne des Satellites" },
-	{ 0x001A, 0x001A,   "Quiero Televisión | Quiero Televisión" },
-	{ 0x001B, 0x001B,   "RAI | RAI" },
-	{ 0x001F, 0x001F,   "Europe Online Networks (EON) | Europe Online Networks S.A" },
-	{ 0x0020, 0x0020,   "ASTRA | Société Européenne des Satellites" },
-	{ 0x0021, 0x0026,   "Hispasat Network | Hispasat S.A." },
-	{ 0x0027, 0x0027,   "Hispasat 30°W | Hispasat FSS" },
-	{ 0x0028, 0x0028,   "Hispasat 30°W | Hispasat DBS" },
-	{ 0x0029, 0x0029,   "Hispasat 30°W | Hispasat America" },
-	{ 0x002E, 0x002E,   "Xantic | Xantic BU Broadband" },
-	{ 0x002F, 0x002F,   "TVNZ Digital | TVNZ" },
-	{ 0x0030, 0x0030,   "Canal+ Satellite Network | Canal+ SA (for Intelsat 601-325°E)" },
-	{ 0x0031, 0x0031,   "Hispasat - VIA DIGITAL | Hispasat S.A." },
-	{ 0x0032, 0x0034,   "Hispasat Network | Hispasat S.A." },
-	{ 0x0035, 0x0035,   "Nethold Main Mux System | NetHold IMS" },
-	{ 0x0036, 0x0036,   "TV Cabo | TV Cabo Portugal" },
-	{ 0x0037, 0x0037,   "STENTOR | France Telecom, CNES and DGA" },
-	{ 0x0038, 0x0038,   "OTE | Hellenic Telecommunications Organization S.A." },
-	{ 0x0040, 0x0040,   "Croatian Post and Telecommunications | HPT Croatian Post and Telecommunications" },
-	{ 0x0041, 0x0041,   "Mindport network | Mindport" },
-	{ 0x0046, 0x0047,   "1 degree W | Telenor" },
-	{ 0x0048, 0x0048,   "STAR DIGITAL | STAR DIGITAL A.S." },
-	{ 0x0049, 0x0049,   "Sentech Digital Satellite | Sentech" },
-	{ 0x0050, 0x0050,   "Croatian Radio and Television | HRT Croatian Radio and Television" },
-	{ 0x0051, 0x0051,   "Havas | Havas" },
-	{ 0x0052, 0x0052,   "Osaka Yusen Satellite | StarGuide Digital Networks" },
-	{ 0x0054, 0x0054,   "Teracom Satellite | Teracom AB Satellite Services" },
-	{ 0x0055, 0x0055,   "Sirius Satellite System European Coverage | NSAB (Teracom)" },
-	{ 0x0058, 0x0058,   "(Thiacom 1 & 2 co-located 78.5°E) | UBC Thailand" },
-	{ 0x005E, 0x005E,   "Sirius Satellite System Nordic Coverage | NSAB" },
-	{ 0x005F, 0x005F,   "Sirius Satellite System FSS | NSAB" },
-	{ 0x0060, 0x0060,   "MSG MediaServices GmbH | MSG MediaServices GmbH" },
-	{ 0x0069, 0x0069,   "(Optus B3 156°E) | (Optus Communications)" },
-	{ 0x0070, 0x0070,   "BONUM1; 36 Degrees East | NTV+" },
-	{ 0x0073, 0x0073,   "(PanAmSat 4 68.5°E) | (Pan American Satellite System)" },
-	{ 0x007D, 0x007D,   "Skylogic | Skylogic Italia" },
-	{ 0x007E, 0x007E,   "Eutelsat Satellite System at 7°E | European Telecommunications Satellite Organization" },
-	{ 0x007F, 0x007F,   "Eutelsat Satellite System at 7°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x0085, 0x0085,   "BetaTechnik | BetaTechnik" },
-	{ 0x0090, 0x0090,   "National network | TDF" },
-	{ 0x00A0, 0x00A0,   "National Cable Network | News Datacom" },
-	{ 0x00A1, 0x00A5,   "News Satellite Network | News Datacom" },
-	{ 0x00A6, 0x00A6,   "ART | ART" },
-	{ 0x00A7, 0x00A7,   "Globecast | France Telecom" },
-	{ 0x00A8, 0x00A8,   "Foxtel | Foxtel" },
-	{ 0x00A9, 0x00A9,   "Sky New Zealand | Sky New Zealand" },
-	{ 0x00B0, 0x00B3,   "TPS | La Télévision Par Satellite" },
-	{ 0x00B4, 0x00B4,   "Telesat 107.3°W | Telesat Canada" },
-	{ 0x00B5, 0x00B5,   "Telesat 111.1°W | Telesat Canada" },
-	{ 0x00B6, 0x00B6,   "Telstra Saturn | TelstraSaturn Limited" },
-	{ 0x00BA, 0x00BA,   "Satellite Express 6 (80°E) | Satellite Express" },
-	{ 0x00C0, 0x00CD,   "Canal + | Canal+" },
-	{ 0x00EB, 0x00EB,   "Eurovision Network | European Broadcasting Union" },
-	{ 0x0100, 0x0100,   "ExpressVu | ExpressVu Inc." },
-	{ 0x010D, 0x010D,   "Skylogic | Skylogic Italia" },
-	{ 0x010E, 0x010E,   "Eutelsat Satellite System at 10°E | European Telecommunications Satellite Organization" },
-	{ 0x010F, 0x010F,   "Eutelsat Satellite System at 10°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x0110, 0x0110,   "Mediaset | Mediaset" },
-	{ 0x011F, 0x011F,   "visAvision Network | European Telecommunications Satellite Organization" },
-	{ 0x013D, 0x013D,   "Skylogic | Skylogic Italia" },
-	{ 0x013E, 0x013E,   "Eutelsat Satellite System 13°E | European Telecommunications Satellite Organization" },
-	{ 0x013F, 0x013F,   "Eutelsat Satellite System at 13°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x016D, 0x016D,   "Skylogic | Skylogic Italia" },
-	{ 0x016E, 0x016E,   "Eutelsat Satellite System at 16°E | European Telecommunications Satellite Organization" },
-	{ 0x016F, 0x016F,   "Eutelsat Satellite System at 16°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x01F4, 0x01F4,   "MediaKabel B.V" },
-	{ 0x022D, 0x022D,   "Skylogic | Skylogic Italia" },
-	{ 0x022E, 0x022F,   "Eutelsat Satellite System at 21.5°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x026D, 0x026D,   "Skylogic | Skylogic Italia" },
-	{ 0x026E, 0x026F,   "Eutelsat Satellite System at 25.5°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x029D, 0x029D,   "Skylogic | Skylogic Italia" },
-	{ 0x029E, 0x029E,   "Eutelsat Satellite System at 29°E | European Telecommunications Satellite Organization" },
-	{ 0x029F, 0x029F,   "Eutelsat Satellite System at 28.5°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x02BE, 0x02BE,   "Arabsat | Arabsat (Scientific Atlanta, Eutelsat)" },
-	{ 0x033D, 0x033D,   "Skylogic at 33°E | Skylogic Italia" },
-	{ 0x033E, 0x033f,   "Eutelsat Satellite System at 33°E | Eutelsat" },
-	{ 0x036D, 0x036D,   "Skylogic | Skylogic Italia" },
-	{ 0x036E, 0x036E,   "Eutelsat Satellite System at 36°E | European Telecommunications Satellite Organization" },
-	{ 0x036F, 0x036F,   "Eutelsat Satellite System at 36°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x03E8, 0x03E8,   "Telia | Telia, Sweden" },
-	{ 0x047D, 0x047D,   "Skylogic | Skylogic Italia" },
-	{ 0x047E, 0x047f,   "Eutelsat Satellite System at 12.5°W | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x048D, 0x048D,   "Skylogic | Skylogic Italia" },
-	{ 0x048E, 0x048E,   "Eutelsat Satellite System at 48°E | European Telecommunications Satellite Organization" },
-	{ 0x048F, 0x048F,   "Eutelsat Satellite System at 48°E | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x052D, 0x052D,   "Skylogic | Skylogic Italia" },
-	{ 0x052E, 0x052f,   "Eutelsat Satellite System at 8°W | EUTELSAT - European Telecommunications Satellite Organization" },
-	{ 0x055D, 0x055D,   "Skylogic at 5°W | Skylogic Italia" },
-	{ 0x055E, 0x055f,   "Eutelsat Satellite System at 5°W | Eutelsat" },
-	{ 0x0600, 0x0600,   "UPC Satellite | UPC" },
-	{ 0x0601, 0x0601,   "UPC Cable | UPC" },
-	{ 0x0602, 0x0602,   "Tevel | Tevel Cable (Israel)" },
-	{ 0x071D, 0x071D,   "Skylogic at 70.5°E | Skylogic Italia" },
-	{ 0x071E, 0x071f,   "Eutelsat Satellite System at 70.5°E | Eutelsat" },
-	{ 0x0800, 0x0801,   "Nilesat 101 | Nilesat" },
-	{ 0x0880, 0x0880,   "MEASAT 1, 91.5°E | MEASAT Broadcast Network Systems SDN. BHD. (Kuala Lumpur, Malaysia)" },
-	{ 0x0882, 0x0882,   "MEASAT 2, 91.5°E | MEASAT Broadcast Network Systems SDN. BHD. (Kuala Lumpur, Malaysia)" },
-	{ 0x0883, 0x0883,   "MEASAT 2, 148.0°E | Hsin Chi Broadcast Company Ltd." },
-	{ 0x088F, 0x088F,   "MEASAT 3 | MEASAT Broadcast Network Systems SDN. BHD. (Kuala Lumpur, Malaysia)" },
-	{ 0x1000, 0x1000,   "Optus B3 156°E | Optus Communications" },
-	{ 0x1001, 0x1001,   "DISH Network | Echostar Communications" },
-	{ 0x1002, 0x1002,   "Dish Network 61.5 W | Echostar Communications" },
-	{ 0x1003, 0x1003,   "Dish Network 83 W | Echostar Communications" },
-	{ 0x1004, 0x1004,   "Dish Network 119 W | Echostar Communications" },
-	{ 0x1005, 0x1005,   "Dish Network 121 W | Echostar Communications" },
-	{ 0x1006, 0x1006,   "Dish Network 148 W | Echostar Communications" },
-	{ 0x1007, 0x1007,   "Dish Network 175 W | Echostar Communications" },
-	{ 0x1008, 0x1008,   "Dish Network W | Echostar Communications" },
-	{ 0x1009, 0x1009,   "Dish Network X | Echostar Communications" },
-	{ 0x100A, 0x100A,   "Dish Network Y | Echostar Communications" },
-	{ 0x100B, 0x100B,   "Dish Network Z | Echostar Communications" },
-	{ 0x1010, 0x1010,   "ABC TV | Australian Broadcasting Corporation" },
-	{ 0x1011, 0x1011,   "SBS | SBS Australia" },
-	{ 0x1012, 0x1012,   "Nine Network Australia | Nine Network Australia" },
-	{ 0x1013, 0x1013,   "Seven Network Australia | Seven Network Limited" },
-	{ 0x1014, 0x1014,   "Network TEN Australia | Network TEN Limited" },
-	{ 0x1015, 0x1015,   "WIN Television Australia | WIN Television Pty Ltd" },
-	{ 0x1016, 0x1016,   "Prime Television Australia | Prime Television Limited" },
-	{ 0x1017, 0x1017,   "Southern Cross Broadcasting Australia | Southern Cross Broadcasting (Australia) Limited" },
-	{ 0x1018, 0x1018,   "Telecasters Australia | Telecasters Australia Limited" },
-	{ 0x1019, 0x1019,   "NBN Australia | NBN Limited" },
-	{ 0x101A, 0x101A,   "Imparja Television Australia | Imparja Television Australia" },
-	{ 0x101B, 0x101f,   "Reserved for Australian broadcasters | Reserved for Australian broadcasters" },
-	{ 0x1100, 0x1100,   "GE Americom | GE American Communications" },
-	{ 0x2000, 0x2000,   "Thiacom 1 & 2 co-located 78.5°E | Shinawatra Satellite" },
-	{ 0x2024, 0x2024,   "Australian Digital Terrestrial Television | Australian Broadcasting Authority" },
-	{ 0x2038, 0x2038,   "Belgian Digital Terrestrial Television | BIPT" },
-	{ 0x20CB, 0x20CB,   "Czech Republic Digital Terrestrial Television | Czech Digital Group" },
-	{ 0x20D0, 0x20D0,   "Danish Digital Terrestrial Television | National Telecom Agency Denmark" },
-	{ 0x20E9, 0x20E9,   "Estonian Digital Terrestrial Television | Estonian National Communications Board" },
-	{ 0x20F6, 0x20F6,   "Finnish Digital Terrestrial Television | Telecommunicatoins Administratoin Centre, Finland" },
-	{ 0x2114, 0x2114,   "German Digital Terrestrial Television | IRT on behalf of the German DVB-T broadcasts" },
-	{ 0x2174, 0x2174,   "Irish Digital Terrestrial Television | Irish Telecommunications Regulator" },
-	{ 0x2178, 0x2178,   "Israeli Digital Terrestrial Television | BEZEQ (The Israel Telecommunication Corp Ltd.)" },
-	{ 0x2210, 0x2210,   "Netherlands Digital Terrestrial Television | Nozema" },
-	{ 0x22BE, 0x22BE,   "Singapore Digital Terrestrial Television | Singapore Broadcasting Authority" },
-	{ 0x22D4, 0x22D4,   "Spanish Digital Terrestrial Television | Spanish Broadcasting Regulator" },
-	{ 0x22F1, 0x22F1,   "Swedish Digital Terrestrial Television | Swedish Broadcasting Regulator" },
-	{ 0x22F4, 0x22F4,   "Swiss Digital Terrestrial Television | OFCOM" },
-	{ 0x233A, 0x233A,   "UK Digital Terrestrial Television | Independent Television Commission" },
-	{ 0x3000, 0x3000,   "PanAmSat 4 68.5°E | Pan American Satellite System" },
-	{ 0x5000, 0x5000,   "Irdeto Mux System | Irdeto Test Laboratories" },
-	{ 0x616D, 0x616D,   "BellSouth Entertainment | BellSouth Entertainment, Atlanta, GA, USA" },
-	{ 0x6600, 0x6600,   "UPC Satellite | UPC" },
-	{ 0x6601, 0x6601,   "UPC Cable | UPC" },
-	{ 0xF000, 0xF000,   "Small Cable networks | Small cable network network operators" },
-	{ 0xF001, 0xF001,   "Deutsche Telekom | Deutsche Telekom AG" },
-	{ 0xF010, 0xF010,   "Telefónica Cable | Telefónica Cable SA" },
-	{ 0xF020, 0xF020,   "Cable and Wireless Communication | Cable and Wireless Communications" },
-	{ 0xF100, 0xF100,   "Casema | Casema N.V." },
-	{ 0xF750, 0xF750,   "Telewest Communications Cable Network | Telewest Communications Plc" },
-	{ 0xF751, 0xF751,   "OMNE Communications | OMNE Communications Ltd." },
-	{ 0xFBFC, 0xFBFC,   "MATAV | MATAV (Israel)" },
-	{ 0xFBFD, 0xFBFD,   "Telia Kabel-TV | Telia, Sweden" },
-	{ 0xFBFE, 0xFBFE,   "TPS | La Télévision Par Satellite" },
-	{ 0xFBFF, 0xFBFF,   "Sky Italia | Sky Italia Spa." },
-	{ 0xFC10, 0xFC10,   "Rhône Vision Cable | Rhône Vision Cable" },
-	{ 0xFC41, 0xFC41,   "France Telecom Cable | France Telecom" },
-	{ 0xFD00, 0xFD00,   "National Cable Network | Lyonnaise Communications" },
-	{ 0xFE00, 0xFE00,   "TeleDenmark Cable TV | TeleDenmark" },
-	{ 0xFEC0, 0xFEff,   "Network Interface Modules | Common Interface" },
-	{ 0xFF00, 0xFFfe,   "Private_temporary_use | ETSI" },
-     	{  0,0, NULL }
+	#include "identifiers/originalNetworkID.h"
   };
 
   return findTableID (Table, i);
@@ -1256,28 +723,7 @@ char *dvbstrNetworkIdent_ID (u_int i)
 
 {
   STR_TABLE  Table[] = {
-     {  0x0000, 0x0000,  "reserved" },
-     {  0x0001, 0x0001,  "Astra Satellite Network 19.2E / Satellite / SES" },
-     {  0x0002, 0x0002,  "Astra Satellite Network 28.2E / Satellite / SES" },
-     {  0x0002, 0x0020,  "Astra Satellite Network / Satellite / SES" },
-     {  0x0021, 0x0027,  "Hispasat Network / Satellite / Hispasat FSS" },
-     {  0x0027, 0x0028,  "Hispasat 30W / Satellite / Hispasat FSS" },
-     {  0x0028, 0x0028,  "Hispasat 30W / Satellite / Hispasat DBS" },
-     {  0x0029, 0x0029,  "Hispasat 30W / Satellite / Hispasat America" },
-     {  0x002A, 0x002A,  "Multicabal / Satellite / Multicanal" },
-     {  0x0035, 0x0035,  "TV Africa / Satellite / Telemedia (PTY) Ltd." },
-     {  0x0085, 0x0085,  "- / Satellite / Beta Technik" },
-     {  0x013E, 0x013F,  "Eutelsat Satellite System 13.0E / Satellite / ETSO" },
-     {  0x016E, 0x016F,  "Eutelsat Satellite System 16.0E / Satellite / ETSO" },
-     {  0x022E, 0x022F,  "Eutelsat Satellite System 21.5E / Satellite / ETSO" },
-     {  0x047E, 0x047F,  "Eutelsat Satellite System 12.5W / Satellite / ETSO" },
-     {  0x052E, 0x052F,  "Eutelsat Satellite System  8.5W / Satellite / ETSO" },
-
-	//$$$ lots are missing
-     {  0x0530, 0xFEFF,  "--> please lookup at http://www.dvb.org" },
-     {  0xFF00, 0xFFFF,  "Private temporary use" },
-
-     {  0,0, NULL }
+	#include "identifiers/networkID.h"
   };
 
   return findTableID (Table, i);
@@ -2430,6 +1876,72 @@ char *dvbstrTS_AdaptationField_TYPE (u_int i)
  ------------------------------------------------------------------------
 */
 
+char *dvbstrPESH264_NALU_ID (u_int i)
+{
+  STR_TABLE  Table[] = {
+      { 0x00, 0x00,  "unspecified"},
+      { 0x01, 0x01,  "slice_non_IDR_picture"},
+      { 0x02, 0x02,  "slice_data_partition_a"},
+      { 0x03, 0x03,  "slice_data_partition_b"},
+      { 0x04, 0x04,  "slice_data_partition_c"},
+      { 0x05, 0x05,  "slice_IDR_picture"},
+      { 0x06, 0x06,  "SEI"},
+      { 0x07, 0x07,  "SPS"},
+      { 0x08, 0x08,  "PPS"},
+      { 0x09, 0x09,  "AUD"},
+      { 0x0A, 0x0A,  "end_of_seq"}, 
+      { 0x0B, 0x0B,  "end_of_stream"}, 
+      { 0x0C, 0x0C,  "filler_data"},
+      { 0x0D, 0x0D,  "SPS_extension"},
+      { 0x0E, 0x0E,  "prefix_nal_unit"},
+      { 0x0F, 0x0F,  "subset_SPS"},
+      { 0x10, 0x12,  "reserved"},
+      { 0x13, 0x13,  "slice_auxiliary_coded"}, 
+      { 0x14, 0x14,  "slice_scalable_extension"},
+      { 0x15, 0x17,  "reserved"},
+      { 0x18, 0x1F,  "unspecified"},
+      { 0x00, 0x00,  "NULL"} 
+  };
+
+  return findTableID (Table, i);
+}
+
+
+char *dvbstrPESH264_Slice_ID (u_int i)
+{
+  STR_TABLE  Table[] = {
+      {0x00, 0x00, "P (P slice)"},
+      {0x01, 0x01, "B (B slice)"},
+      {0x02, 0x02, "I (I slice)"},
+      {0x03, 0x03, "SP (SP slice)"},
+      {0x04, 0x04, "SI (SI slice)"},
+      {0x05, 0x05, "P (P slice)"},
+      {0x06, 0x06, "B (B slice)"},
+      {0x07, 0x07, "I (I slice)"},
+      {0x08, 0x08, "SP (SP slice)"},
+      {0x09, 0x09, "SI (SI slice)"},
+      {0x00, 0x00, "NULL"}
+  };
+
+  return findTableID (Table, i);
+}
+
+char *dvbstrH264_Profile_IDC (u_int i) 
+{
+  STR_TABLE  Table[] = {
+	  {44, 44, "CAVLC 4:4:4 Intra profile"},
+      {66, 66, "Baseline profile"},
+      {77, 77, "Main profile"},
+      {88, 88, "Extended profile"},
+      {100, 100, "High 10 Intra profile"},
+      {110, 110, "High 10 Intra profile"},
+      {122, 122, "High 4:2:2 profile"},
+      {244, 244, "High 4:4:4 Predictive profile"},
+      {0x00, 0x00, "NULL"}
+  };
+
+  return findTableID (Table, i);
+}
 
 /*
   -- PES Stream_id  ISO 13818-1  2.4.3.6
@@ -2546,83 +2058,7 @@ char *dvbstrPrivateDataSpecifier_ID (u_int i)
 {
   STR_TABLE  Table[] = {
 	// { Private Data Value, Private Data Value // Organisation" },
-  	// -- updated 2003-10-16
-	{ 0x00000000, 0x00000000,   "Reserved" },
-	{ 0x00000001, 0x00000001,   "SES" },
-	{ 0x00000002, 0x00000002,   "BskyB 1" },
-	{ 0x00000003, 0x00000003,   "BskyB 2" },
-	{ 0x00000004, 0x00000004,   "BskyB 3" },
-	{ 0x00000005, 0x00000005,   "ARD, ZDF, ORF" },
-	{ 0x00000006, 0x00000006,   "Nokia Multimedia Network Terminals" },
-	{ 0x00000007, 0x00000007,   "AT Entertainment Ltd." },
-	{ 0x00000008, 0x00000008,   "TV Cabo Portugal  " },
-	{ 0x00000009, 0x0000000D,   "Nagravision SA // Kudelski " },
-	{ 0x0000000E, 0x0000000E,   "Valvision SA  " },
-	{ 0x0000000F, 0x0000000F,   "Quiero Televisión  " },
-	{ 0x00000010, 0x00000010,   "La Télévision Par Satellite (TPS)" },
-	{ 0x00000011, 0x00000011,   "Echostar Communications" },
-	{ 0x00000012, 0x00000012,   "Telia AB" },
-	{ 0x00000013, 0x00000013,   "Viasat  " },
-	{ 0x00000014, 0x00000014,   "Senda (Swedish Terrestrial TV )" },
-	{ 0x00000015, 0x00000015,   "MediaKabel " },
-	{ 0x00000016, 0x00000016,   "Casema  " },
-	{ 0x00000017, 0x00000017,   "Humax Electronics Co. Ltd ." },
-	{ 0x00000018, 0x00000018,   "@Sky  " },
-	{ 0x00000019, 0x00000019,   "Singapore Digital Terrestrial Television  " },
-	{ 0x0000001A, 0x0000001A,   "Télédiffusion de France (TDF)" },
-	{ 0x0000001B, 0x0000001B,   "Intellibyte Inc." },
-	{ 0x0000001C, 0x0000001C,   "Digital Theater Systems Ltd" },
-	{ 0x0000001D, 0x0000001D,   "Finlux Ltd." },
-	{ 0x0000001E, 0x0000001E,   "Sagem SA" },
-	{ 0x00000020, 0x00000023,   "Lyonnaise Cable" },
-	{ 0x00000025, 0x00000025,   "MTV Europe " },
-	{ 0x00000026, 0x00000026,   "Pansonic  " },
-	{ 0x00000027, 0x00000027,   "Mentor Data System, Inc ." },
-	{ 0x00000028, 0x00000028,   "EACEM  " },
-	{ 0x00000029, 0x00000029,   "NorDig  " },
-	{ 0x0000002A, 0x0000002A,   "Intelsis Sistemas Inteligentes S.A ." },
-	{ 0x0000002D, 0x0000002D,   "Alpha Digital Synthesis S.A." },
-	{ 0x0000002F, 0x0000002F,   "Conax A.S." },
-	{ 0x00000030, 0x00000030,   "Telenor" },
-	{ 0x00000031, 0x00000031,   "TeleDenmark " },
-	{ 0x00000035, 0x00000035,   "Europe Online Networks S.A ." },
-	{ 0x00000038, 0x00000038,   "OTE  " },
-	{ 0x00000039, 0x00000039,   "Telewizja Polsat  " },
-	{ 0x000000A0, 0x000000A0,   "Sentech  " },
-	{ 0x000000A1, 0x000000A1,   "TechniSat Digital GmbH  " },
-	{ 0x000000BE, 0x000000BE,   "BetaTechnik" },
-	{ 0x000000C0, 0x000000C0,   "Canal+" },
-	{ 0x000000D0, 0x000000D0,   "Dolby Laboratories Inc." },
-	{ 0x000000E0, 0x000000E0,   "ExpressVu Inc." },
-	{ 0x000000F0, 0x000000F0,   "France Telecom, CNES and DGA (STENTOR)" },
-	{ 0x00000100, 0x00000100,   "OpenTV" },
-	{ 0x00000150, 0x00000150,   "Loewe Opta GmbH " },
-	{ 0x00000600, 0x00000601,   "UPC 1  " },
-	{ 0x00000ACE, 0x00000ACE,   "Ortikon Interactive Oy" },
-	{ 0x00001000, 0x00001000,   "La Télévision Par Satellite (TPS )" },
-	{ 0x000022D4, 0x000022D4,   "Spanish Broadcasting Regulator " },
-	{ 0x000022F1, 0x000022F1,   "Swedish Broadcasting Regulator " },
-	{ 0x0000233A, 0x0000233A,   "Independent Television Commission " },
-	{ 0x00003200, 0x0000320f,   "Australian Terrestrial Television Networks" },
-	{ 0x00006000, 0x00006000,   "News Datacom" },
-	{ 0x00006001, 0x00006006,   "NDC " },
-	{ 0x00362275, 0x00362275,   "Irdeto" },
-	{ 0x004E544C, 0x004E544C,   "NTL" },
-	{ 0x00532D41, 0x00532D41,   "Scientific Atlanta" },
-	{ 0x00600000, 0x00600000,   "Rhône Vision Cable" },
-	{ 0x44414E59, 0x44414E59,   "News Datacom (IL) 1" },
-	{ 0x46524549, 0x46524549,   "News Datacom (IL) 1" },
-	{ 0x46545600, 0x46545620,   "FreeTV " },
-	{ 0x4A4F4A4F, 0x4A4F4A4F,   "MSG MediaServices GmbH  " },
-	{ 0x4F545600, 0x4F5456ff,   "OpenTV " },
-	{ 0x50484900, 0x504849ff,   "Philips DVS" },
-	{ 0x53415053, 0x53415053,   "Scientific Atlanta" },
-	{ 0x5347444E, 0x5347444E,   "StarGuide Digital Networks " },
-	{ 0x56444700, 0x56444700,   "Vía Digital" },
-	{ 0xBBBBBBBB, 0xBBBBBBBB,   "Bertelsmann Broadband Group  " },
-	{ 0xECCA0001, 0xECCA0001,   "ECCA (European Cable Communications Association )" },
-	{ 0xFCFCFCFC, 0xFCFCFCFC,   "France Telecom" },
-     	{  0,0, NULL }
+	#include "identifiers/privateDataSpecifierID.h"
   };
 
 
@@ -2908,65 +2344,8 @@ char *dvbstrBouquetTable_ID (u_int i)
 
 {
   STR_TABLE  Table[] = {
-	// -- updated 2003-10-16
 	// -- { Bouquet ID, Bouquet ID,   "Name | Country Code | Operator" },
-	{ 0x0000, 0x0000,   "Reserved | 902 | Reserved" },
-	{ 0x002F, 0x002F,   "TVNZ Digital | 902 | TNVZ  " },
-	{ 0x0030, 0x0030,   "TT Data Services | 902 | TechnoTrend AG" },
-	{ 0x0031, 0x0031,   "Balon | 100 | Interactive Technologies PLC" },
-	{ 0x006E, 0x006E,   "Europe Online Networks (EON) | 902 | Europe Online Networks S.A  " },
-	{ 0x006F, 0x006F,   "WRN D-Radiosat | 902 | WRN (World Radio Network )" },
-	{ 0x0070, 0x007f,   "Eutelsat Satellite System n° 1 | 902 | EUTELSAT - European Telecommunications Satellite Organization " },
-	{ 0x0080, 0x0080,   "Digital Platform DIGITURK1 | 902 | Digital Platform  " },
-	{ 0x0081, 0x0081,   "TV Polsat | 902 | Telewizja Polsat  " },
-	{ 0x0082, 0x0082,   "TV Cabo Portugal | 902 | TV Cabo Portugal  " },
-	{ 0x0083, 0x0083,   "Dijital Yayýn Pazarlama ve Ticaret A.Þ. | 902 | Dijital Yayýn Pazarlama ve Ticaret A.Þ ." },
-	{ 0x0084, 0x0084,   "Digital Platform DIGITURK2 | 902 | DIGITURK" },
-	{ 0x0130, 0x013f,   "Eutelsat Service Guide | 902 | Eutelsat" },
-	{ 0x061F, 0x061F,   "BellSouth Entertainment | 902 | BellSouth Entertainment, Atlanta, GA, USA" },
-	{ 0x1000, 0x101f,   "BskyB | 902 | British Sky Broadcasting" },
-	{ 0x1020, 0x103f,   "DISH Network | 902 | Echostar Communications" },
-	{ 0x1040, 0x107f,   "ARD | 902 | ARD" },
-	{ 0x1080, 0x109f,   "ZDF | 902 | ZDF" },
-	{ 0x10A0, 0x10bf,   "ORF | 902 | ORF" },
-	{ 0x10C0, 0x10C0,   "NTV+ | 902 | NTV +" },
-	{ 0x10C1, 0x10C1,   "RTL Television | 902 | RTL Television " },
-	{ 0x10D1, 0x10D7,   "Primacom | 276 | Primacom A.G ." },
-	{ 0x10D8, 0x10Db,   "Viasat | 900 | Viasat  " },
-	{ 0x10DC, 0x10Df,   "Teracom | 900 | Teracom AB  " },
-	{ 0x1500, 0x150f,   "ExpressVu | 902 | ExpressVu Inc." },
-	{ 0x2000, 0x2000,   "Kaleidascope Multichoice | 902 | Filmnet" },
-	{ 0x2001, 0x2001,   "Osaka Yusen | 902 | StarGuide Networks " },
-	{ 0x2010, 0x2013,   "WIZJATV | 902 | AT Entertainment Ltd." },
-	{ 0x2100, 0x212f,   "TSA | 902 | Telefónica Servicios Audiovisuales" },
-	{ 0x2130, 0x2130,   "Galaxis | 905 | Galaxis Technology AG  " },
-	{ 0x3000, 0x300f,   "TPS | 902 | La Télévision Par Satellite" },
-	{ 0x3010, 0x3015,   "Sentech | 902 | Sentech" },
-	{ 0x3100, 0x3100,   "STENTOR | 902 | France Telecom, CNES and DGA" },
-	{ 0x3200, 0x320f,   "Australian Digital Television | 36 | Australian Terrestrial Television Networks" },
-	{ 0x322B, 0x322B,   "Telstra Saturn Satellite | 902 | TelstraSaturn Limited  " },
-	{ 0x332B, 0x332B,   "Telstra Saturn Cable | 907 | TelstraSaturn Limited  " },
-	{ 0x3622, 0x3622,   "Irdeto Bouquet of Download data Services | 902 | Irdeto" },
-	{ 0x3623, 0x3623,   "To be defined (see Wim Mooij) | 902 | Mindport " },
-	{ 0x3800, 0x3800,   "OTE | 902 | OTE  " },
-	{ 0x4000, 0x4000,   "HPT | 902 | HPT" },
-	{ 0x4001, 0x4001,   "visAvision | 905 | European Telecommunications Satellite Organization" },
-	{ 0x4010, 0x4010,   "HRT | 902 | HRT" },
-	{ 0x4040, 0x407f,   "OpenTV | 902 | OpenTV Inc ." },
-	{ 0x5000, 0x501f,   "BetaTechnik | 902 | BetaTechnik" },
-	{ 0x6000, 0x60bf,   "NDC | 902 | News Datacom" },
-	{ 0x60C0, 0x60ff,   "NDS | 0 | NDS" },
-	{ 0x6180, 0x61ff,   "Information Network Centre (INC) | 156 | Information Network Centre (China)" },
-	{ 0x6600, 0x6601,   "UPC | 902 | UPC  " },
-	{ 0x7000, 0x700f,   "MediaServices | 902 | MSG MediaServices GmbH  " },
-	{ 0xBBB1, 0xBBBb,   "BBG | 902 | Bertelsmann Broadband Group" },
-	{ 0xBBBC, 0xBBBC,   "SISAL | 905 | SISAL  " },
-	{ 0xC000, 0xC01f,   "Canal+ | 902 | Canal +" },
-	{ 0xFC00, 0xFCff,   "France Telecom | 902 | France Telecom" },
-	{ 0xFD08, 0xFD08,   "Xtra Music | 902 | Xtra Music " },
-	{ 0xFFFF, 0xFFFF,   "?????? whatever this is..." },
-
-     	{  0,0, NULL }
+	#include "identifiers/bouquetID.h"
   };
 
 
@@ -3081,15 +2460,18 @@ char *dvbstrTELETEXT_framingcode (u_int i)
 
 /*
   -- dvbstrTELETEXT_packetnr
-  -- EN 300 472  and EN 301 775.
+  -- EN 300 472  and EN 301 775  and EN 300 706
 */
 
 char *dvbstrTELETEXT_packetnr (u_int i)
 {
   STR_TABLE  Table[] = {
 	{ 0x00, 0x00,   "page header" },
-	{ 0x01, 0x19,   "normal packet intended for direct display" },
-	{ 0x1A, 0x1F,   "non-displayable packet (see: EN 300 706)" },
+	{ 0x01, 0x17,   "normal packet intended for direct display" },
+	{ 0x18, 0x18,   "navigational purpose in FLOF" },
+	{ 0x19, 0x19,   "displ. labels relating to data in page for keyword search" },
+	{ 0x1A, 0x1A,   "programming code VCR (EN 300 231) // character location addressing " },
+	{ 0x1B, 0x1F,   "non-displayable packet (see: EN 300 706)" },
      	{  0,0, NULL }
   };
 

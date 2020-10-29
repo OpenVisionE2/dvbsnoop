@@ -1,5 +1,5 @@
 /*
-$Id: tsdt.c,v 1.13 2006/01/02 18:24:25 rasc Exp $
+$Id: tsdt.c,v 1.14 2009/11/22 15:36:27 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -14,48 +14,7 @@ $Id: tsdt.c,v 1.13 2006/01/02 18:24:25 rasc Exp $
    -- Transport Stream Description Section
    -- ISO 13818
 
-
-
-$Log: tsdt.c,v $
-Revision 1.13  2006/01/02 18:24:25  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.12  2004/10/17 22:20:36  rasc
-section decoding functions renamed due to preparation of private structures
-
-Revision 1.11  2004/02/12 21:21:21  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.10  2004/02/07 01:28:04  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-Revision 1.9  2004/01/02 16:40:40  rasc
-DSM-CC  INT/UNT descriptors complete
-minor changes and fixes
-
-Revision 1.8  2004/01/01 20:09:31  rasc
-DSM-CC INT/UNT descriptors
-PES-sync changed, TS sync changed,
-descriptor scope
-other changes
-
-Revision 1.7  2003/11/26 19:55:34  rasc
-no message
-
-Revision 1.6  2003/11/01 17:05:47  rasc
-no message
-
-Revision 1.5  2003/10/29 20:54:57  rasc
-more PES stuff, DSM descriptors, testdata
-
-
-
 */
-
-
-
 
 #include "dvbsnoop.h"
 #include "tsdt.h"

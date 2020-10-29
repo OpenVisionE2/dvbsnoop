@@ -1,5 +1,5 @@
 /*
-$Id: vps.c,v 1.4 2006/01/02 18:24:03 rasc Exp $
+$Id: vps.c,v 1.6 2009/11/22 15:36:10 rhabarber1848 Exp $
 
 
 
@@ -8,31 +8,14 @@ $Id: vps.c,v 1.4 2006/01/02 18:24:03 rasc Exp $
  a dvb sniffer  and mpeg2 stream analyzer tool
  https://github.com/OpenVisionE2/dvbsnoop
 
- (c) 2001-2006   Rainer.Scherg@gmx.de (rasc)
+ (c) 2001-2007   Rainer.Scherg@gmx.de (rasc)
 
 
 
  -- misc routines for EBU Video Programming System
  -- EN 300 231  8.2.2 
-
-
-
-
-$Log: vps.c,v $
-Revision 1.4  2006/01/02 18:24:03  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.3  2004/03/10 21:05:53  rasc
-WSS (Wide Screen Signalling)  data decoding
-
-Revision 1.2  2004/03/09 21:57:58  rasc
-VPS decoding (fix NPP)
-
-Revision 1.1  2004/03/09 20:59:22  rasc
-VPS decoding (someone check the NPP & PTY code output please...)
-
-
-
+ -- TS 101 231
+ -- add. info: SAA4700 datasheet (Philips VPS dataline Processor)
 
 */
 
@@ -108,8 +91,10 @@ int  print_vps_decode (int v, u_char *b, int len)
 	// -- Byte 3..15 , so byte 3 => [0]
 	// -- vps_data_block:
 
-	// -- Byte 3+4: not relevant
-   	outBit_Sx_NL (v,"(not relevant to PDC): ", 	b,    0, 16);
+	// -- Byte 3+4: not relevant to PDC
+	// -- Info from datasheet SAA4700 (Philips)
+   	outBit_Sx_NL (v,"(program source identification (binary coded)): ",  b,   0,  8);
+   	outBit_Sx_NL (v,"(program source identification (ASCII seq)): ",     b+1, 0,  8); 
 
 	// -- PCS
    	pcs = outBit_S2x_NL (v,"PCS audio: ",		b+2,  0,  2,
@@ -122,9 +107,12 @@ int  print_vps_decode (int v, u_char *b, int len)
 	else			out_nl (4, "  [= Enhanced VPS]");
 
 
-
-   	outBit_Sx_NL (v,"(not relevant to PDC): ", 	b+3,  0, 24);		// byte 6..10
-   	outBit_Sx_NL (v,"(not relevant to PDC): ", 	b+3, 24, 16);
+	// -- Byte 6..10: not relevant to PDC
+	// -- Info from datasheet SAA4700 (Philips)
+   	outBit_Sx_NL (v,"(program/test picture identification): ",        b+3,   0,  8);
+   	outBit_Sx_NL (v,"(internal information exchange): ",              b+4,   0,  8);
+   	outBit_Sx_NL (v,"(address assignment of signal distribution): ",  b+5,   0, 16);
+   	outBit_Sx_NL (v,"(messages/commands): ",                          b+7,   0,  8);
 
 
 	pil 		=  getBits (b,  8,  2, 20);

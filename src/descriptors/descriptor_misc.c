@@ -1,5 +1,5 @@
 /*
-$Id: descriptor_misc.c,v 1.2 2006/01/02 18:23:58 rasc Exp $
+$Id: descriptor_misc.c,v 1.3 2009/11/22 15:36:06 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -12,18 +12,6 @@ $Id: descriptor_misc.c,v 1.2 2006/01/02 18:23:58 rasc Exp $
 
 
  -- Descriptors  misc. routines, helpers, etc.
-
-
-
-
-$Log: descriptor_misc.c,v $
-Revision 1.2  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/01/18 00:30:48  rasc
-no message
-
-
 
 */
 

@@ -1,5 +1,5 @@
 /*
-$Id: dsmcc_unm_dlcancel.c,v 1.2 2006/01/02 18:23:47 rasc Exp $
+$Id: dsmcc_unm_dlcancel.c,v 1.3 2009/11/22 15:36:05 rhabarber1848 Exp $
 
 
  DVBSNOOP
@@ -11,19 +11,6 @@ $Id: dsmcc_unm_dlcancel.c,v 1.2 2006/01/02 18:23:47 rasc Exp $
 
  -- dsmcc download Cancel
  -- to be called from U-N-Message
-
-
-
-$Log: dsmcc_unm_dlcancel.c,v $
-Revision 1.2  2006/01/02 18:23:47  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.1  2004/02/15 18:58:28  rasc
-DSM-CC  data/object carousell continued   (DSI, DII, DDB, DCancel)
-
-
-
-
 
 */
 

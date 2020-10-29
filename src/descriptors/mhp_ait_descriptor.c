@@ -1,5 +1,5 @@
 /*
-$Id: mhp_ait_descriptor.c,v 1.15 2006/02/12 23:17:11 rasc Exp $ 
+$Id: mhp_ait_descriptor.c,v 1.16 2009/11/22 15:36:06 rhabarber1848 Exp $ 
 
 
  DVBSNOOP
@@ -12,76 +12,6 @@ $Id: mhp_ait_descriptor.c,v 1.15 2006/02/12 23:17:11 rasc Exp $
 
  -- Private TAG Space  MHP  AIT
  -- TS 102 812  v1.2.1  10.11
-
-
-
-
-$Log: mhp_ait_descriptor.c,v $
-Revision 1.15  2006/02/12 23:17:11  rasc
-TS 101 191 MIP - Mega-Frame Initialization Packet for DVB-T/H  (TS Pid 0x15)
-
-Revision 1.14  2006/01/02 18:23:58  rasc
-just update copyright and prepare for a new public tar ball
-
-Revision 1.13  2004/11/03 21:00:50  rasc
- - New: "premiere.de" private tables and descriptors (tnx to Peter.Pavlov, Premiere)
- - New: cmd option "-privateprovider <provider name>"
- - New: Private provider sections and descriptors decoding
- - Changed: complete restructuring of private descriptors and sections
-
-Revision 1.12  2004/08/06 22:21:38  rasc
-New: TV-Anytime (TS 102 323) RNT descriptors 0x40 - 0x42
-
-Revision 1.11  2004/07/24 11:44:44  rasc
-EN 301 192 update
- - New: ECM_repetition_rate_descriptor (EN 301 192 v1.4.1)
- - New: time_slice_fec_identifier_descriptor (EN 301 192 v1.4.1)
- - New: Section MPE_FEC  EN 301 192 v1.4
- - Bugfixes
-
-Revision 1.10  2004/05/24 20:18:17  rasc
-bugfix: AIT descriptor transport_protocol_label (reported by Stéphane Esté-Gracias)
-
-Revision 1.9  2004/04/15 03:38:50  rasc
-new: TransportStream sub-decoding (ts2PES, ts2SEC)  [-tssubdecode]
-checks for continuity errors, etc. and decode in TS enclosed sections/pes packets
-
-Revision 1.8  2004/02/21 00:50:40  rasc
-bugfix: MHP AIT descriptors
-
-Revision 1.7  2004/02/20 22:18:39  rasc
-DII complete (hopefully)
-BIOP::ModuleInfo  (damned, who is spreading infos over several standards???)
-maybe someone give me a hint on the selector_byte info!!!
-some minor changes...
-
-Revision 1.6  2004/02/15 01:01:03  rasc
-DSM-CC  DDB (DownloadDataBlock Message)
-DSM-CC  U-N-Message  started
-Carousel Descriptors completed
-
-Revision 1.5  2004/02/12 21:21:20  rasc
-MHP AIT descriptors
-some smaller changes
-
-Revision 1.4  2004/02/11 20:27:32  rasc
-MHP AIT descriptors...
-
-Revision 1.3  2004/02/10 22:57:54  rasc
-MHP descriptor, missing DVB descriptor done
-
-Revision 1.2  2004/02/09 21:24:58  rasc
-AIT descriptors
-minor redesign on output routines
-
-Revision 1.1  2004/02/07 01:28:01  rasc
-MHP Application  Information Table
-some AIT descriptors
-
-
-
-
-
 
 */
 
@@ -785,17 +715,18 @@ void descriptorMHP_AIT_ip_signalling (u_char *b)
 
 
 /*
-  0x15 -- Simple application location descriptor 
-  ETSI  TS 102 809
-*/
+ 0x15 -- Simple application location descriptor 
+ ETSI TS 102 809
+ */
 
-void descriptorMHP_AIT_application_location (u_char *b)
+void descriptorMHP_AIT_application_location( u_char* b )
 {
-  int  len;
+  int len;
   // descriptor_tag	= b[0];
-  len		        = b[1]; 
+  len = b[1];
+
   b +=2;
- 
+
   print_text_UTF8 (4, "location: ", b, len);
- 
+
 }
